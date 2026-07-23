@@ -1,0 +1,215 @@
+Validation Landing Page & MVP Brief (V1)
+
+Purpose
+
+I would like to validate a new concept called Aging Parent Navigator before investing significant development time or resources.
+
+The objective is to determine whether families are interested in:
+
+- Assessing an aging parent's ability to live independently
+- Understanding warning signs of declining independence
+- Receiving guidance and recommendations
+- Scheduling a consultation for personalized support
+
+This should be approached as a validation-first project, not a full platform build.
+
+---
+
+Brand
+
+Aging Parent Navigator
+
+Working Tagline
+
+Helping Families Navigate Aging with Confidence
+
+---
+
+Background
+
+As a Registered Nurse with more than 30 years of experience, I have frequently observed families struggling to recognize when an aging parent is beginning to lose independence.
+
+Many warning signs are subtle and often appear months before a major crisis.
+
+Examples include:
+
+- Unexplained weight loss
+- Falls
+- Missed medications
+- Utility shutoffs
+- Unopened mail
+- Spoiled food
+- Social withdrawal
+- Memory concerns
+- Bathroom accidents
+- Declining hygiene
+- Home safety concerns
+
+The goal of Aging Parent Navigator is to help families identify these warning signs early and provide practical next steps before a crisis occurs.
+
+---
+
+Initial Validation Goals
+
+Primary Goal:
+
+Determine whether families will complete an independence assessment.
+
+Secondary Goal:
+
+Determine whether families are interested in a paid consultation.
+
+Success Metrics:
+
+- Assessment completions
+- Consultation requests
+- Email leads collected
+
+---
+
+Target Audience
+
+Primary Audience:
+
+Adult children (typically ages 45-65) concerned about an aging parent.
+
+Examples:
+
+- "Is Mom still safe living alone?"
+- "Dad has changed recently and I'm not sure what to do."
+- "I'm worried but don't know if I'm overreacting."
+- "I need guidance on what steps to take next."
+
+---
+
+Proposed MVP Flow
+
+Landing Page
+
+↓
+
+Assessment
+
+↓
+
+Results Page
+
+↓
+
+Consultation Request
+
+↓
+
+Lead Capture
+
+---
+
+Landing Page Structure
+
+Hero Section
+
+Headline:
+
+Is Your Parent Still Safe Living Alone?
+
+Subheadline:
+
+Recognize warning signs early, understand potential risks, and receive guidance before a crisis occurs.
+
+Primary CTA:
+
+Take the Free Assessment
+
+Secondary CTA:
+
+Schedule a Consultation
+
+---
+
+Problem Section
+
+Many families struggle to know when an aging parent needs additional support.
+
+Warning signs are often overlooked until a fall, hospitalization, medication issue, or another major event occurs.
+
+Common warning signs include:
+
+- Falls
+- Weight loss
+- Missed medications
+- Utility shutoffs
+- Unopened mail
+- Memory changes
+- Social withdrawal
+- Bathroom accidents
+- Home safety concerns
+
+---
+
+About Sharon
+
+Registered Nurse and Licensed General Contractor
+
+With over 30 years of nursing experience and years of experience helping create safer homes, Sharon Collins created Aging Parent Navigator to help families make informed decisions about safety, independence, and future planning.
+
+---
+
+Assessment Section
+
+The assessment will evaluate:
+
+- Falls and mobility
+- Memory and cognition
+- Medication management
+- Nutrition and weight changes
+- Home safety
+- Household management
+- Personal care and hygiene
+- Social support
+- Daily living activities
+
+Assessment details are currently being finalized.
+
+---
+
+Consultation Section
+
+30-Minute Aging Parent Navigator Consultation
+
+Purpose:
+
+Provide personalized guidance to families regarding concerns, risks, priorities, and next steps.
+
+Potential future services may include:
+
+- Personalized Care Roadmaps
+- Home Safety Reviews
+- Aging-in-Place Guidance
+- Caregiver Support Resources
+
+---
+
+Development Philosophy
+
+The objective is to keep this extremely lean.
+
+I do not want:
+
+- User accounts
+- Memberships
+- Complex dashboards
+- Advanced platform functionality
+
+For now, I simply want to validate demand and gather feedback from real users before deciding whether to expand further.
+
+---
+
+Feedback Requested
+
+Please review this concept and provide your thoughts regarding:
+
+1. The simplest architecture for a validation-first version.
+2. Recommended assessment flow.
+3. Any suggestions for improving validation.
+4. Estimated development effort for a lean MVP.
+5. Any concerns or opportunities you see from a product or technical perspective.

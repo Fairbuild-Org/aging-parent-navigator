@@ -1,0 +1,19 @@
+I'd like to begin a small validation project called Aging Parent Navigator.
+
+The objective is not to build a full platform yet, but to validate demand and learn from real users before investing heavily in development.
+
+The initial scope would include:
+
+- Simple landing page
+- Assessment flow
+- Results page
+- Consultation request form
+- Lead capture
+
+The target audience is adult children concerned about an aging parent who may be experiencing declining independence.
+
+I've attached the initial landing page brief and concept direction. I'm still finalizing the assessment questions, scoring logic, and recommendation framework, which I believe will be the core intellectual property of the project.
+
+For now, I'd like you to review the concept and provide feedback regarding the simplest and most efficient architecture for a validation-first version.
+
+My goal is to keep this lean, validate demand quickly, and avoid unnecessary complexity.
