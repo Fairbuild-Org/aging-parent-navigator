@@ -24,6 +24,9 @@ they don't know what to do next** — *The Ultimate Caregiver's Companion.*
 
 > We can't walk every family's journey for them — but we can make sure they never walk it alone.
 
+**Our north star:** *No family should ever have to face one of life's most difficult seasons
+wondering what to do next.* This stays central to everything we build.
+
 **The promise, concretely:** help families move **from fear, confusion, and guilt → to clarity,
 confidence, and compassionate action.** Every screen should feel like calm guidance from someone who
 understands what the family is facing — not a clinical questionnaire or an informational website.
@@ -67,10 +70,13 @@ belongs in V1:
 2. **Situation-first.** Meet families in their moment of worry; give them a path, not a library.
 3. **Validate before you build heavy.** Each phase is a gate. Evidence unlocks the next phase.
 4. **Clinical safety over cleverness.** No diagnoses. Educational framing. Human-authored logic for
-   anything health-related. *Our purpose is not to diagnose — it is to help caregivers become
-   excellent observers, communicators, and advocates.*
-5. **Least data that still lets us learn.** Especially before accounts exist.
-6. **Content is the product.** The situations / assessment / scoring / guidance IP is the critical
+   anything health-related.
+5. **Teach families to be excellent observers — our differentiator.** We don't diagnose; we help
+   families *recognize* meaningful changes, *document* them, and *communicate* them effectively to
+   healthcare providers. This observer-and-advocate philosophy is a defining, hard-to-copy
+   characteristic of the platform.
+6. **Least data that still lets us learn.** Especially before accounts exist.
+7. **Content is the product.** The situations / assessment / scoring / guidance IP is the critical
    path — not the code.
 
 ---
@@ -136,7 +142,12 @@ stay in the background; the family sees reassuring, action-oriented guidance. Ev
 - **What deserves attention first.**
 - **Helpful observations to monitor.**
 - **What to do today or this week.**
-- **Questions to discuss with the healthcare team.**
+- **Common mistakes to avoid** — what families in this situation often get wrong; preventing a
+  misstep can matter as much as any recommendation.
+- **Conversation guidance** — how to begin difficult conversations *with the parent* and *with other
+  family members*, in addition to questions to discuss with the healthcare team.
+- **What may be coming next & changes to watch for.**
+- **How to prepare for decisions ahead.**
 - **What the results do _not_ necessarily mean** (guard against fear/over-reading).
 - **Suggested next steps** + **educational resources.**
 
@@ -151,6 +162,14 @@ stay in the background; the family sees reassuring, action-oriented guidance. Ev
 
 The goal is to leave families **informed and empowered — not frightened.** No diagnostic claims
 ("your parent has dementia"); frame everything as *warning signs to discuss with a professional.*
+
+**Each pathway is a roadmap, not a snapshot.** Beyond "what to do today," every summary looks forward
+— what families may encounter next, what changes to watch for, and how to prepare for decisions ahead
+— so families feel *guided through the journey*, not handed a one-time result. *Phasing:* this
+forward-looking guidance is **static, situation-specific content authored per band** and is fully
+achievable in **Phase 1**. The *tracked-over-time* journey (return, re-assess, watch things evolve)
+needs accounts + Observation Journal + dashboard and lands in **Phase 2/3** — noted so Phase 1 stays
+lean.
 
 ---
 
@@ -176,8 +195,20 @@ refine together, then sign off.
 > and, if it's landing visitors, planning traffic for ~1,000. The 75-completion + 10–15 interview
 > pairing is the right instinct: small-N quantitative is directional; interviews carry the weight.
 
-A stronger secondary signal to layer in if feasible: a **true willingness-to-pay test** (priced
-consult or card-on-file booking) rather than a free "help me" click.
+### 8.1 Willingness-to-pay validation (design together — client wants this in the criteria)
+
+Interest clicks alone won't prove product-market fit; **real money is revealed preference.** Options:
+
+| Mechanism | What it validates | Trade-off |
+| --- | --- | --- |
+| **A. Paid consultation** — price the 30-min consult (e.g. $49–$99), card-on-file at booking (Stripe / paid Calendly) | The actual secondary-goal revenue path | Highest friction; needs refund / no-show handling |
+| **B. Family Care Plan pre-sale (fake-door)** — show a price for the Phase 2 plan ("Reserve yours — $X"), capture payment or intent | WTP for the *core product*, before it's built | If you charge, you owe fulfillment; intent-only is weaker |
+| **C. Price survey (Van Westendorp)** | Rough price sensitivity | Stated, not revealed — a complement only, not proof |
+
+**Recommendation:** run **A as the primary WTP signal** (real offer, real money), and add a
+lightweight **B fake-door** to gauge product WTP without building Phase 2. Test **1–2 price points.**
+Charging money alongside health guidance raises the bar on **refund policy, terms, and disclaimers** —
+loop the attorney in. **Decision needed:** which mechanism(s) and which price point(s) to run.
 
 **Traffic plan is part of the gate** — no traffic, no validation. Decide sources up front (Meta ads
 to 45–65 caregivers, caregiver Facebook groups, Nextdoor, local partnerships) and tag with UTMs.
@@ -277,7 +308,9 @@ six-month roadmap · questions to ask healthcare providers · recommended resour
 - Understanding the condition or concern.
 - Common signs and changes families notice.
 - Helpful observations to monitor.
+- **Common mistakes families make — and how to avoid them.**
 - Questions to ask healthcare professionals.
+- **Starting difficult conversations** (with the parent and with family).
 - When medical attention may be needed sooner.
 - Practical caregiving tips.
 - **Observation Journal** for tracking changes over time.
@@ -346,14 +379,19 @@ finish the Concern Check.
 - Care-plan approach: deterministic / expert-authored ✔
 - The 7 Phase 1 situation pathways ✔
 - Family Guidance Summary framing + the 4 user-facing bands ✔
+- Guidance Summary now includes **common mistakes to avoid**, **conversation guidance**, and a
+  forward-looking **pathway roadmap** (what's next / what to watch / how to prepare) ✔
+- "Excellent observers" as a stated **differentiator**; north-star mantra central ✔
 - Caregiver-health question included in Phase 1 ✔
 - Success-target *ranges* ✔ (pending written sign-off + funnel-math reconciliation, §8)
 - Content-governance requirement ✔
 
-**Still open — must be finalized before coding (the current priority):**
-1. **Free Concern Check content & decision logic:** the exact questions per situation, answer options
-   & weights, the **scoring → band** logic, the **emergency triggers**, the next-step recommendations,
-   and the guidance-template text for each band.
-2. **Written sign-off** of the §8 success criteria (with the funnel denominator clarified).
+**Still open — to finalize before / alongside coding:**
+1. **Free Concern Check content & decision logic** *(current priority)*: the exact questions per
+   situation, answer options & weights, the **scoring → band** logic, the **emergency triggers**, the
+   next-step recommendations, and the guidance-template text per band — now including the common-
+   mistakes, conversation-guidance, and forward-looking roadmap sections.
+2. **Written sign-off** of the §8 success criteria (funnel denominator clarified).
+3. **Willingness-to-pay test** — choose mechanism(s) and price point(s) (§8.1).
 
-Once #1 and #2 are locked, Phase 1 has a clean, focused foundation to build against.
+Once these are locked, Phase 1 has a clean, focused foundation to build against.
