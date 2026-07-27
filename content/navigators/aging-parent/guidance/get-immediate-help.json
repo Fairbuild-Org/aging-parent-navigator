@@ -1,0 +1,58 @@
+{
+  "_note": "PLACEHOLDER Family Guidance Summary template for the 'Get Immediate Help' band — illustrative structure only, pending RN authoring/approval. Emergency-trigger wording is reviewed separately (see emergency-triggers.json and governance).",
+  "band": "get-immediate-help",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "headline": "This needs immediate attention",
+  "whatWeNoticed": "Your answers include signs that need prompt attention to keep your parent safe.",
+  "whatDeservesAttentionFirst": "Safety comes first. If your parent is injured, in danger, or suddenly very confused, seek help right away.",
+  "helpfulObservationsToMonitor": [
+    "Whether they are safe and stable right now",
+    "Any injury, severe pain, or sudden confusion",
+    "Whether they can manage basic needs today"
+  ],
+  "todayThisWeek": [
+    "If there is an emergency or someone is in danger, call 911.",
+    "Contact your parent's doctor today.",
+    "Do not leave a serious safety risk unaddressed."
+  ],
+  "commonMistakesToAvoid": [
+    "Waiting to 'see if it gets better' when safety is at risk.",
+    "Assuming someone else has already handled it.",
+    "Downplaying a sudden change in confusion or physical ability."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Stay calm and reassuring; focus on their safety.",
+      "Explain that getting help now is a way of caring for them."
+    ],
+    "withFamily": [
+      "Alert family immediately and share what's happening.",
+      "Decide right away who can be present or on call."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "Given these changes, what should we do right now?",
+    "Is this something to handle today, or go to urgent/emergency care?",
+    "What follow-up is needed afterward?"
+  ],
+  "whatMayBeComingNext": [
+    "Prompt attention now can prevent a serious event.",
+    "After the immediate concern, a fuller assessment will help plan next steps."
+  ],
+  "howToPrepare": [
+    "Have their medications list and key information ready.",
+    "Keep emergency and doctor numbers easily accessible."
+  ],
+  "whatThisDoesNotMean": [
+    "Needing help now does not mean every decision must be made today.",
+    "It does not mean your parent has lost all independence."
+  ],
+  "suggestedNextSteps": [
+    "Address the immediate safety concern first.",
+    "Then book a consultation to plan what comes next."
+  ],
+  "resources": [
+    { "title": "Emergency readiness checklist", "type": "pdf", "href": "#" }
+  ]
+}

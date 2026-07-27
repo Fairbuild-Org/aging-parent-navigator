@@ -1,0 +1,62 @@
+{
+  "_note": "PLACEHOLDER Family Guidance Summary template for the 'Plan a Conversation' band — illustrative structure only, pending RN authoring/approval. Shows every locked section: common mistakes, conversation guidance (parent + family), and forward-looking roadmap.",
+  "band": "plan-a-conversation",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "headline": "It looks like a good time to plan a conversation",
+  "whatWeNoticed": "Your answers point to some real changes worth attention. This isn't an emergency — it's a signal that it's time to talk and start planning together.",
+  "whatDeservesAttentionFirst": "The changes you noticed in safety and day-to-day routines deserve attention first, because small adjustments now can prevent a crisis later.",
+  "helpfulObservationsToMonitor": [
+    "Any new stumbles, dizziness, or changes in walking",
+    "Whether daily tasks (meals, medications, bills) are slipping",
+    "Changes in mood, energy, or withdrawing from others"
+  ],
+  "todayThisWeek": [
+    "Write down the specific things you've noticed, with dates.",
+    "Schedule a check-in visit with your parent's doctor.",
+    "Have one gentle, low-pressure conversation with your parent."
+  ],
+  "commonMistakesToAvoid": [
+    "Waiting for a crisis before acting — early is easier for everyone.",
+    "Taking over decisions instead of involving your parent.",
+    "Trying to fix everything in one conversation.",
+    "Not writing down what you observe before the doctor's visit."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Pick a calm, unhurried moment — not right after a scare.",
+      "Lead with love and concern, not logistics: 'I've noticed… and I care about you.'",
+      "Ask questions and listen; let them keep as much control as possible."
+    ],
+    "withFamily": [
+      "Get siblings on the same page before approaching your parent.",
+      "Agree on who does what, so no one person carries it all.",
+      "Share what each person has observed — patterns become clearer together."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "Could any medications be affecting balance, memory, or mood?",
+    "Is a falls-risk or memory assessment appropriate now?",
+    "What changes should prompt us to call you sooner?"
+  ],
+  "whatMayBeComingNext": [
+    "If changes continue, a more complete assessment can clarify priorities.",
+    "Planning ahead now (safety, support, documents) makes future decisions calmer."
+  ],
+  "howToPrepare": [
+    "Start a simple observation journal to track changes over time.",
+    "Locate key documents (medications list, insurance, any advance directives)."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean your parent has dementia or must move.",
+    "It does not mean you've done anything wrong — noticing early is a strength."
+  ],
+  "suggestedNextSteps": [
+    "Take the full Comprehensive Assessment (coming soon) for a complete picture.",
+    "Book a 30-minute consultation for personalized guidance."
+  ],
+  "resources": [
+    { "title": "Observation Journal (printable)", "type": "pdf", "href": "#" },
+    { "title": "How to start the conversation", "type": "article", "href": "#" }
+  ]
+}

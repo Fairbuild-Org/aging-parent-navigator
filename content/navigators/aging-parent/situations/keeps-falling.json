@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval. Demonstrates the forward-looking 'roadmap' object that makes each pathway a journey, not a snapshot.",
+  "id": "keeps-falling",
+  "status": "placeholder",
+  "title": "My parent keeps falling or seems physically weaker",
+  "shortLabel": "Falls & mobility",
+  "intro": "Falls are one of the clearest early signals that something is changing — and noticing this is exactly the right instinct.",
+  "reassurance": "You're not overreacting. Paying attention now is how families prevent bigger problems later.",
+  "emphasizeAreas": ["physical", "home-safety", "daily-living"],
+  "questions": ["falls-recent", "fall-injury", "home-hazards", "caregiver-overwhelm"],
+  "roadmap": {
+    "whatsHappeningNow": "Reduced strength, balance, or confidence with walking often shows up as stumbles or falls before anything else.",
+    "whatMayComeNext": [
+      "Falls tend to become more frequent once they start.",
+      "A fear of falling can lead to less movement — which, over time, weakens the body further.",
+      "A single serious fall can trigger a hospitalization and a sudden care decision."
+    ],
+    "changesToWatchFor": [
+      "New unsteadiness, holding onto furniture or walls",
+      "Avoiding stairs or activities they used to do",
+      "Bruises they can't fully explain"
+    ],
+    "howToPrepare": [
+      "Ask their doctor about a falls-risk assessment and a medication review.",
+      "Consider a home safety review (lighting, rugs, grab bars, bathroom).",
+      "Keep a simple log of any stumbles or falls to share with the care team."
+    ]
+  }
+}

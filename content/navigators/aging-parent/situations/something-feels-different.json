@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval. This is the reassuring 'catch-all' pathway.",
+  "id": "something-feels-different",
+  "status": "placeholder",
+  "title": "I'm not sure what is wrong — I only know something feels different",
+  "shortLabel": "Something feels off",
+  "intro": "Sometimes there's no single symptom — just a feeling that something has changed. That instinct is worth listening to.",
+  "reassurance": "You don't need to have the answer to take a good first step. That's exactly what this is for.",
+  "emphasizeAreas": ["cognition", "mood", "physical"],
+  "questions": ["memory-change", "mood-withdrawal", "weight-appetite", "falls-recent", "caregiver-overwhelm"],
+  "roadmap": {
+    "whatsHappeningNow": "A vague sense that 'something's off' is often the earliest signal — before any obvious symptom appears.",
+    "whatMayComeNext": [
+      "Gentle attention now can catch a small issue early.",
+      "Patterns usually become clearer over a few weeks of observing.",
+      "If several small things add up, a fuller look helps."
+    ],
+    "changesToWatchFor": [
+      "Subtle shifts in memory, mood, energy, or appetite",
+      "Small changes in routines or self-care",
+      "Anything that simply feels unlike their usual self"
+    ],
+    "howToPrepare": [
+      "Start noting what feels different, with dates.",
+      "Trust your instinct enough to mention it to their doctor.",
+      "Compare observations with other family members."
+    ]
+  }
+}

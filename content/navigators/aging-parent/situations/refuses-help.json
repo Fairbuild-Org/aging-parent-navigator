@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval.",
+  "id": "refuses-help",
+  "status": "placeholder",
+  "title": "My parent is struggling at home but refuses help",
+  "shortLabel": "Refusing help",
+  "intro": "It's painful to see a parent struggle while insisting they're fine. This is one of the hardest situations families face.",
+  "reassurance": "Their resistance usually comes from a fear of losing independence — not from not needing you.",
+  "emphasizeAreas": ["behavior", "home-safety", "daily-living"],
+  "questions": ["refuses-help", "home-hazards", "daily-tasks", "hygiene-change", "caregiver-overwhelm"],
+  "roadmap": {
+    "whatsHappeningNow": "Refusing help is often about protecting dignity and control, even as everyday tasks get harder.",
+    "whatMayComeNext": [
+      "Small problems can grow while help is delayed.",
+      "A crisis may force decisions that could have been gentler if made earlier.",
+      "Trust built now makes future help easier to accept."
+    ],
+    "changesToWatchFor": [
+      "Growing safety risks they downplay",
+      "Increasing isolation or hiding of problems",
+      "Signs they're overwhelmed but won't say so"
+    ],
+    "howToPrepare": [
+      "Focus on preserving their independence, not taking over.",
+      "Introduce small, face-saving forms of help first.",
+      "Consider involving a trusted third party (doctor, clergy, old friend)."
+    ]
+  }
+}

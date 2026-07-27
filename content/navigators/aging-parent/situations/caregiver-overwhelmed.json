@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval.",
+  "id": "caregiver-overwhelmed",
+  "status": "placeholder",
+  "title": "I'm overwhelmed as a caregiver and need help from my family",
+  "shortLabel": "Caregiver support",
+  "intro": "If you're feeling overwhelmed, please hear this: you matter too, and needing help does not mean you're failing.",
+  "reassurance": "The best caregivers ask for help — it's how they keep going.",
+  "emphasizeAreas": ["caregiver", "social", "mood"],
+  "questions": ["caregiver-overwhelm", "caregiver-support", "social-contact", "mood-withdrawal", "daily-tasks"],
+  "roadmap": {
+    "whatsHappeningNow": "Caregiver stress is real and cumulative. Recognizing it is the first step toward a more sustainable path.",
+    "whatMayComeNext": [
+      "Unaddressed burnout affects your health and your parent's care.",
+      "Sharing the load early prevents resentment and crisis.",
+      "Support and respite can restore your energy."
+    ],
+    "changesToWatchFor": [
+      "Your own exhaustion, sleep, and mood",
+      "Feeling alone or unsupported",
+      "Tasks piling up faster than you can manage"
+    ],
+    "howToPrepare": [
+      "Make a specific list of tasks others could take on.",
+      "Call a family conversation to share responsibilities.",
+      "Look into respite care and caregiver support resources."
+    ]
+  }
+}

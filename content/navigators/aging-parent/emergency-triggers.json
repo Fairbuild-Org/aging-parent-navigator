@@ -1,0 +1,20 @@
+{
+  "_note": "PLACEHOLDER — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance). These force the 'get-immediate-help' band regardless of score.",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "triggers": [
+    {
+      "id": "fall-with-injury",
+      "when": { "questionId": "falls-recent", "valueIn": ["multiple"] },
+      "and": { "questionId": "fall-injury", "valueIn": ["yes"] },
+      "band": "get-immediate-help",
+      "message": "If your parent is injured, in pain, or cannot get up after a fall, call 911. Otherwise, contact their doctor today about a falls evaluation."
+    },
+    {
+      "id": "acute-confusion",
+      "when": { "questionId": "memory-change", "valueIn": ["clear"] },
+      "band": "get-immediate-help",
+      "message": "A sudden, clear change in confusion or alertness can signal an urgent medical issue (such as infection or medication reaction). Contact their doctor promptly, or seek urgent care."
+    }
+  ]
+}

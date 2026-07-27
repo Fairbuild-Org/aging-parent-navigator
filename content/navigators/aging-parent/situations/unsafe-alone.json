@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval.",
+  "id": "unsafe-alone",
+  "status": "placeholder",
+  "title": "I'm worried my parent is no longer safe living alone",
+  "shortLabel": "Safe at home?",
+  "intro": "Wondering whether your parent is still safe on their own is one of the most common — and weightiest — concerns families carry.",
+  "reassurance": "Asking the question early gives you more options and less crisis.",
+  "emphasizeAreas": ["home-safety", "cognition", "daily-living"],
+  "questions": ["home-hazards", "judgment-safety", "falls-recent", "medication-mgmt", "daily-tasks"],
+  "roadmap": {
+    "whatsHappeningNow": "Safety at home depends on several things at once — mobility, memory, medications, and the home itself.",
+    "whatMayComeNext": [
+      "Risks like falls, fire, or medication errors can escalate.",
+      "A single incident can force a rushed decision.",
+      "Planning now widens your options later."
+    ],
+    "changesToWatchFor": [
+      "Falls, wandering, or unsafe use of appliances",
+      "Missed medications or unpaid bills",
+      "Spoiled food, clutter, or an unmanaged home"
+    ],
+    "howToPrepare": [
+      "Ask about a home safety review and a falls-risk assessment.",
+      "Explore support options (in-home help, check-ins, safety technology).",
+      "Discuss preferences with your parent before a crisis forces the issue."
+    ]
+  }
+}

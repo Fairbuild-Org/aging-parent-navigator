@@ -1,0 +1,59 @@
+{
+  "_note": "PLACEHOLDER Family Guidance Summary template for the 'Take Action Soon' band — illustrative structure only, pending RN authoring/approval.",
+  "band": "take-action-soon",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "headline": "It's time to take action soon",
+  "whatWeNoticed": "Your answers point to several changes that, together, suggest it's time to act — in the coming days and weeks, not months.",
+  "whatDeservesAttentionFirst": "Safety and any health changes deserve attention first. A professional evaluation now can prevent a crisis.",
+  "helpfulObservationsToMonitor": [
+    "Falls, injuries, or new weakness",
+    "Confusion, missed medications, or unsafe decisions",
+    "Skipped meals, weight loss, or declining hygiene"
+  ],
+  "todayThisWeek": [
+    "Schedule a medical evaluation soon.",
+    "Write down specific concerns, with dates, to share.",
+    "Reduce obvious safety risks in the home now."
+  ],
+  "commonMistakesToAvoid": [
+    "Putting off the doctor visit.",
+    "Making big decisions alone, without your parent or family.",
+    "Trying to manage everything yourself without help."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Be honest and caring: 'I'm worried, and I want us to get some answers together.'",
+      "Frame it as keeping them safe and independent for as long as possible."
+    ],
+    "withFamily": [
+      "Call a family conversation quickly.",
+      "Divide responsibilities so it doesn't fall on one person."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "What could be causing these changes, and how urgent are they?",
+    "What evaluations or referrals do you recommend now?",
+    "What warning signs mean we should act faster?"
+  ],
+  "whatMayBeComingNext": [
+    "Without action, these changes often escalate.",
+    "A comprehensive assessment can clarify priorities and a plan."
+  ],
+  "howToPrepare": [
+    "Gather medications, insurance, and any legal documents.",
+    "Learn what local support options exist."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean your parent must move or lose independence.",
+    "It does not mean the situation is hopeless — acting now improves outcomes."
+  ],
+  "suggestedNextSteps": [
+    "Take the Comprehensive Assessment (coming soon) for the full picture.",
+    "Book a consultation for a personalized plan."
+  ],
+  "resources": [
+    { "title": "Preparing for the doctor visit", "type": "article", "href": "#" },
+    { "title": "Observation Journal (printable)", "type": "pdf", "href": "#" }
+  ]
+}

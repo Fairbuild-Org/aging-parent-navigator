@@ -1,0 +1,19 @@
+{
+  "_note": "PLACEHOLDER thresholds — Sharon (RN) to set real cut points and approve. Bands are family-facing; 'tier' stays internal/background.",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "method": "sum-of-weights",
+  "perArea": true,
+  "bands": [
+    { "id": "keep-watching", "label": "Keep Watching", "tier": "low", "min": 0, "max": 3 },
+    { "id": "plan-a-conversation", "label": "Plan a Conversation", "tier": "moderate", "min": 4, "max": 7 },
+    { "id": "take-action-soon", "label": "Take Action Soon", "tier": "elevated", "min": 8, "max": 12 },
+    { "id": "get-immediate-help", "label": "Get Immediate Help", "tier": "emergency", "min": 13, "max": 9999 }
+  ],
+  "guidanceByBand": {
+    "keep-watching": "guidance/keep-watching.json",
+    "plan-a-conversation": "guidance/plan-a-conversation.json",
+    "take-action-soon": "guidance/take-action-soon.json",
+    "get-immediate-help": "guidance/get-immediate-help.json"
+  }
+}

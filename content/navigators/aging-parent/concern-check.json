@@ -1,0 +1,189 @@
+{
+  "_note": "PLACEHOLDER questions/weights — for format demonstration only. Sharon (RN) to author and approve the real Concern Check. This is the question POOL; each situation selects a subset via its 'questions' list. At least one caregiver-health question is included per the locked direction.",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "length": { "min": 5, "max": 10 },
+  "questions": [
+    {
+      "id": "falls-recent",
+      "area": "physical",
+      "prompt": "In the last 3 months, has your parent fallen?",
+      "help": "A slip, a stumble, or being found on the floor all count.",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "once", "label": "Once", "weight": 2 },
+        { "value": "multiple", "label": "More than once", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "fall-injury",
+      "area": "physical",
+      "prompt": "Did any fall lead to an injury, or a time they couldn't get up?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "yes", "label": "Yes", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "mobility-change",
+      "area": "physical",
+      "prompt": "Is your parent noticeably weaker, slower, or less steady than before?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Somewhat", "weight": 2 },
+        { "value": "marked", "label": "Yes, clearly", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "weight-appetite",
+      "area": "nutrition",
+      "prompt": "Have you noticed weight loss, or less interest in eating?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "A little", "weight": 2 },
+        { "value": "marked", "label": "Noticeably", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "memory-change",
+      "area": "cognition",
+      "prompt": "Have you noticed new memory, confusion, or judgment changes?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "mild", "label": "A little", "weight": 2 },
+        { "value": "clear", "label": "Clearly, and it's new", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "judgment-safety",
+      "area": "cognition",
+      "prompt": "Has your parent made choices that seem unsafe (leaving the stove on, falling for scams, getting lost)?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "once", "label": "Once or twice", "weight": 2 },
+        { "value": "repeated", "label": "More than a couple times", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "medication-mgmt",
+      "area": "medication",
+      "prompt": "Is your parent having trouble managing medications (missed doses, confusion, refills)?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Sometimes", "weight": 2 },
+        { "value": "frequent", "label": "Often", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "home-hazards",
+      "area": "home-safety",
+      "prompt": "Are there signs the home is becoming harder to manage (clutter, spoiled food, unopened mail)?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Some signs", "weight": 2 },
+        { "value": "many", "label": "Several signs", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "daily-tasks",
+      "area": "daily-living",
+      "prompt": "Is your parent having more difficulty with everyday tasks (cooking, dressing, bathing, bills)?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Some difficulty", "weight": 2 },
+        { "value": "marked", "label": "Clear difficulty", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "hygiene-change",
+      "area": "daily-living",
+      "prompt": "Have you noticed a decline in personal hygiene or grooming?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "A little", "weight": 2 },
+        { "value": "marked", "label": "Noticeably", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "mood-withdrawal",
+      "area": "mood",
+      "prompt": "Does your parent seem more sad, anxious, or withdrawn than usual?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Somewhat", "weight": 2 },
+        { "value": "marked", "label": "Clearly", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "social-contact",
+      "area": "social",
+      "prompt": "Is your parent seeing friends or family less than they used to?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "A little less", "weight": 2 },
+        { "value": "marked", "label": "Much less", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "refuses-help",
+      "area": "behavior",
+      "prompt": "When you offer help, does your parent refuse or insist everything is fine?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "sometimes", "label": "Sometimes", "weight": 2 },
+        { "value": "often", "label": "Often", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "caregiver-overwhelm",
+      "area": "caregiver",
+      "prompt": "How often do you feel overwhelmed caring for or worrying about your parent?",
+      "help": "Your well-being is part of this picture too.",
+      "type": "single",
+      "options": [
+        { "value": "rarely", "label": "Rarely", "weight": 0 },
+        { "value": "sometimes", "label": "Sometimes", "weight": 1 },
+        { "value": "often", "label": "Often", "weight": 3 },
+        { "value": "constantly", "label": "Almost constantly", "weight": 4 }
+      ]
+    },
+    {
+      "id": "caregiver-support",
+      "area": "caregiver",
+      "prompt": "Do you have enough support from family or others in caring for your parent?",
+      "type": "single",
+      "options": [
+        { "value": "plenty", "label": "Yes, plenty", "weight": 0 },
+        { "value": "some", "label": "Some", "weight": 1 },
+        { "value": "little", "label": "Very little", "weight": 3 },
+        { "value": "none", "label": "None", "weight": 4 }
+      ]
+    }
+  ]
+}

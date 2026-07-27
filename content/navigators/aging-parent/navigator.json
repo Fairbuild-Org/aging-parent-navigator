@@ -1,0 +1,24 @@
+{
+  "_note": "PLACEHOLDER pack — illustrative structure only, NOT clinical guidance. All content must be authored and approved by Sharon Collins, RN before status becomes 'approved'. See content/README.md.",
+  "id": "aging-parent",
+  "name": "Aging Parent Navigator",
+  "version": "0.0.1-placeholder",
+  "status": "placeholder",
+  "approvedBy": null,
+  "approvedAt": null,
+  "updatedAt": "2026-07-27",
+  "locale": "en-US",
+  "disclaimer": "Aging Parent Navigator is educational and is not medical advice, diagnosis, or treatment. It does not replace evaluation by a qualified professional. In an emergency, call 911.",
+  "situations": [
+    "keeps-falling",
+    "memory-changes",
+    "refuses-help",
+    "unsafe-alone",
+    "moving-in",
+    "caregiver-overwhelmed",
+    "something-feels-different"
+  ],
+  "concernCheck": "concern-check.json",
+  "scoring": "scoring.json",
+  "emergencyTriggers": "emergency-triggers.json"
+}

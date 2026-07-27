@@ -1,0 +1,57 @@
+{
+  "_note": "PLACEHOLDER Family Guidance Summary template for the 'Keep Watching' band — illustrative structure only, pending RN authoring/approval.",
+  "band": "keep-watching",
+  "status": "placeholder",
+  "version": "0.0.1-placeholder",
+  "headline": "Keep watching — and trust your instincts",
+  "whatWeNoticed": "Your answers suggest things are mostly steady right now, with a few small things worth keeping an eye on.",
+  "whatDeservesAttentionFirst": "Nothing here points to an emergency. The most useful thing now is simply to notice and note changes over time.",
+  "helpfulObservationsToMonitor": [
+    "Any new falls, dizziness, or unsteadiness",
+    "Changes in memory, mood, or daily routines",
+    "Whether everyday tasks stay manageable"
+  ],
+  "todayThisWeek": [
+    "Start a simple observation journal.",
+    "Have a relaxed check-in with your parent.",
+    "Note anything that feels different, with dates."
+  ],
+  "commonMistakesToAvoid": [
+    "Assuming 'no news is good news' and not checking in.",
+    "Dismissing small changes that keep repeating.",
+    "Waiting for something big before paying attention."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Keep it light and caring — no pressure.",
+      "Ask how they feel things are going day to day."
+    ],
+    "withFamily": [
+      "Let siblings know what you're keeping an eye on.",
+      "Agree to compare notes now and then."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "At the next visit, is there anything we should watch for at this age?",
+    "Are their current medications still appropriate?"
+  ],
+  "whatMayBeComingNext": [
+    "Most changes are gradual — early awareness keeps you ahead of them.",
+    "If several small things add up, a fuller assessment can help."
+  ],
+  "howToPrepare": [
+    "Keep a running note of observations.",
+    "Know where key documents and contacts are."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean everything is fine forever — only that no urgent action is needed now.",
+    "It does not mean your concern was unwarranted."
+  ],
+  "suggestedNextSteps": [
+    "Revisit the Concern Check if things change.",
+    "Explore educational resources for what to watch for."
+  ],
+  "resources": [
+    { "title": "Observation Journal (printable)", "type": "pdf", "href": "#" }
+  ]
+}

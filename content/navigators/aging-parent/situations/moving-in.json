@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval.",
+  "id": "moving-in",
+  "status": "placeholder",
+  "title": "My parent may need to live with me, and I don't know what that requires",
+  "shortLabel": "Moving in together",
+  "intro": "Considering having a parent move in is a big, loving decision — and it's completely normal not to know where to start.",
+  "reassurance": "Thinking it through before you commit is exactly the right approach.",
+  "emphasizeAreas": ["daily-living", "physical", "caregiver"],
+  "questions": ["daily-tasks", "mobility-change", "caregiver-support", "caregiver-overwhelm", "home-hazards"],
+  "roadmap": {
+    "whatsHappeningNow": "A successful move depends on your parent's needs, your home, and the support around you.",
+    "whatMayComeNext": [
+      "Care needs often increase over time — plan for change, not just today.",
+      "Caregiver burnout is common without a real support plan.",
+      "Home modifications may be needed for safety and access."
+    ],
+    "changesToWatchFor": [
+      "The level of daily help your parent needs",
+      "Your own capacity, stress, and available support",
+      "Whether the home can be made safe and accessible"
+    ],
+    "howToPrepare": [
+      "List the daily help your parent needs now and may need soon.",
+      "Assess home safety and possible modifications.",
+      "Line up backup support and respite before the move, not after."
+    ]
+  }
+}

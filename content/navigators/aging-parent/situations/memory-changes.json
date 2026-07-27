@@ -1,0 +1,29 @@
+{
+  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval.",
+  "id": "memory-changes",
+  "status": "placeholder",
+  "title": "I'm noticing memory, confusion, or personality changes",
+  "shortLabel": "Memory & thinking",
+  "intro": "Changes in memory, thinking, or personality can be worrying and confusing — and they're often noticed by family first.",
+  "reassurance": "Bringing this into the open is an act of love, not disloyalty.",
+  "emphasizeAreas": ["cognition", "medication", "daily-living"],
+  "questions": ["memory-change", "judgment-safety", "medication-mgmt", "daily-tasks", "caregiver-overwhelm"],
+  "roadmap": {
+    "whatsHappeningNow": "Memory or judgment changes have many possible causes — some very treatable, like medication effects, dehydration, or infection.",
+    "whatMayComeNext": [
+      "Treatable causes can improve if caught early; others may progress if ignored.",
+      "Managing medications, money, and daily tasks may get harder.",
+      "Decisions about supervision and support may come sooner than expected."
+    ],
+    "changesToWatchFor": [
+      "Repeating questions, getting lost, or missing appointments",
+      "Trouble managing money or medications",
+      "Sudden or rapid changes — these need prompt medical attention"
+    ],
+    "howToPrepare": [
+      "Ask the doctor for a memory evaluation and a medication review.",
+      "Note specific examples with dates to share with the care team.",
+      "Learn about local memory-care and caregiver support resources."
+    ]
+  }
+}
