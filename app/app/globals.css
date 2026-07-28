@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfaf7; /* warm off-white */
+  --foreground: #1f2a33; /* soft deep slate */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  /* Brand — calm, trustworthy blue */
+  --color-brand-50: #eff6fb;
+  --color-brand-100: #dbeaf5;
+  --color-brand-200: #bcd7ec;
+  --color-brand-300: #8fbbdd;
+  --color-brand-400: #5e9bca;
+  --color-brand-500: #3d80b4;
+  --color-brand-600: #2f6799;
+  --color-brand-700: #28527b;
+  --color-brand-800: #244667;
+  --color-brand-900: #223c58;
+
+  /* Calm — soft green (peace, growth) */
+  --color-calm-50: #eff7f2;
+  --color-calm-100: #d7ebe0;
+  --color-calm-200: #b0d8c3;
+  --color-calm-300: #82bea0;
+  --color-calm-400: #57a07e;
+  --color-calm-500: #3d8464;
+  --color-calm-600: #2f6a50;
+  --color-calm-700: #285643;
+  --color-calm-800: #234636;
+  --color-calm-900: #1f3a2d;
+
+  /* Sand — warm neutral */
+  --color-sand-50: #faf8f4;
+  --color-sand-100: #f3efe7;
+  --color-sand-200: #e7e0d3;
+  --color-sand-300: #d6cbb8;
+  --color-sand-400: #bdae95;
+  --color-sand-500: #a3906f;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
