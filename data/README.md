@@ -23,7 +23,7 @@ this same data through a form; the shape stays identical.
 ## Folder map
 
 ```
-content/
+data/
   README.md                         ← this file (the authoritative spec)
   navigators/
     aging-parent/                   ← one navigator = one versioned content pack

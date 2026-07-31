@@ -1,14 +1,14 @@
 import { listNavigators, loadNavigatorPack } from "../lib/content/loader";
 
 /**
- * Validates every content pack under content/navigators against the schema and
+ * Validates every content pack under data/navigators against the schema and
  * cross-reference rules. Run with `npm run validate:content`. Exits non-zero on
  * any failure so it can gate CI / deploys.
  */
 async function main(): Promise<void> {
   const navigators = await listNavigators();
   if (navigators.length === 0) {
-    console.error("No navigators found under content/navigators.");
+    console.error("No navigators found under data/navigators.");
     process.exit(1);
   }
 

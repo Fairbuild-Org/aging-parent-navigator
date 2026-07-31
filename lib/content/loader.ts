@@ -13,12 +13,12 @@ import {
 } from "./schema";
 
 /**
- * Content lives at the repo root in `content/`, one level above the Next app.
+ * Content lives at the repo root in `data/`, alongside the Next app.
  * Override with CONTENT_DIR (e.g. in a deploy where content sits elsewhere).
  */
 export const CONTENT_DIR = process.env.CONTENT_DIR
   ? path.resolve(process.env.CONTENT_DIR)
-  : path.resolve(process.cwd(), "..", "content");
+  : path.resolve(process.cwd(), "data");
 
 async function readJson(file: string): Promise<unknown> {
   const raw = await fs.readFile(file, "utf8");
@@ -83,7 +83,7 @@ function assertConsistent(pack: ContentPack): void {
   }
 }
 
-/** List navigator ids available under content/navigators. */
+/** List navigator ids available under data/navigators. */
 export async function listNavigators(): Promise<string[]> {
   const dir = path.join(CONTENT_DIR, "navigators");
   const entries = await fs.readdir(dir, { withFileTypes: true });
