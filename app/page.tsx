@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getPack } from "@/lib/content/pack";
+import { AboutSharon } from "@/components/AboutSharon";
 
 const STEPS = [
   {
@@ -33,9 +34,12 @@ export default async function Home() {
           <h1 className="font-serif text-4xl font-semibold leading-tight text-brand-900 sm:text-5xl">
             What&apos;s happening with your loved one?
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-foreground/75">
-            Understand what you&apos;re seeing, know what to do next, and navigate the aging journey one
-            step at a time. You&apos;re not alone — we&apos;re here to help.
+          <p className="mx-auto mt-6 max-w-2xl font-serif text-xl italic leading-relaxed text-brand-800 sm:text-2xl">
+            You don&apos;t have to know exactly what&apos;s wrong. Start with what you&apos;ve
+            noticed, and we&apos;ll help guide you one step at a time.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-foreground/70">
+            You&apos;re not alone — we&apos;re here to help.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -102,18 +106,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* About Sharon (placeholder) */}
-      <section className="mx-auto max-w-4xl px-6 py-16">
-        <div className="rounded-2xl border border-sand-200 bg-white p-8">
-          <h2 className="font-serif text-2xl font-semibold text-brand-900">About Sharon</h2>
-          <p className="mt-3 text-foreground/75">
-            <span className="text-foreground/50">[Placeholder]</span> Registered Nurse with 30+ years of
-            experience and a licensed general contractor, Sharon Collins created Aging Parent Navigator
-            to help families recognize warning signs early and make confident decisions about safety,
-            independence, and planning.
-          </p>
-        </div>
-      </section>
+      <AboutSharon />
 
       {/* Consult (placeholder) */}
       <section id="consult" className="bg-brand-50">
