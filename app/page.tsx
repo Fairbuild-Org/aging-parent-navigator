@@ -5,18 +5,18 @@ import { AboutSharon } from "@/components/AboutSharon";
 const STEPS = [
   {
     n: "1",
-    t: "Tell us what you're seeing",
+    t: "Tell us what you're noticing",
     d: "Answer a few gentle questions about your parent — and about how you're doing, too.",
   },
   {
     n: "2",
-    t: "Get a Family Guidance Summary",
-    d: "Understand what deserves attention, what to do this week, and what to watch for next.",
+    t: "Your Personalized Family Guidance Summary",
+    d: "What deserves attention, questions to ask the healthcare team, resources that could help, and what to do next.",
   },
   {
     n: "3",
-    t: "Take confident next steps",
-    d: "Practical actions, questions for the doctor, and help with difficult conversations.",
+    t: "Know your next 2–3 steps",
+    d: "Practical actions and support for difficult conversations — so you leave knowing exactly what to do.",
   },
 ];
 
@@ -26,80 +26,125 @@ export default async function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-brand-50 to-background">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
-          <p className="mb-4 inline-block rounded-full bg-calm-100 px-3 py-1 text-sm font-medium text-calm-800">
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-100 via-brand-50 to-background">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 left-1/2 h-96 w-[36rem] -translate-x-1/2 rounded-full bg-calm-200/40 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">
+          <p className="mb-5 inline-block rounded-full bg-calm-100 px-4 py-1.5 text-sm font-semibold text-calm-800">
             Helping Families Navigate the Journey of Aging
           </p>
-          <h1 className="font-serif text-4xl font-semibold leading-tight text-brand-900 sm:text-5xl">
+          <h1 className="font-serif text-4xl font-semibold leading-tight text-brand-900 sm:text-6xl">
             What&apos;s happening with your loved one?
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl font-serif text-xl italic leading-relaxed text-brand-800 sm:text-2xl">
+          <p className="mx-auto mt-7 max-w-2xl font-serif text-2xl italic leading-relaxed text-brand-800 sm:text-3xl">
             You don&apos;t have to know exactly what&apos;s wrong. Start with what you&apos;ve
             noticed, and we&apos;ll help guide you one step at a time.
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-foreground/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground/80">
             You&apos;re not alone — we&apos;re here to help.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="#situations"
-              className="rounded-full bg-brand-600 px-6 py-3 font-medium text-white transition-colors hover:bg-brand-700"
+              className="rounded-full bg-brand-600 px-7 py-3.5 text-lg font-medium text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-700"
             >
               Start the Free Concern Check
             </Link>
             <a
               href="#consult"
-              className="rounded-full border border-brand-200 bg-white px-6 py-3 font-medium text-brand-800 transition-colors hover:bg-brand-50"
+              className="rounded-full border border-brand-300 bg-white px-7 py-3.5 text-lg font-medium text-brand-800 transition-colors hover:bg-brand-50"
             >
               Schedule a Consultation
             </a>
           </div>
-          <p className="mt-4 text-sm text-foreground/50">Free · About 5 minutes · No account needed</p>
+          <p className="mt-4 text-sm text-foreground/55">Free · About 5 minutes · No account needed</p>
         </div>
       </section>
 
       {/* Situations */}
-      <section id="situations" className="mx-auto max-w-5xl px-6 py-16">
-        <div className="mb-8 text-center">
-          <h2 className="font-serif text-3xl font-semibold text-brand-900">
+      <section id="situations" className="mx-auto max-w-5xl px-6 py-20">
+        <div className="mb-10 text-center">
+          <h2 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
             Start with what you&apos;re noticing
           </h2>
-          <p className="mt-2 text-foreground/70">
+          <p className="mt-3 text-lg text-foreground/75">
             Choose the situation that feels closest. There are no wrong answers.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {pack.situations.map((s) => (
-            <Link
-              key={s.id}
-              href={`/check/${s.id}`}
-              className="group rounded-2xl border border-sand-200 bg-white p-6 shadow-sm transition-all hover:border-brand-300 hover:shadow-md"
-            >
-              <h3 className="font-serif text-xl font-semibold text-brand-800 group-hover:text-brand-700">
-                {s.title}
-              </h3>
-              <p className="mt-2 text-foreground/70">{s.intro}</p>
-              <span className="mt-4 inline-block text-sm font-medium text-brand-600">Start here →</span>
-            </Link>
-          ))}
+        <div className="grid gap-5 sm:grid-cols-2">
+          {pack.situations
+            .filter((s) => s.id !== "something-feels-different")
+            .map((s, i) => (
+              <Link
+                key={s.id}
+                href={`/check/${s.id}`}
+                className={`group rounded-2xl border-l-4 border border-sand-200 bg-white p-7 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lg ${
+                  i % 2 === 0 ? "border-l-brand-400" : "border-l-calm-400"
+                }`}
+              >
+                <span
+                  className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${
+                    i % 2 === 0 ? "bg-brand-50 text-brand-700" : "bg-calm-50 text-calm-700"
+                  }`}
+                >
+                  {s.shortLabel}
+                </span>
+                <h3 className="mt-3 font-serif text-xl font-semibold text-brand-900 group-hover:text-brand-700">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-foreground/75">{s.intro}</p>
+                <span className="mt-4 inline-block text-sm font-semibold text-brand-600">
+                  Start here →
+                </span>
+              </Link>
+            ))}
         </div>
+
+        {/* Explicit "not sure" wayfinding — for the overwhelmed visitor who can't self-categorize */}
+        {(() => {
+          const notSure = pack.situations.find((s) => s.id === "something-feels-different");
+          if (!notSure) return null;
+          return (
+            <Link
+              href={`/check/${notSure.id}`}
+              className="mt-6 flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-calm-300 bg-calm-50/60 p-7 text-center transition-colors hover:border-calm-400 hover:bg-calm-50 sm:flex-row sm:justify-between sm:text-left"
+            >
+              <span>
+                <span className="block font-serif text-xl font-semibold text-calm-900">
+                  Not sure which fits — or feeling overwhelmed and don&apos;t know where to begin?
+                </span>
+                <span className="mt-1 block text-foreground/75">
+                  That&apos;s okay. You don&apos;t need the right words. Start here and we&apos;ll help
+                  you figure out what matters most.
+                </span>
+              </span>
+              <span className="shrink-0 rounded-full bg-calm-600 px-5 py-2.5 font-semibold text-white transition-colors hover:bg-calm-700">
+                Start here →
+              </span>
+            </Link>
+          );
+        })()}
       </section>
 
       {/* How it works */}
       <section className="bg-sand-50">
-        <div className="mx-auto max-w-5xl px-6 py-16">
-          <h2 className="mb-8 text-center font-serif text-3xl font-semibold text-brand-900">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
             How it works
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {STEPS.map((c) => (
-              <div key={c.n} className="rounded-2xl bg-white p-6 shadow-sm">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-calm-100 font-serif text-lg font-semibold text-calm-700">
+              <div
+                key={c.n}
+                className="rounded-2xl border border-sand-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-calm-100 font-serif text-lg font-semibold text-calm-700">
                   {c.n}
                 </span>
-                <h3 className="mt-4 font-semibold text-brand-800">{c.t}</h3>
-                <p className="mt-2 text-sm text-foreground/70">{c.d}</p>
+                <h3 className="mt-4 font-serif text-lg font-semibold text-brand-900">{c.t}</h3>
+                <p className="mt-2 text-foreground/75">{c.d}</p>
               </div>
             ))}
           </div>
@@ -109,16 +154,16 @@ export default async function Home() {
       <AboutSharon />
 
       {/* Consult (placeholder) */}
-      <section id="consult" className="bg-brand-50">
-        <div className="mx-auto max-w-3xl px-6 py-16 text-center">
-          <h2 className="font-serif text-3xl font-semibold text-brand-900">
+      <section id="consult" className="bg-gradient-to-b from-brand-50 to-calm-50">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+          <h2 className="font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
             Talk with someone who understands
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-foreground/75">
+          <p className="mx-auto mt-3 max-w-xl text-lg text-foreground/80">
             A 30-minute consultation for personalized guidance on your family&apos;s concerns,
             priorities, and next steps.
           </p>
-          <span className="mt-6 inline-block rounded-full border border-brand-200 bg-white px-6 py-3 font-medium text-foreground/50">
+          <span className="mt-7 inline-block rounded-full border border-brand-200 bg-white px-6 py-3 font-medium text-foreground/50">
             Scheduling coming soon
           </span>
         </div>
