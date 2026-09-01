@@ -58,6 +58,15 @@ export const SituationSchema = z.object({
   emphasizeAreas: z.array(AreaEnum),
   questions: z.array(z.string()),
   roadmap: RoadmapSchema,
+  /**
+   * Optional per-band guidance overrides for this situation, keyed by band id,
+   * pointing at a guidance JSON file (same shape as GuidanceSchema) relative to
+   * the navigator's base directory. Falls back to the shared band guidance
+   * (scoring.guidanceByBand) for any band not listed here. This lets a
+   * situation "graduate" from shared to situation-specific guidance one band
+   * at a time, with no change to the scoring/rendering code.
+   */
+  guidanceOverrides: z.record(z.string(), z.string()).optional(),
 });
 
 export const BandSchema = z.object({
@@ -162,5 +171,8 @@ export interface ContentPack {
   scoring: Scoring;
   emergencyTriggers: EmergencyTriggers;
   situations: Situation[];
+  /** Shared band guidance, used unless a situation overrides a band. */
   guidance: Record<string, Guidance>;
+  /** Situation-specific overrides: situationId -> bandId -> Guidance. */
+  guidanceOverrides: Record<string, Record<string, Guidance>>;
 }

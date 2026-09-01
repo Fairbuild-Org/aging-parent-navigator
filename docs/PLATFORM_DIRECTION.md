@@ -131,6 +131,15 @@ The comprehensive assessment (Phase 2) covers 10 domains: Physical Health, Memor
 Safety, Daily Living, Emotional Well-Being, Social Connection, Financial Well-Being, Legal & Planning,
 Caregiver Health, Future Planning.
 
+**One primary concern per session (LOCKED, 2026-08-20).** V1 does not support selecting or combining
+multiple situations in a single pass — this protects the 5-minute promise and avoids combinatorial
+complexity before the core loop is validated with real users. Two things already soften the gap: the
+question pool is shared across situations (so cross-cutting concerns like caregiver strain surface
+regardless of which situation was picked), and the "Not sure which fits?" pathway already asks a
+broader spread of questions for people who don't cleanly bucket. **Deferred enhancement:** a
+"Noticed something else too?" prompt after the Family Guidance Summary, offering a second pass through
+a different situation — intentionally *not* built for initial launch; revisit after real-user testing.
+
 ---
 
 ## 7. Family Guidance Summary (results) — LOCKED framing
@@ -162,6 +171,18 @@ stay in the background; the family sees reassuring, action-oriented guidance. Ev
 
 The goal is to leave families **informed and empowered — not frightened.** No diagnostic claims
 ("your parent has dementia"); frame everything as *warning signs to discuss with a professional.*
+
+**Shared vs. situation-specific band guidance (LOCKED, 2026-08-20).** V1 ships with the band-level
+guidance (common mistakes, conversation starters, healthcare questions) **shared across all
+situations** — the same "Plan a Conversation" text regardless of which situation got a family there.
+Sharon's stated long-term view: some of this should eventually become situation-specific (a family
+dealing with repeated falls needs different conversation guidance and different healthcare questions
+than a family dealing with memory changes) — but not before the core experience is validated, and not
+as "seven versions of everything" built speculatively. The engine already supports this migration path
+cheaply: a situation can declare a `guidanceOverrides` map (band → override file) in its content file,
+and only the bands actually overridden diverge from the shared default — see
+[`data/README.md`](../data/README.md#situation-specific-guidance-overrides-optional). No code change
+is needed to graduate a situation's guidance one band at a time.
 
 **Each pathway is a roadmap, not a snapshot.** Beyond "what to do today," every summary looks forward
 — what families may encounter next, what changes to watch for, and how to prepare for decisions ahead
@@ -385,12 +406,18 @@ finish the Concern Check.
 - Caregiver-health question included in Phase 1 ✔
 - Success-target *ranges* ✔ (pending written sign-off + funnel-math reconciliation, §8)
 - Content-governance requirement ✔
+- **One concern per session for V1** — multi-situation support explicitly deferred ✔ (§6)
+- **Shared band guidance for V1**, with a built, verified override mechanism so situations can
+  graduate to their own guidance later with no re-architecture ✔ (§7, §10.3)
+- **End-to-end technical flow verified live** (home → situation → Concern Check → server-side
+  scoring → Family Guidance Summary), screenshotted for client review, 0 console errors ✔
 
 **Still open — to finalize before / alongside coding:**
-1. **Free Concern Check content & decision logic** *(current priority)*: the exact questions per
-   situation, answer options & weights, the **scoring → band** logic, the **emergency triggers**, the
-   next-step recommendations, and the guidance-template text per band — now including the common-
-   mistakes, conversation-guidance, and forward-looking roadmap sections.
+1. **Free Concern Check content & decision logic** *(current priority — working one situation at a
+   time, per Sharon)*: real questions, answer options & weights, scoring cut-points, guidance copy,
+   and — as a **separate, explicit clinical review layer** — emergency/red-flag trigger conditions.
+   Pilot pathway: **"My parent keeps falling or seems physically weaker"** (`keeps-falling`), to be
+   used as the template once genuinely strong end-to-end.
 2. **Written sign-off** of the §8 success criteria (funnel denominator clarified).
 3. **Willingness-to-pay test** — choose mechanism(s) and price point(s) (§8.1).
 

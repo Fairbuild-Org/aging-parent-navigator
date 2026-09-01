@@ -50,7 +50,24 @@ export async function loadNavigatorPack(navId: string): Promise<ContentPack> {
     guidance[bandId] = GuidanceSchema.parse(await readJson(path.join(base, file)));
   }
 
-  const pack: ContentPack = { navigator, concernCheck, scoring, emergencyTriggers, situations, guidance };
+  const guidanceOverrides: Record<string, Record<string, Guidance>> = {};
+  for (const s of situations) {
+    if (!s.guidanceOverrides) continue;
+    guidanceOverrides[s.id] = {};
+    for (const [bandId, file] of Object.entries(s.guidanceOverrides)) {
+      guidanceOverrides[s.id][bandId] = GuidanceSchema.parse(await readJson(path.join(base, file)));
+    }
+  }
+
+  const pack: ContentPack = {
+    navigator,
+    concernCheck,
+    scoring,
+    emergencyTriggers,
+    situations,
+    guidance,
+    guidanceOverrides,
+  };
   assertConsistent(pack);
   return pack;
 }
@@ -68,6 +85,13 @@ function assertConsistent(pack: ContentPack): void {
   }
   for (const b of pack.scoring.bands) {
     if (!pack.guidance[b.id]) errors.push(`band "${b.id}" has no guidance file`);
+  }
+  for (const s of pack.situations) {
+    for (const bandId of Object.keys(s.guidanceOverrides ?? {})) {
+      if (!bandIds.has(bandId)) {
+        errors.push(`situation "${s.id}" guidanceOverrides references unknown band "${bandId}"`);
+      }
+    }
   }
   for (const t of pack.emergencyTriggers.triggers) {
     for (const cond of [t.when, t.and]) {

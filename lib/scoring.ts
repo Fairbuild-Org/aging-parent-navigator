@@ -71,6 +71,11 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
     }
   }
 
+  // A situation-specific override for this band wins; otherwise fall back to
+  // the shared band guidance. This lets a situation "graduate" to its own
+  // guidance one band at a time, with no change to this resolution logic.
+  const guidance = pack.guidanceOverrides[situationId]?.[band.id] ?? pack.guidance[band.id];
+
   return {
     situationId,
     situationTitle: situation.title,
@@ -78,7 +83,7 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
     emergency,
     emergencyMessages,
     total,
-    guidance: pack.guidance[band.id],
+    guidance,
     roadmap: situation.roadmap,
     disclaimer: pack.navigator.disclaimer,
   };

@@ -84,6 +84,25 @@ makes each pathway *forward-looking*, not a one-time snapshot.
 `withFamily[]`), `questionsForHealthcareTeam[]`, `whatMayBeComingNext[]`, `howToPrepare[]`,
 `whatThisDoesNotMean[]`, `suggestedNextSteps[]`, `resources[]`.
 
+### Situation-specific guidance overrides (optional)
+
+By default every situation uses the *shared*
+band guidance above — e.g. every situation that lands in "Plan a Conversation" shows the same
+`guidance/plan-a-conversation.json` content. A situation can override this per band by adding a
+`guidanceOverrides` map to its file:
+
+```json
+"guidanceOverrides": {
+  "plan-a-conversation": "guidance/keeps-falling/plan-a-conversation.json"
+}
+```
+
+The override file uses the exact same shape as a normal guidance file. Only bands listed in
+`guidanceOverrides` are overridden — any band left out still falls back to the shared file. This is
+intentional: **V1 ships with shared guidance everywhere** (per Sharon's decision), and situations can
+graduate to their own guidance one band at a time later, purely by adding a JSON file and one line —
+no code change, no re-architecture.
+
 **Emergency triggers** (`emergency-triggers.json`) — `triggers[]`, each a declarative rule that forces
 the `get-immediate-help` band regardless of score. Condition mini-language (so new triggers need no
 code):
