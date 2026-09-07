@@ -1,0 +1,58 @@
+{
+  "_note": "DRAFT falls-specific override for the 'Get Immediate Help' band — pending Sharon's sign-off. Wording should stay consistent with the fall-severe-symptoms trigger message in emergency-triggers.json.",
+  "band": "get-immediate-help",
+  "status": "draft",
+  "version": "0.0.1-draft",
+  "headline": "This fall needs immediate attention",
+  "whatWeNoticed": "What you've described includes one or more signs that can indicate a serious injury or medical emergency after a fall.",
+  "whatDeservesAttentionFirst": "Safety comes first. If your parent lost consciousness, can't be woken easily, has a severe or worsening headache, has vomited repeatedly, had a seizure, or has sudden weakness or trouble speaking or seeing — call 911 now.",
+  "helpfulObservationsToMonitor": [
+    "Whether they are alert, responsive, and stable right now",
+    "Any bleeding, visible injury, or inability to move a limb normally",
+    "Whether confusion or drowsiness is getting better or worse"
+  ],
+  "todayThisWeek": [
+    "If there is any doubt about safety — call 911 or go to the emergency room now.",
+    "For a possible fracture, inability to get up, or new confusion without other severe symptoms, seek urgent medical care today.",
+    "Do not wait to 'see if it gets better' when any of these signs are present."
+  ],
+  "commonMistakesToAvoid": [
+    "Waiting to see if symptoms improve on their own.",
+    "Assuming a fall was minor because your parent seems okay right after it — some symptoms (confusion, bleeding on the brain) can appear later.",
+    "Moving someone who may have a fracture or head/neck injury before help arrives, unless they're in immediate danger."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Stay calm and reassuring — your steadiness helps them stay calm too.",
+      "Explain simply that you're getting help to keep them safe."
+    ],
+    "withFamily": [
+      "Alert family immediately so someone can be present or on call.",
+      "Decide quickly who is going with them or meeting them at care."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "Given these symptoms, should we go to the ER now or is urgent care appropriate?",
+    "What follow-up or monitoring is needed after today?",
+    "What new symptoms should prompt us to seek help again right away?"
+  ],
+  "whatMayBeComingNext": [
+    "Getting prompt care now is what gives the best outcome after a serious fall.",
+    "Once the immediate concern is addressed, a falls-risk evaluation can help prevent this from happening again."
+  ],
+  "howToPrepare": [
+    "Have their medication list and key medical information ready to bring or share.",
+    "Keep emergency numbers and their doctor's contact information easy to find."
+  ],
+  "whatThisDoesNotMean": [
+    "Needing urgent care now does not mean every future decision has to be made today.",
+    "It does not mean your parent has lost their independence."
+  ],
+  "suggestedNextSteps": [
+    "Address the immediate situation first.",
+    "Afterward, book a consultation to plan next steps and falls prevention."
+  ],
+  "resources": [
+    { "title": "What to do after a fall — a quick guide", "type": "pdf", "href": "#" }
+  ]
+}

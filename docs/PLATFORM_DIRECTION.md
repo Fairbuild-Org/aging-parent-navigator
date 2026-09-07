@@ -285,11 +285,37 @@ Model a **navigator as content-driven config**, so future Life Navigators are ne
 Navigator (versioned content pack)
   └─ Situations        (e.g. "My parent keeps falling…")
        └─ links to relevant question areas
+       └─ optional scoringQuestions (subset that count toward the score — see below)
+       └─ optional scoreBands (situation-specific cut points — see below)
   └─ Concern Check     Questions (answer options + weights), incl. ≥1 caregiver-health item
   └─ Scoring rules     (answers → internal tier → user-facing band)
   └─ Guidance templates (band → "what we noticed / attention / today-this-week / questions / next steps")
-  └─ Safety triggers   (answer patterns → Get Immediate Help)
+       └─ optional per-situation guidanceOverrides (band → situation-specific guidance file)
+  └─ Safety triggers   (answer patterns → any band, independent of score)
 ```
+
+**Scoring is two independent layers (locked, 2026-09-06), not one numeric scale:**
+
+1. **Situation risk score** — a weighted sum over the situation's `scoringQuestions` (a subset of its
+   `questions`; anything asked but left out — e.g. a caregiver-wellbeing check-in — is still captured
+   and available to triggers, but never moves the score). Multi-select questions (a red-flag symptom
+   checklist) contribute their **worst selected item's weight, not the sum**, so checking several
+   moderate flags together doesn't out-score one severe one. Bands are the shared taxonomy (Keep
+   Watching / Plan a Conversation / Take Action Soon / Get Immediate Help), but a situation can declare
+   its own `scoreBands` cut points rather than depending on one universal scale — falls has a different
+   max possible score than, say, memory changes, so a shared 0–3/4–7/8–12/13+ scale doesn't fit every
+   pathway equally.
+2. **Red-flag / safety overrides** — emergency triggers evaluate independently of the score and, when
+   fired, set the band directly; a low score can never suppress a trigger, and a trigger can target any
+   band, not only the emergency one (so a lower-certainty signal can nudge toward "Take Action Soon"
+   without forcing "Get Immediate Help"). Every trigger's `questionId` must be a question the situation
+   actually asks — a trigger that depends on a question the pathway never surfaces can never fire,
+   which is exactly the gap the falls-pathway pilot caught and fixed (§9 governance already required a
+   separate clinical review pass for this layer; that stands).
+
+This is why band guidance can stay **shared by default** (§7) while individual situations "graduate" to
+their own guidance and their own score thresholds one at a time, with no re-architecture — see the
+falls pathway (`keeps-falling`) as the first situation actually using both.
 
 **Discipline:** build **one** navigator (Aging) cleanly and validate it before generalizing. Don't
 build the multi-navigator framework up front — premature abstraction is how lean projects die. Keep

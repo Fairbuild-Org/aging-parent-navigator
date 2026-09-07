@@ -82,6 +82,16 @@ function assertConsistent(pack: ContentPack): void {
     for (const q of s.questions) {
       if (!questionIds.has(q)) errors.push(`situation "${s.id}" references unknown question "${q}"`);
     }
+    for (const q of s.scoringQuestions ?? []) {
+      if (!s.questions.includes(q)) {
+        errors.push(`situation "${s.id}" scoringQuestions references "${q}" not in its questions[]`);
+      }
+    }
+    for (const b of s.scoreBands ?? []) {
+      if (!bandIds.has(b.bandId)) {
+        errors.push(`situation "${s.id}" scoreBands references unknown band "${b.bandId}"`);
+      }
+    }
   }
   for (const b of pack.scoring.bands) {
     if (!pack.guidance[b.id]) errors.push(`band "${b.id}" has no guidance file`);

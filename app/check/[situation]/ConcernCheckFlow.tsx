@@ -17,7 +17,7 @@ export function ConcernCheckFlow({
   situation: Situation;
   questions: Question[];
 }) {
-  const { index, answers, start, setAnswer, next, back } = useConcernCheck();
+  const { index, answers, start, setAnswer, toggleMultiAnswer, next, back } = useConcernCheck();
   const [phase, setPhase] = useState<Phase>("intro");
   const [result, setResult] = useState<GuidanceResult | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -28,8 +28,11 @@ export function ConcernCheckFlow({
 
   const total = questions.length;
   const current = questions[index];
-  const selected = current ? answers[current.id] : undefined;
-  const progress = Math.round(((index + (selected ? 1 : 0)) / total) * 100);
+  const isMulti = current?.type === "multi";
+  const rawAnswer = current ? answers[current.id] : undefined;
+  const selectedMulti = Array.isArray(rawAnswer) ? rawAnswer : [];
+  const hasAnswer = isMulti ? selectedMulti.length > 0 : Boolean(rawAnswer);
+  const progress = Math.round(((index + (hasAnswer ? 1 : 0)) / total) * 100);
 
   function handleContinue() {
     if (index < total - 1) {
@@ -100,20 +103,38 @@ export function ConcernCheckFlow({
         <div>
           <h2 className="font-serif text-2xl font-semibold text-brand-900">{current.prompt}</h2>
           {current.help && <p className="mt-2 text-foreground/60">{current.help}</p>}
+          {isMulti && (
+            <p className="mt-2 text-sm text-foreground/60">Select all that apply.</p>
+          )}
 
           <div className="mt-6 space-y-3">
             {current.options.map((o) => {
-              const active = selected === o.value;
+              const active = isMulti ? selectedMulti.includes(o.value) : rawAnswer === o.value;
               return (
                 <button
                   key={o.value}
-                  onClick={() => setAnswer(current.id, o.value)}
-                  className={`w-full rounded-xl border px-5 py-4 text-left transition-all ${
+                  onClick={() =>
+                    isMulti
+                      ? toggleMultiAnswer(current.id, o.value, "none")
+                      : setAnswer(current.id, o.value)
+                  }
+                  aria-pressed={active}
+                  className={`flex w-full items-center gap-3 rounded-xl border px-5 py-4 text-left transition-all ${
                     active
                       ? "border-brand-500 bg-brand-50 ring-1 ring-brand-500"
                       : "border-sand-200 bg-white hover:border-brand-300"
                   }`}
                 >
+                  {isMulti && (
+                    <span
+                      aria-hidden
+                      className={`grid h-5 w-5 shrink-0 place-items-center rounded border ${
+                        active ? "border-brand-500 bg-brand-500 text-white" : "border-sand-300 bg-white"
+                      }`}
+                    >
+                      {active && "✓"}
+                    </span>
+                  )}
                   <span className={`font-medium ${active ? "text-brand-800" : "text-foreground/80"}`}>
                     {o.label}
                   </span>
@@ -131,7 +152,7 @@ export function ConcernCheckFlow({
             </button>
             <button
               onClick={handleContinue}
-              disabled={!selected}
+              disabled={!hasAnswer}
               className="rounded-full bg-brand-600 px-6 py-3 font-medium text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {index < total - 1 ? "Continue" : "See my guidance"}

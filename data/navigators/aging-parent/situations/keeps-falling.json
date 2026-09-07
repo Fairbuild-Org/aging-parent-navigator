@@ -1,17 +1,37 @@
 {
-  "_note": "PLACEHOLDER situation — illustrative only, pending RN authoring/approval. Demonstrates the forward-looking 'roadmap' object that makes each pathway a journey, not a snapshot.",
+  "_note": "DRAFT — revised 2026-09-06 per Sharon's direct clinical input (situation framing, question set, scoring exclusions, situation-specific score bands, and roadmap). Pending her final sign-off before status moves to 'approved'. This is the gold-standard pilot pathway.",
   "id": "keeps-falling",
-  "status": "placeholder",
+  "status": "draft",
   "title": "My parent keeps falling or seems physically weaker",
   "shortLabel": "Falls & mobility",
-  "intro": "Falls are one of the clearest early signals that something is changing — and noticing this is exactly the right instinct.",
-  "reassurance": "You're not overreacting. Paying attention now is how families prevent bigger problems later.",
-  "emphasizeAreas": ["physical", "home-safety", "daily-living"],
-  "questions": ["falls-recent", "fall-injury", "home-hazards", "caregiver-overwhelm"],
+  "intro": "A fall, new unsteadiness, or noticeable weakness is worth paying attention to. Sometimes the cause is simple and fixable; other times it can signal a change in strength, balance, medications, vision, or health.",
+  "reassurance": "You don't have to wait for a serious injury to start looking into what's changed. Noticing the pattern now gives you more options to help your parent stay safe and independent.",
+  "emphasizeAreas": ["physical", "home-safety", "caregiver"],
+  "questions": [
+    "falls-count-12mo",
+    "fall-severity",
+    "mobility-change-falls",
+    "balance-fear-of-falling",
+    "fall-home-hazards",
+    "caregiver-overwhelm"
+  ],
+  "scoringQuestions": [
+    "falls-count-12mo",
+    "fall-severity",
+    "mobility-change-falls",
+    "balance-fear-of-falling",
+    "fall-home-hazards"
+  ],
+  "scoreBands": [
+    { "bandId": "keep-watching", "min": 0, "max": 3 },
+    { "bandId": "plan-a-conversation", "min": 4, "max": 8 },
+    { "bandId": "take-action-soon", "min": 9, "max": 14 },
+    { "bandId": "get-immediate-help", "min": 15, "max": 9999 }
+  ],
   "roadmap": {
     "whatsHappeningNow": "Reduced strength, balance, or confidence with walking often shows up as stumbles or falls before anything else.",
     "whatMayComeNext": [
-      "Falls tend to become more frequent once they start.",
+      "A previous fall increases the chance of another fall, especially if the underlying cause hasn't been identified or addressed.",
       "A fear of falling can lead to less movement — which, over time, weakens the body further.",
       "A single serious fall can trigger a hospitalization and a sudden care decision."
     ],
@@ -21,9 +41,19 @@
       "Bruises they can't fully explain"
     ],
     "howToPrepare": [
-      "Ask their doctor about a falls-risk assessment and a medication review.",
-      "Consider a home safety review (lighting, rugs, grab bars, bathroom).",
+      "Ask their doctor about a falls-risk assessment and a medication review — some medications affect balance.",
+      "Ask about a vision check — vision changes are an under-recognized fall risk.",
+      "Ask about checking blood pressure lying down and then standing (a drop can cause dizziness or falls).",
+      "Check footwear, and ask about any foot problems that could affect balance.",
+      "Ask whether a physical or occupational therapy (PT/OT) referral for strength and balance would help.",
+      "Consider a home safety review (lighting, rugs, grab bars, stairs, bathroom).",
       "Keep a simple log of any stumbles or falls to share with the care team."
     ]
+  },
+  "guidanceOverrides": {
+    "keep-watching": "guidance/keeps-falling/keep-watching.json",
+    "plan-a-conversation": "guidance/keeps-falling/plan-a-conversation.json",
+    "take-action-soon": "guidance/keeps-falling/take-action-soon.json",
+    "get-immediate-help": "guidance/keeps-falling/get-immediate-help.json"
   }
 }

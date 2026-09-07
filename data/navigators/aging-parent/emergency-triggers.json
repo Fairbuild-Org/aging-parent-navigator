@@ -1,14 +1,29 @@
 {
-  "_note": "PLACEHOLDER — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance). These force the 'get-immediate-help' band regardless of score.",
-  "status": "placeholder",
-  "version": "0.0.1-placeholder",
+  "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance). These force the 'get-immediate-help' band regardless of score, and cannot be suppressed by a low numeric score. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect — see the fall-severe-symptoms note below, which replaces a prior trigger that depended on a question the falls pathway never asked.",
+  "status": "draft",
+  "version": "0.0.2-draft",
   "triggers": [
     {
-      "id": "fall-with-injury",
-      "when": { "questionId": "falls-recent", "valueIn": ["multiple"] },
-      "and": { "questionId": "fall-injury", "valueIn": ["yes"] },
+      "_note": "Replaces the old 'fall-with-injury' trigger (required TWO falls plus a separate binary injury question). Per Sharon: one serious fall can be enough — severity is what matters, not repetition. Fires on ANY selected red flag from the fall-severity checklist except 'none' / 'not-sure'. Pending Sharon's explicit sign-off on both the symptom list and the message wording before this leaves draft status.",
+      "id": "fall-severe-symptoms",
+      "when": {
+        "questionId": "fall-severity",
+        "valueIn": [
+          "unable-to-get-up",
+          "loss-of-consciousness",
+          "head-injury",
+          "new-confusion",
+          "suspected-fracture",
+          "bleeding",
+          "severe-headache",
+          "vomiting",
+          "seizure",
+          "drowsiness",
+          "neuro-changes"
+        ]
+      },
       "band": "get-immediate-help",
-      "message": "If your parent is injured, in pain, or cannot get up after a fall, call 911. Otherwise, contact their doctor today about a falls evaluation."
+      "message": "One or more of these signs can indicate a serious injury or a medical emergency. If your parent lost consciousness, can't be woken easily, has a severe headache, repeated vomiting, a seizure, or sudden weakness/trouble speaking or seeing, call 911 now. For a possible fracture, inability to get up, or new confusion, seek urgent medical care today."
     },
     {
       "id": "acute-confusion",

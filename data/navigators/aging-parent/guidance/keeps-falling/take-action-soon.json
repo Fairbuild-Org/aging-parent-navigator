@@ -1,0 +1,62 @@
+{
+  "_note": "DRAFT falls-specific override for the 'Take Action Soon' band — pending Sharon's sign-off.",
+  "band": "take-action-soon",
+  "status": "draft",
+  "version": "0.0.1-draft",
+  "headline": "It's time to take action on falls risk soon",
+  "whatWeNoticed": "What you've described together — falls, unsteadiness, and home hazards — points to a meaningful falls risk. This is worth addressing in the coming days, not months.",
+  "whatDeservesAttentionFirst": "A falls-risk evaluation and medication review deserve attention first — several of the most common fixable causes of falls (medications, vision, blood pressure, strength) can be identified quickly.",
+  "helpfulObservationsToMonitor": [
+    "Any further falls, especially if they're becoming more frequent",
+    "New confusion, dizziness, or weakness",
+    "Whether they're avoiding movement out of fear of falling — which can make things worse"
+  ],
+  "todayThisWeek": [
+    "Schedule a falls-risk evaluation with their doctor this week.",
+    "Ask specifically about a medication review — some medications increase fall risk.",
+    "Address the most obvious home hazards now (loose rugs, poor lighting, clear walking paths).",
+    "Ask about a PT/OT referral for strength and balance."
+  ],
+  "commonMistakesToAvoid": [
+    "Putting off the doctor visit because 'nothing serious' has happened yet.",
+    "Fixing the home environment while skipping the medical evaluation, or vice versa — both matter.",
+    "Making decisions about their independence alone, without your parent or family."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Be honest and caring: 'I'm worried about the falls, and I want us to get some answers together soon.'",
+      "Frame the evaluation as the path to staying safe and independent, not as a step toward losing independence."
+    ],
+    "withFamily": [
+      "Loop family in quickly — coordinating who handles the appointment, home fixes, and follow-up helps this move faster.",
+      "Share what's been noticed so everyone understands the urgency."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "What's likely causing these falls, and how urgent is a full evaluation?",
+    "Would a referral to PT/OT for strength and balance help now?",
+    "Should we check vision, blood pressure (lying down vs. standing), and medications this visit?",
+    "What warning signs should tell us to seek care sooner rather than waiting?"
+  ],
+  "whatMayBeComingNext": [
+    "Without evaluation, falls risk and frequency often continue to increase.",
+    "A comprehensive assessment can help build a full falls-prevention plan."
+  ],
+  "howToPrepare": [
+    "Bring your list of falls, near-falls, and hazards to the appointment.",
+    "Gather their current medication list for the review.",
+    "Learn what local PT/OT or home-safety resources are available."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean your parent must stop living independently.",
+    "It does not mean the situation is beyond help — many causes of falls are treatable."
+  ],
+  "suggestedNextSteps": [
+    "Take the Comprehensive Assessment (coming soon) for the full picture.",
+    "Book a consultation for a personalized falls-prevention plan."
+  ],
+  "resources": [
+    { "title": "Preparing for a falls-risk evaluation", "type": "article", "href": "#" },
+    { "title": "Home safety review checklist", "type": "pdf", "href": "#" }
+  ]
+}

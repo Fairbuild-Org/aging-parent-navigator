@@ -48,6 +48,13 @@ export const RoadmapSchema = z.object({
   howToPrepare: z.array(z.string()),
 });
 
+/** A situation's own cut points for one band, overriding the shared scale for that band id. */
+export const SituationScoreBandSchema = z.object({
+  bandId: z.string(),
+  min: z.number(),
+  max: z.number(),
+});
+
 export const SituationSchema = z.object({
   id: z.string(),
   status: z.string().optional(),
@@ -57,6 +64,23 @@ export const SituationSchema = z.object({
   reassurance: z.string(),
   emphasizeAreas: z.array(AreaEnum),
   questions: z.array(z.string()),
+  /**
+   * Optional subset of `questions` that contribute to the numeric risk score.
+   * Any question in `questions` but NOT listed here is still asked (and its
+   * answer is still available to emergency triggers), but does not move the
+   * score — e.g. a caregiver-wellbeing check-in that APN assesses without
+   * letting it mathematically push a parent into a higher risk band.
+   * Defaults to all of `questions` when omitted.
+   */
+  scoringQuestions: z.array(z.string()).optional(),
+  /**
+   * Optional situation-specific cut points, overriding the shared scale
+   * (scoring.json bands) for this situation only. The band id/label/tier
+   * taxonomy stays global (Keep Watching / Plan a Conversation / Take Action
+   * Soon / Get Immediate Help) — only min/max are situation-specific. Any
+   * band not listed here falls back to the shared min/max.
+   */
+  scoreBands: z.array(SituationScoreBandSchema).optional(),
   roadmap: RoadmapSchema,
   /**
    * Optional per-band guidance overrides for this situation, keyed by band id,
@@ -157,6 +181,7 @@ export type Area = z.infer<typeof AreaEnum>;
 export type Option = z.infer<typeof OptionSchema>;
 export type Question = z.infer<typeof QuestionSchema>;
 export type ConcernCheck = z.infer<typeof ConcernCheckSchema>;
+export type SituationScoreBand = z.infer<typeof SituationScoreBandSchema>;
 export type Situation = z.infer<typeof SituationSchema>;
 export type Band = z.infer<typeof BandSchema>;
 export type Scoring = z.infer<typeof ScoringSchema>;

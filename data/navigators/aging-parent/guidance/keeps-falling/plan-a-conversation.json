@@ -1,0 +1,60 @@
+{
+  "_note": "DRAFT falls-specific override for the 'Plan a Conversation' band — pending Sharon's sign-off.",
+  "band": "plan-a-conversation",
+  "status": "draft",
+  "version": "0.0.1-draft",
+  "headline": "It looks like a good time to plan a falls conversation",
+  "whatWeNoticed": "What you've described is a real pattern worth looking into — not an emergency, but a good moment to start a conversation and get a falls-risk evaluation on the calendar.",
+  "whatDeservesAttentionFirst": "The combination of what you've noticed (falls, unsteadiness, or home hazards) deserves attention first, because a falls-risk evaluation now can catch a fixable cause before it leads to a more serious fall.",
+  "helpfulObservationsToMonitor": [
+    "Any new stumbles, near-falls, or changes in how they walk",
+    "Holding onto furniture or walls, or avoiding activities out of fear of falling",
+    "Whether hazards in the home (rugs, lighting, stairs) get addressed"
+  ],
+  "todayThisWeek": [
+    "Write down what you've noticed — falls, unsteadiness, or hazards — with dates.",
+    "Schedule a visit with their doctor and ask specifically about a falls-risk evaluation.",
+    "Have one gentle, low-pressure conversation with your parent about what you've noticed."
+  ],
+  "commonMistakesToAvoid": [
+    "Waiting for a more serious fall before scheduling an evaluation.",
+    "Only addressing the home environment without also asking about medications, vision, and balance.",
+    "Taking over decisions instead of involving your parent in the conversation."
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Pick a calm, unhurried moment — not right after a stumble or scare.",
+      "Lead with care, not correction: 'I've noticed a few things and want to help you stay steady and independent.'",
+      "Ask what they've noticed too — they may have felt changes they haven't mentioned."
+    ],
+    "withFamily": [
+      "Get everyone on the same page about what's been observed before raising it with your parent.",
+      "Agree on who will help with next steps (scheduling the visit, doing a home walk-through)."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "Could any of their current medications be increasing fall risk or affecting balance?",
+    "Would a falls-risk assessment, or a PT/OT evaluation for strength and balance, make sense now?",
+    "Should we check their vision, or their blood pressure lying down versus standing?"
+  ],
+  "whatMayBeComingNext": [
+    "If the pattern continues, a fuller assessment can help identify the specific cause and priorities.",
+    "Addressing this now — while it's a conversation, not a crisis — gives you more options."
+  ],
+  "howToPrepare": [
+    "Start a simple log of stumbles, falls, or near-falls to bring to the doctor's visit.",
+    "Note any home hazards you've spotted so they're easy to address."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean your parent needs to stop being active or move out of their home.",
+    "It does not mean you've done anything wrong — noticing early is exactly the right move."
+  ],
+  "suggestedNextSteps": [
+    "Take the full Comprehensive Assessment (coming soon) for a complete picture.",
+    "Book a 30-minute consultation for personalized falls-prevention guidance."
+  ],
+  "resources": [
+    { "title": "What happens at a falls-risk evaluation", "type": "article", "href": "#" },
+    { "title": "How to start the conversation", "type": "article", "href": "#" }
+  ]
+}

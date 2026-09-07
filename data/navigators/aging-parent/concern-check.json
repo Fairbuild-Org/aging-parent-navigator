@@ -184,6 +184,81 @@
         { "value": "little", "label": "Very little", "weight": 3 },
         { "value": "none", "label": "None", "weight": 4 }
       ]
+    },
+    {
+      "_note": "Falls-pathway-specific fork of falls-recent (12-month window vs. 3-month). Kept as a separate id so unsafe-alone / something-feels-different, which still use falls-recent, are unaffected.",
+      "id": "falls-count-12mo",
+      "area": "physical",
+      "prompt": "Has your parent fallen in the past 12 months?",
+      "help": "A slip, a stumble, or being found on the floor all count.",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "once", "label": "Once", "weight": 2 },
+        { "value": "multiple", "label": "More than once", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "_note": "Multi-select red-flag checklist. Feeds BOTH the numeric score (as the worst selected item's weight, not a sum — see lib/scoring.ts) and the emergency-trigger layer (see fall-severe-symptoms in emergency-triggers.json). Replaces the old binary fall-injury question for this pathway.",
+      "id": "fall-severity",
+      "area": "physical",
+      "prompt": "Did any fall cause an injury, involve hitting their head, or leave them unable to get up without help?",
+      "help": "Select everything that applies to any fall in the past 12 months.",
+      "type": "multi",
+      "options": [
+        { "value": "none", "label": "No — they were not hurt and got up on their own", "weight": 0 },
+        { "value": "unable-to-get-up", "label": "Couldn't get up without help", "weight": 4 },
+        { "value": "loss-of-consciousness", "label": "Lost consciousness, even briefly", "weight": 4 },
+        { "value": "head-injury", "label": "Hit their head", "weight": 3 },
+        { "value": "new-confusion", "label": "Seemed more confused than usual afterward", "weight": 4 },
+        { "value": "suspected-fracture", "label": "Possible broken bone", "weight": 4 },
+        { "value": "bleeding", "label": "Significant bleeding", "weight": 4 },
+        { "value": "severe-headache", "label": "Severe or worsening headache", "weight": 3 },
+        { "value": "vomiting", "label": "Vomited more than once", "weight": 3 },
+        { "value": "seizure", "label": "Had a seizure", "weight": 4 },
+        { "value": "drowsiness", "label": "Unusually drowsy or hard to wake", "weight": 4 },
+        { "value": "neuro-changes", "label": "New weakness, or trouble speaking, walking, or seeing", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "_note": "Falls-pathway-specific fork of mobility-change (exact wording per Sharon). Kept separate so moving-in, which still uses mobility-change, is unaffected.",
+      "id": "mobility-change-falls",
+      "area": "physical",
+      "prompt": "Has your parent become noticeably weaker, slower, or less steady when standing or walking?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Somewhat", "weight": 2 },
+        { "value": "marked", "label": "Yes, clearly", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "id": "balance-fear-of-falling",
+      "area": "physical",
+      "prompt": "Are they holding onto furniture or walls, appearing unsteady, or avoiding activities because they're afraid of falling?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Somewhat", "weight": 2 },
+        { "value": "marked", "label": "Yes, clearly", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "_note": "Falls-specific home hazards, distinct from the general home-management 'home-hazards' question (clutter/mail/spoiled food) used by other situations.",
+      "id": "fall-home-hazards",
+      "area": "home-safety",
+      "prompt": "Are there fall-specific hazards in the home — loose rugs, poor lighting, difficult stairs, cluttered walking paths, or lack of bathroom support (grab bars, non-slip mats)?",
+      "type": "single",
+      "options": [
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "some", "label": "Some", "weight": 2 },
+        { "value": "several", "label": "Several", "weight": 4 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
     }
   ]
 }

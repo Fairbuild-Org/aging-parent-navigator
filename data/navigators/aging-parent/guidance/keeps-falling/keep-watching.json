@@ -1,0 +1,59 @@
+{
+  "_note": "DRAFT falls-specific override for the 'Keep Watching' band — pending Sharon's sign-off. Demonstrates the guidanceOverrides mechanism: this replaces the shared keep-watching.json for the keeps-falling situation only.",
+  "band": "keep-watching",
+  "status": "draft",
+  "version": "0.0.1-draft",
+  "headline": "Keep watching — and take a few simple falls-prevention steps now",
+  "whatWeNoticed": "Nothing you've described points to a fall risk that needs attention right now. A little prevention goes a long way at this stage.",
+  "whatDeservesAttentionFirst": "There's nothing urgent here. The most useful thing is simply to notice if stumbles, unsteadiness, or hazards start to appear.",
+  "helpfulObservationsToMonitor": [
+    "Any new stumbles, near-falls, or moments of unsteadiness",
+    "Holding onto furniture or walls while walking",
+    "Avoiding stairs or activities they used to do without a second thought",
+    "Bruises they can't fully explain"
+  ],
+  "todayThisWeek": [
+    "Start a simple log of any stumbles or near-falls, even small ones.",
+    "Walk through the home together and look for loose rugs, poor lighting, or clutter on walking paths.",
+    "Check that their footwear fits well and has good grip."
+  ],
+  "commonMistakesToAvoid": [
+    "Waiting for a 'real' fall before doing anything — near-misses are worth noting too.",
+    "Assuming occasional stumbles are just a normal part of aging.",
+    "Not mentioning a minor stumble to the doctor because 'nothing happened.'"
+  ],
+  "conversationGuidance": {
+    "withYourParent": [
+      "Keep it light: 'I want to help you stay steady on your feet — mind if we look at a few things together?'",
+      "Frame it as prevention, not as a sign something is wrong."
+    ],
+    "withFamily": [
+      "Let others know you're keeping an eye on this so everyone notices the same things.",
+      "Agree on who checks in and how often."
+    ]
+  },
+  "questionsForHealthcareTeam": [
+    "At the next visit, could you check for anything that might affect their balance or strength?",
+    "Are any of their current medications known to affect balance or cause dizziness?"
+  ],
+  "whatMayBeComingNext": [
+    "Falls risk tends to build gradually — early awareness is what keeps you ahead of it.",
+    "If stumbles or hazards start to add up, it may be worth a fuller falls-risk look."
+  ],
+  "howToPrepare": [
+    "Keep a running note of any stumbles or near-falls, with dates.",
+    "Know who their primary doctor is and how to reach them."
+  ],
+  "whatThisDoesNotMean": [
+    "This does not mean your parent is at high risk of falling — it means nothing urgent has come up yet.",
+    "It does not mean your concern was unwarranted."
+  ],
+  "suggestedNextSteps": [
+    "Revisit the Concern Check if anything changes.",
+    "Explore falls-prevention resources for what to watch for."
+  ],
+  "resources": [
+    { "title": "Home falls-prevention checklist", "type": "pdf", "href": "#" },
+    { "title": "Observation Journal (printable)", "type": "pdf", "href": "#" }
+  ]
+}

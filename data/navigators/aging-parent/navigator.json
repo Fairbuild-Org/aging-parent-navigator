@@ -1,12 +1,12 @@
 {
-  "_note": "PLACEHOLDER pack — illustrative structure only, NOT clinical guidance. All content must be authored and approved by Sharon Collins, RN before status becomes 'approved'. See content/README.md.",
+  "_note": "Pack is mixed-status: keeps-falling is DRAFT (pilot pathway, revised per Sharon's 2026-09-06 input, pending her sign-off); the other 6 situations remain PLACEHOLDER. NOT clinical guidance until each situation's status is individually 'approved' by Sharon Collins, RN. See data/README.md.",
   "id": "aging-parent",
   "name": "Aging Parent Navigator",
-  "version": "0.0.1-placeholder",
-  "status": "placeholder",
+  "version": "0.1.0-draft",
+  "status": "draft",
   "approvedBy": null,
   "approvedAt": null,
-  "updatedAt": "2026-07-27",
+  "updatedAt": "2026-09-06",
   "locale": "en-US",
   "disclaimer": "Aging Parent Navigator is educational and is not medical advice, diagnosis, or treatment. It does not replace evaluation by a qualified professional. In an emergency, call 911.",
   "situations": [

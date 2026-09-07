@@ -1,182 +1,161 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: `placeholder` · Purpose: this is the **pilot pathway** —
-> per Sharon's direction, we're taking one situation from beginning to end until it's genuinely
-> strong, then using it as the template for the other six.
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-09-06 per your feedback) · Purpose:
+> gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
+> for the other six.
 >
-> **How to use this doc:** everything below is the *current placeholder content*, shown exactly as
-> it exists in the app today. Mark it up directly (strike through, replace, comment inline) or send
-> changes back in whatever form is easiest — I'll translate them into the content JSON. Nothing here
-> ships to families until it moves through the governance workflow in
-> [`data/README.md`](../../data/README.md) (draft → in_review → approved by Sharon, versioned).
+> **Revision 2.** Everything below reflects your feedback: rewritten framing, a falls-focused
+> question set, caregiver-overwhelm asked-but-not-scored, situation-specific score bands, a rebuilt
+> red-flag layer, the updated road-ahead sentence, and falls-specific guidance for all four bands
+> (replacing the shared generic text via the `guidanceOverrides` mechanism). All of it is live in the
+> app and verified working — not just written. **Status is `draft`, not `approved`** — this is ready
+> for your final review, not yet ready to ship to families.
 
 ---
 
-## 1. Situation framing
+## 1. Situation framing — updated to your text
 
-| Field | Current placeholder text |
+| Field | Content |
 | --- | --- |
-| Title | My parent keeps falling or seems physically weaker |
-| Short label (card tag) | Falls & mobility |
-| Intro | "Falls are one of the clearest early signals that something is changing — and noticing this is exactly the right instinct." |
-| Reassurance | "You're not overreacting. Paying attention now is how families prevent bigger problems later." |
-
-**Review prompt:** does this framing match how a worried adult child would actually describe this
-situation? Anything to soften, sharpen, or make more specific to falls vs. general "weakness"?
+| Intro | "A fall, new unsteadiness, or noticeable weakness is worth paying attention to. Sometimes the cause is simple and fixable; other times it can signal a change in strength, balance, medications, vision, or health." |
+| Reassurance | "You don't have to wait for a serious injury to start looking into what's changed. Noticing the pattern now gives you more options to help your parent stay safe and independent." |
 
 ---
 
-## 2. Questions in this pathway
+## 2. Questions — revised to your 5 areas + caregiver check-in
 
-This situation currently asks **4 questions**, pulled from the shared question pool:
+Now **6 questions**: your 5 falls-focused areas, plus caregiver-overwhelm (asked but excluded from
+scoring — see §3).
 
-### Q1 — `falls-recent` (area: physical)
-**"In the last 3 months, has your parent fallen?"**
-*Help text: "A slip, a stumble, or being found on the floor all count."*
+**Q1 — Falls (past 12 months).** "Has your parent fallen in the past 12 months?" No / Once / More
+than once / Not sure.
 
-| Answer | Weight |
-| --- | --- |
-| No | 0 |
-| Once | 2 |
-| More than once | 4 |
-| Not sure | 1 |
+**Q2 — Fall severity (multi-select red-flag checklist).** "Did any fall cause an injury, involve
+hitting their head, or leave them unable to get up without help? *Select all that apply.*"
+Couldn't get up without help · Lost consciousness, even briefly · Hit their head · Seemed more
+confused than usual afterward · Possible broken bone · Significant bleeding · Severe or worsening
+headache · Vomited more than once · Had a seizure · Unusually drowsy or hard to wake · New weakness,
+or trouble speaking, walking, or seeing · Not sure · *No — they were not hurt and got up on their own.*
 
-### Q2 — `fall-injury` (area: physical)
-**"Did any fall lead to an injury, or a time they couldn't get up?"**
+This one question now does double duty: it feeds the numeric score (see §3) **and** the red-flag
+trigger layer (see §4) — merging your "fall severity" area with your full red-flag symptom list into
+one checklist, so the pathway doesn't need a separate 6th "tell us more" question. Flag if you'd
+rather split these into two steps.
 
-| Answer | Weight |
-| --- | --- |
-| No | 0 |
-| Yes | 4 |
-| Not sure | 1 |
+**Q3 — Mobility change.** "Has your parent become noticeably weaker, slower, or less steady when
+standing or walking?" No / Somewhat / Yes, clearly / Not sure.
 
-### Q3 — `home-hazards` (area: home-safety)
-**"Are there signs the home is becoming harder to manage (clutter, spoiled food, unopened mail)?"**
+**Q4 — Balance / fear of falling.** "Are they holding onto furniture or walls, appearing unsteady, or
+avoiding activities because they're afraid of falling?" No / Somewhat / Yes, clearly / Not sure.
 
-| Answer | Weight |
-| --- | --- |
-| No | 0 |
-| Some signs | 2 |
-| Several signs | 4 |
-| Not sure | 1 |
+**Q5 — Fall-specific home hazards.** "Are there fall-specific hazards in the home — loose rugs, poor
+lighting, difficult stairs, cluttered walking paths, or lack of bathroom support (grab bars, non-slip
+mats)?" No / Some / Several / Not sure.
 
-### Q4 — `caregiver-overwhelm` (area: caregiver)
-**"How often do you feel overwhelmed caring for or worrying about your parent?"**
-*Help text: "Your well-being is part of this picture too."*
+**Q6 — Caregiver overwhelm.** (unchanged wording) Asked as part of this pathway, **does not
+contribute to the fall-risk score** — see §3.
 
-| Answer | Weight |
-| --- | --- |
-| Rarely | 0 |
-| Sometimes | 1 |
-| Often | 3 |
-| Almost constantly | 4 |
+The old general "home management" question (clutter/mail/spoiled food) is removed from this pathway,
+as requested — it's still used by other situations (`unsafe-alone`, `moving-in`, `refuses-help`) that
+haven't been revised yet, so I left it untouched there rather than deleting it.
 
-**Review prompts:**
-- Are these the right 4 questions for a *falls* pathway specifically? The pool also has
-  `mobility-change` ("noticeably weaker, slower, or less steady") — should that replace or join
-  `home-hazards` here, since it speaks more directly to "seems physically weaker" (the second half
-  of this situation's title)?
-- Is home-hazards the right home-safety proxy for falls, or would something more falls-specific
-  (stairs, rugs, lighting, grab bars) be more useful and more actionable in the guidance that follows?
-- Are the weights right relative to each other? Right now a single unwitnessed fall with no injury
-  (2) counts less than "often" feeling overwhelmed (3) — is that the intended balance?
+**Still open:** exact weights per answer are placeholder (same 0/2/4/1-ish pattern as before) — flag
+if any should be reweighted once you see the full picture.
 
 ---
 
-## 3. Scoring for this pathway
+## 3. Scoring — now two independent layers, as you described
 
-With these 4 questions, the **minimum possible score is 0** and the **maximum is 16** (4+4+4+4).
-Current bands (shared across all situations, from `scoring.json`):
+**Layer 1 — situation risk score.** Determines the band *only when no red-flag trigger fires.*
+Questions 1, 3, 4, 5 use their single selected answer's weight as before. Question 2 (multi-select) is
+scored as the **worst single selected item, not the sum** of everything checked — selecting three
+moderate flags together doesn't stack into a worse score than the worst one alone. Caregiver-overwhelm
+(Q6) is asked and stored, but **is excluded from this sum entirely** — verified directly: a test run
+with every scored answer at minimum and caregiver-overwhelm set to "almost constantly" still produces
+a total score of 0.
 
-| Band (family sees) | Score range | Reachable in this pathway? |
+**Layer 2 — red-flag override.** Independent of the score. If it fires, it sets the band directly and
+cannot be suppressed by a low score — verified: a run with only "lost consciousness" selected and
+everything else minimal still lands on Get Immediate Help, even though the raw score alone would
+otherwise be low.
+
+**Situation-specific score bands** (no longer the same 0–3/4–7/8–12/13+ scale used everywhere else):
+
+| Band | Score range | Max possible for this pathway |
 | --- | --- | --- |
-| Keep Watching | 0–3 | Yes |
-| Plan a Conversation | 4–7 | Yes |
-| Take Action Soon | 8–12 | Yes |
-| Get Immediate Help | 13–16 | Yes (e.g. repeated falls + injury + several home hazards + often overwhelmed = 15) |
+| Keep Watching | 0–3 | — |
+| Plan a Conversation | 4–8 | — |
+| Take Action Soon | 9–14 | — |
+| Get Immediate Help | 15+ | max 20 (4+4+4+4+4 — each of the 5 scored questions tops out at 4) |
 
-**Review prompt:** these bands are currently the *same cut-points for every situation*, even though
-different situations have different question sets and different max scores. Does 0–3 / 4–7 / 8–12 /
-13+ feel right specifically for a falls scenario, or should falls have its own thresholds? (The
-architecture supports per-situation cut-points if we want them — currently it's one shared scale.)
+These cut points are a first proposal, not a clinical judgment — please sanity-check them.
 
----
-
-## 4. Emergency / red-flag triggers — separate clinical review layer
-
-Per your instruction, these are **not** treated as casual content — flagged here explicitly for your
-dedicated review before anything ships. Two triggers currently exist globally:
-
-| Trigger | Condition | Applies to this pathway? |
-| --- | --- | --- |
-| `fall-with-injury` | `falls-recent = "multiple"` **and** `fall-injury = "yes"` | **Yes** — both questions are asked here |
-| `acute-confusion` | `memory-change = "clear"` | **No** — this situation doesn't ask `memory-change` at all, so this trigger can never fire on the falls pathway |
-
-**Finding to review:** only one of the two existing triggers can actually apply to this pathway. Is
-that intentional (falls-specific dangers should have their own falls-specific triggers), or should we
-add more? Candidates to consider, for your clinical judgment — none of these are implemented yet:
-
-- A **single** fall (not "multiple") that resulted in injury or inability to get up — does one
-  serious fall alone warrant immediate escalation, rather than requiring a repeat?
-- Loss of consciousness, head injury, or suspected fracture from a fall
-- Parent lives alone **and** was found after a fall (vs. someone present)
-- A pattern of falls increasing in frequency over a short window
-
-**Also note:** even without a named trigger firing, the score-based bands alone already provide a
-safety net — e.g. multiple falls + injury + several home hazards + sometimes overwhelmed = 13, which
-lands in "Get Immediate Help" by score even in combinations the named triggers don't cover. Worth
-confirming that's sufficient, or whether explicit named triggers (with their own tailored message)
-are still wanted for specific falls scenarios.
+**Architecture note:** the "shared universal scale" limitation from Revision 1 is resolved. Any
+situation can now declare its own thresholds; situations that don't will keep using the shared scale.
+No other pathway has been touched.
 
 ---
 
-## 5. The road ahead (forward-looking roadmap)
+## 4. Red-flag / emergency triggers — rebuilt, still pending your dedicated sign-off
 
-| Section | Current placeholder content |
-| --- | --- |
-| What's happening now | "Reduced strength, balance, or confidence with walking often shows up as stumbles or falls before anything else." |
-| What may come next | Falls tend to become more frequent once they start. • A fear of falling can lead to less movement — which, over time, weakens the body further. • A single serious fall can trigger a hospitalization and a sudden care decision. |
-| Changes to watch for | New unsteadiness, holding onto furniture or walls • Avoiding stairs or activities they used to do • Bruises they can't fully explain |
-| How to prepare | Ask their doctor about a falls-risk assessment and a medication review. • Consider a home safety review (lighting, rugs, grab bars, bathroom). • Keep a simple log of any stumbles or falls to share with the care team. |
+The old rule (required **multiple** falls **and** a separate yes/no injury question) is gone. Per your
+direction that one serious fall can be enough, the new trigger fires on **any single selected item**
+from the Q2 checklist except "none" / "not-sure":
 
-**Review prompt:** this is already situation-specific (unlike the band guidance below) — does the
-clinical substance hold up? Anything you'd add about medication side effects, vision, footwear, or
-other falls-risk factors from your nursing experience that's missing here?
+> Couldn't get up without help · Lost consciousness · Hit their head · New confusion afterward ·
+> Suspected fracture · Significant bleeding · Severe/worsening headache · Repeated vomiting · Seizure ·
+> Unusual drowsiness · New weakness/trouble speaking, walking, or seeing
+
+Every one of these is now something the falls pathway actually asks — this closes the exact gap you
+flagged earlier (the old `acute-confusion` trigger checking a question this pathway never asked).
+Verified live in the browser: selecting "Hit their head" + "Severe or worsening headache" together
+correctly produces the "Get Immediate Help" summary with the falls-specific emergency guidance, not
+the generic shared text.
+
+**Deliberately not built yet:** "living alone" / "found on floor" as their own trigger. You noted this
+should raise concern but not automatically mean 911, with context mattering — that's a genuinely
+different kind of signal (a *context* modifier, not a symptom), and there's no question capturing it
+yet in this pathway. Rather than guess at how to weight it, I left it out. **Question for you:** do you
+want a "does your parent live alone?" data point added to this pathway now, or is that better suited
+to a later pathway/comprehensive assessment?
+
+**This is still draft, not approved** — per your instruction, these triggers need your dedicated
+clinical review pass before anything ships, independent of the rest of the content review.
 
 ---
 
-## 6. Band guidance this pathway currently shows (shared across all situations)
+## 5. The road ahead — updated per your edit
 
-Per your decision, guidance stays shared for V1 — shown here so you can sanity-check whether it
-genuinely reads as applicable to a *falls* scenario specifically, which is the bar you set for
-keeping it shared.
+`whatMayComeNext` now opens with your exact sentence: *"A previous fall increases the chance of
+another fall, especially if the underlying cause hasn't been identified or addressed."*
 
-**Keep Watching** — *"Keep watching — and trust your instincts."* Observations to monitor: new
-falls/dizziness/unsteadiness, memory/mood/routine changes, whether daily tasks stay manageable.
-Mistakes to avoid: assuming "no news is good news," dismissing repeating small changes, waiting for
-something big.
+`howToPrepare` now includes all six of your additions: medication review, vision check, blood pressure
+lying-down-vs-standing, footwear/foot problems, PT/OT referral consideration, plus the original
+home-safety review and stumble log.
 
-**Plan a Conversation** — *"It looks like a good time to plan a conversation."* Observations:
-stumbles/dizziness/walking changes, slipping daily tasks, mood/energy changes. Healthcare questions:
-"Could any medications be affecting balance, memory, or mood?" / "Is a falls-risk or memory assessment
-appropriate now?"
+---
 
-**Take Action Soon** — *"It's time to take action soon."* Observations: falls, injuries, new
-weakness, confusion, missed meds, declining hygiene. Healthcare questions: "What could be causing
-these changes, and how urgent are they?"
+## 6. Band guidance — now falls-specific for all four bands
 
-**Get Immediate Help** — *"This needs immediate attention."* "If there is an emergency or someone is
-in danger, call 911. Contact your parent's doctor today."
+This was shared generic text in Revision 1. All four bands now have falls-specific overrides (via the
+`guidanceOverrides` mechanism), each mentioning what you asked for: falls-risk evaluation, medication
+review, strength/balance evaluation, PT/OT when appropriate, and pathway-specific warning signs.
 
-**Review prompt:** does this read as genuinely falls-relevant, or does it feel generic enough that a
-falls-specific version (using the override mechanism now built into the app) would serve families
-better — e.g. "Plan a Conversation" mentioning a falls-risk PT referral by name, or "Take Action Soon"
-naming a same-week falls evaluation specifically? You don't need to decide this now — just flag
-anything that feels like a poor fit as-is.
+- **Keep Watching** — prevention framing: stumble log, home walk-through, footwear check.
+- **Plan a Conversation** — explicitly asks about a falls-risk assessment, medications affecting
+  balance, vision, and PT/OT for strength/balance.
+- **Take Action Soon** — same, with more urgency: schedule this week, explicit PT/OT referral
+  question, home-hazard fixes now.
+- **Get Immediate Help** — mirrors the trigger message: what to call 911 for vs. what needs urgent (not
+  emergency) care, kept consistent in tone with the trigger's own message.
+
+Full text is in `data/navigators/aging-parent/guidance/keeps-falling/*.json` — happy to paste it here
+too if reviewing in this doc is easier than opening the JSON.
 
 ---
 
 ## Next step
 
-Once this pathway is marked up, I'll turn it into approved content (JSON, versioned, `approvedBy` /
-`approvedAt` filled in) and we use the same structure to work through the remaining six situations.
+This is ready for your review pass. Once you confirm (or mark up further), I'll move `keeps-falling`'s
+status from `draft` to `approved` (with `approvedBy`/`approvedAt` filled in) and we start the same
+process on the next situation.
