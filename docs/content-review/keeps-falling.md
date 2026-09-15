@@ -4,12 +4,13 @@
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
-> **Revision 2.** Everything below reflects your feedback: rewritten framing, a falls-focused
-> question set, caregiver-overwhelm asked-but-not-scored, situation-specific score bands, a rebuilt
-> red-flag layer, the updated road-ahead sentence, and falls-specific guidance for all four bands
-> (replacing the shared generic text via the `guidanceOverrides` mechanism). All of it is live in the
-> app and verified working — not just written. **Status is `draft`, not `approved`** — this is ready
-> for your final review, not yet ready to ship to families.
+> **Revision 3.** Adds the "lives alone" / "found on the floor" distinction from your last message —
+> see §2 and §4. Everything from Revision 2 (rewritten framing, falls-focused questions,
+> caregiver-overwhelm asked-but-not-scored, situation-specific score bands, falls-specific guidance
+> for all four bands) still stands. All of it is live in the app and verified — both by running the
+> actual scoring function directly against test scenarios, and by driving the live UI in a browser.
+> **Status is still `draft`, not `approved`** — and per your instruction, the emergency-trigger
+> portion stays in draft pending your dedicated review even once the rest of the pathway is signed off.
 
 ---
 
@@ -22,10 +23,10 @@
 
 ---
 
-## 2. Questions — revised to your 5 areas + caregiver check-in
+## 2. Questions — now 8, in this order
 
-Now **6 questions**: your 5 falls-focused areas, plus caregiver-overwhelm (asked but excluded from
-scoring — see §3).
+Your 5 falls-focused areas, plus **2 new questions from this round** (found-on-floor, lives-alone),
+plus caregiver-overwhelm (asked but excluded from scoring — see §3).
 
 **Q1 — Falls (past 12 months).** "Has your parent fallen in the past 12 months?" No / Once / More
 than once / Not sure.
@@ -37,27 +38,50 @@ confused than usual afterward · Possible broken bone · Significant bleeding ·
 headache · Vomited more than once · Had a seizure · Unusually drowsy or hard to wake · New weakness,
 or trouble speaking, walking, or seeing · Not sure · *No — they were not hurt and got up on their own.*
 
-This one question now does double duty: it feeds the numeric score (see §3) **and** the red-flag
-trigger layer (see §4) — merging your "fall severity" area with your full red-flag symptom list into
-one checklist, so the pathway doesn't need a separate 6th "tell us more" question. Flag if you'd
-rather split these into two steps.
+This one question does double duty: it feeds the numeric score (see §3) **and** the red-flag trigger
+layer (see §4) — merging your "fall severity" area with your full red-flag symptom list into one
+checklist, so the pathway doesn't need a separate "tell us more" step. Flag if you'd rather split
+these into two questions.
 
-**Q3 — Mobility change.** "Has your parent become noticeably weaker, slower, or less steady when
+**Q3 — Found on the floor (new, multi-select).** "Was your parent found on the floor after a fall?"
+*Help: "This is about how the fall was discovered — the questions above already cover how they're
+doing physically."* No, they didn't end up on the floor / got up right away · Yes, but found quickly
+and were okay · Not sure · Yes, and could not call or reach anyone for help · Yes, and could not get
+up without help · Yes, and may have been on the floor for a while (not sure how long).
+
+Deliberately a **separate question from Q2** — per your instruction to distinguish "lives alone" from
+"was found on the floor." Q2 is about physical/medical symptoms; this is about the *discovery
+circumstances*. Both feed the numeric score; only Q2 can independently trigger Get Immediate Help —
+see §4.
+
+**Q4 — Mobility change.** "Has your parent become noticeably weaker, slower, or less steady when
 standing or walking?" No / Somewhat / Yes, clearly / Not sure.
 
-**Q4 — Balance / fear of falling.** "Are they holding onto furniture or walls, appearing unsteady, or
+**Q5 — Balance / fear of falling.** "Are they holding onto furniture or walls, appearing unsteady, or
 avoiding activities because they're afraid of falling?" No / Somewhat / Yes, clearly / Not sure.
 
-**Q5 — Fall-specific home hazards.** "Are there fall-specific hazards in the home — loose rugs, poor
+**Q6 — Fall-specific home hazards.** "Are there fall-specific hazards in the home — loose rugs, poor
 lighting, difficult stairs, cluttered walking paths, or lack of bathroom support (grab bars, non-slip
 mats)?" No / Some / Several / Not sure.
 
-**Q6 — Caregiver overwhelm.** (unchanged wording) Asked as part of this pathway, **does not
+**Q7 — Lives alone (new).** "Does your parent live alone?" Yes / No — someone else is usually home /
+Not sure. **Pure context — excluded from scoring and referenced by no trigger.** Per your instruction
+("important context... but I do not want living alone by itself to trigger an emergency
+recommendation"), this cannot move the band on its own, in combination, or at all in the current
+build. If you'd later like it to matter as a *modifier* (e.g. found-on-floor carrying more weight
+specifically when living alone), that's a natural refinement for your dedicated trigger review — not
+built yet, flagging so it's a conscious choice rather than an oversight.
+
+**Q8 — Caregiver overwhelm.** (unchanged wording) Asked as part of this pathway, **does not
 contribute to the fall-risk score** — see §3.
 
 The old general "home management" question (clutter/mail/spoiled food) is removed from this pathway,
 as requested — it's still used by other situations (`unsafe-alone`, `moving-in`, `refuses-help`) that
 haven't been revised yet, so I left it untouched there rather than deleting it.
+
+**Now 8 questions** (was 6) — approaching the top of the "5–10 questions, ~5 minutes" range. Both new
+questions are quick (a Yes/No/Not-sure and a checklist), but flagging the count in case you'd rather
+fold "lives alone" into an existing question's help text instead of a standalone question.
 
 **Still open:** exact weights per answer are placeholder (same 0/2/4/1-ish pattern as before) — flag
 if any should be reweighted once you see the full picture.
@@ -67,26 +91,30 @@ if any should be reweighted once you see the full picture.
 ## 3. Scoring — now two independent layers, as you described
 
 **Layer 1 — situation risk score.** Determines the band *only when no red-flag trigger fires.*
-Questions 1, 3, 4, 5 use their single selected answer's weight as before. Question 2 (multi-select) is
-scored as the **worst single selected item, not the sum** of everything checked — selecting three
-moderate flags together doesn't stack into a worse score than the worst one alone. Caregiver-overwhelm
-(Q6) is asked and stored, but **is excluded from this sum entirely** — verified directly: a test run
-with every scored answer at minimum and caregiver-overwhelm set to "almost constantly" still produces
-a total score of 0.
+Questions 1, 4, 5, 6 use their single selected answer's weight as before. Questions 2 and 3
+(multi-select) are each scored as the **worst single selected item, not the sum** of everything
+checked — selecting three moderate flags together doesn't stack into a worse score than the worst one
+alone. Caregiver-overwhelm (Q8) and lives-alone (Q7) are asked and stored, but **both are excluded
+from this sum entirely** — verified directly against the real scoring function: a test run with every
+scored answer at minimum, caregiver-overwhelm at "almost constantly," and lives-alone at "yes" still
+produces a total score of **0**.
 
-**Layer 2 — red-flag override.** Independent of the score. If it fires, it sets the band directly and
-cannot be suppressed by a low score — verified: a run with only "lost consciousness" selected and
-everything else minimal still lands on Get Immediate Help, even though the raw score alone would
-otherwise be low.
+**Layer 2 — red-flag override.** Independent of the score. There are now two triggers that can fire,
+targeting *different* bands — see §4. When a trigger fires, it can only ever **raise** the band, never
+lower one that's already been raised by a more severe trigger. This mattered as soon as a second,
+less-severe trigger (found-on-floor) was introduced: I found and fixed a real bug where a trigger
+evaluated later could have silently overwritten and downgraded a more severe result. Verified directly:
+"found on the floor, couldn't get up" *plus* "lost consciousness" together still correctly resolves to
+Get Immediate Help, regardless of which trigger is checked first.
 
-**Situation-specific score bands** (no longer the same 0–3/4–7/8–12/13+ scale used everywhere else):
+**Situation-specific score bands**, widened for the new 6-scored-question max of 24 (was 20 with 5):
 
 | Band | Score range | Max possible for this pathway |
 | --- | --- | --- |
 | Keep Watching | 0–3 | — |
-| Plan a Conversation | 4–8 | — |
-| Take Action Soon | 9–14 | — |
-| Get Immediate Help | 15+ | max 20 (4+4+4+4+4 — each of the 5 scored questions tops out at 4) |
+| Plan a Conversation | 4–9 | — |
+| Take Action Soon | 10–16 | — |
+| Get Immediate Help | 17+ | max 24 (4×6 — each of the 6 scored questions tops out at 4) |
 
 These cut points are a first proposal, not a clinical judgment — please sanity-check them.
 
@@ -112,12 +140,26 @@ Verified live in the browser: selecting "Hit their head" + "Severe or worsening 
 correctly produces the "Get Immediate Help" summary with the falls-specific emergency guidance, not
 the generic shared text.
 
-**Deliberately not built yet:** "living alone" / "found on floor" as their own trigger. You noted this
-should raise concern but not automatically mean 911, with context mattering — that's a genuinely
-different kind of signal (a *context* modifier, not a symptom), and there's no question capturing it
-yet in this pathway. Rather than guess at how to weight it, I left it out. **Question for you:** do you
-want a "does your parent live alone?" data point added to this pathway now, or is that better suited
-to a later pathway/comprehensive assessment?
+**New this round — a second trigger, targeting a different band.** Per your last message, found-on-floor
+now has its own trigger, `found-on-floor-concern`, firing when any of *couldn't get up*, *couldn't call
+for help*, or *may have been down for a while* is selected. It targets **Take Action Soon, not Get
+Immediate Help** — it raises the level of concern without asserting a medical emergency, exactly as you
+described. It cannot fire from "lives alone" — that question isn't referenced by any trigger at all.
+
+If a real Q2 red flag is *also* present, `fall-severe-symptoms` fires too and wins (see the severity
+note in §3) — so "found on the floor" can never suppress or soften a genuine emergency; it can only add
+concern when nothing more severe is present.
+
+Both triggers, side by side:
+
+| Trigger | Fires on | Targets |
+| --- | --- | --- |
+| `fall-severe-symptoms` | Any real symptom from the Q2 checklist | Get Immediate Help |
+| `found-on-floor-concern` | Couldn't get up / couldn't call for help / extended time down (Q3) | Take Action Soon |
+
+Verified live in the browser and via direct scoring tests: found-on-floor alone (no Q2 symptoms) lands
+on Take Action Soon with **no** urgent "please read this first" banner; found-on-floor combined with a
+real Q2 symptom still correctly lands on Get Immediate Help, with the banner.
 
 **This is still draft, not approved** — per your instruction, these triggers need your dedicated
 clinical review pass before anything ships, independent of the rest of the content review.

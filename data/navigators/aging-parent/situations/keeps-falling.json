@@ -1,5 +1,5 @@
 {
-  "_note": "DRAFT — revised 2026-09-06 per Sharon's direct clinical input (situation framing, question set, scoring exclusions, situation-specific score bands, and roadmap). Pending her final sign-off before status moves to 'approved'. This is the gold-standard pilot pathway.",
+  "_note": "DRAFT — Revision 3, 2026-09-06: added lives-alone (pure context, never scored, no trigger) and found-on-floor (scored + its own take-action-soon-level trigger, distinct from the fall-severity/get-immediate-help trigger) per Sharon's request to distinguish 'lives alone' from 'was found on the floor.' Score bands widened for the resulting 6-question max of 24. Pending her final sign-off before status moves to 'approved' — emergency triggers specifically still need a separate dedicated review pass per her instruction.",
   "id": "keeps-falling",
   "status": "draft",
   "title": "My parent keeps falling or seems physically weaker",
@@ -10,23 +10,26 @@
   "questions": [
     "falls-count-12mo",
     "fall-severity",
+    "found-on-floor",
     "mobility-change-falls",
     "balance-fear-of-falling",
     "fall-home-hazards",
+    "lives-alone",
     "caregiver-overwhelm"
   ],
   "scoringQuestions": [
     "falls-count-12mo",
     "fall-severity",
+    "found-on-floor",
     "mobility-change-falls",
     "balance-fear-of-falling",
     "fall-home-hazards"
   ],
   "scoreBands": [
     { "bandId": "keep-watching", "min": 0, "max": 3 },
-    { "bandId": "plan-a-conversation", "min": 4, "max": 8 },
-    { "bandId": "take-action-soon", "min": 9, "max": 14 },
-    { "bandId": "get-immediate-help", "min": 15, "max": 9999 }
+    { "bandId": "plan-a-conversation", "min": 4, "max": 9 },
+    { "bandId": "take-action-soon", "min": 10, "max": 16 },
+    { "bandId": "get-immediate-help", "min": 17, "max": 9999 }
   ],
   "roadmap": {
     "whatsHappeningNow": "Reduced strength, balance, or confidence with walking often shows up as stumbles or falls before anything else.",

@@ -1,7 +1,7 @@
 {
-  "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance). These force the 'get-immediate-help' band regardless of score, and cannot be suppressed by a low numeric score. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect — see the fall-severe-symptoms note below, which replaces a prior trigger that depended on a question the falls pathway never asked.",
+  "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance) — status stays 'draft' regardless of the rest of a pathway's review state, per Sharon's explicit instruction. A trigger's `band` is NOT always the emergency tier — see found-on-floor-concern below, which escalates to take-action-soon rather than asserting a medical emergency. When multiple triggers fire, lib/scoring.ts resolves to the MOST SEVERE resulting band and only surfaces the urgent 'please read this first' messaging for emergency-tier triggers — a lower-severity trigger can never downgrade or hide a higher one. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect.",
   "status": "draft",
-  "version": "0.0.2-draft",
+  "version": "0.0.3-draft",
   "triggers": [
     {
       "_note": "Replaces the old 'fall-with-injury' trigger (required TWO falls plus a separate binary injury question). Per Sharon: one serious fall can be enough — severity is what matters, not repetition. Fires on ANY selected red flag from the fall-severity checklist except 'none' / 'not-sure'. Pending Sharon's explicit sign-off on both the symptom list and the message wording before this leaves draft status.",
@@ -24,6 +24,16 @@
       },
       "band": "get-immediate-help",
       "message": "One or more of these signs can indicate a serious injury or a medical emergency. If your parent lost consciousness, can't be woken easily, has a severe headache, repeated vomiting, a seizure, or sudden weakness/trouble speaking or seeing, call 911 now. For a possible fracture, inability to get up, or new confusion, seek urgent medical care today."
+    },
+    {
+      "_note": "New per Sharon, 2026-09-06: being found on the floor should raise concern but NOT automatically mean 911 by itself — only an actual fall-severity red flag (the trigger above) does that. This targets take-action-soon, not get-immediate-help. If a real red flag is ALSO present, fall-severe-symptoms fires too and wins on severity rank — this trigger cannot suppress or downgrade that outcome.",
+      "id": "found-on-floor-concern",
+      "when": {
+        "questionId": "found-on-floor",
+        "valueIn": ["found-could-not-get-up", "found-could-not-call", "found-extended-time"]
+      },
+      "band": "take-action-soon",
+      "message": "Being found on the floor — especially unable to get up, unable to call for help, or for an unknown length of time — is a meaningful safety signal even without other symptoms. It deserves prompt follow-up with their doctor this week."
     },
     {
       "id": "acute-confusion",

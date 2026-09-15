@@ -311,7 +311,13 @@ Navigator (versioned content pack)
    without forcing "Get Immediate Help"). Every trigger's `questionId` must be a question the situation
    actually asks — a trigger that depends on a question the pathway never surfaces can never fire,
    which is exactly the gap the falls-pathway pilot caught and fixed (§9 governance already required a
-   separate clinical review pass for this layer; that stands).
+   separate clinical review pass for this layer; that stands). **When multiple triggers fire at once,
+   the most severe resulting band always wins** — a lower-severity trigger evaluated later can never
+   downgrade a result a more severe trigger already set — **and only a trigger whose target band is the
+   emergency tier surfaces the urgent "please read this first" messaging**; a trigger that only escalates
+   to a non-emergency band (e.g. "found on the floor, couldn't get up" → Take Action Soon) changes the
+   band silently and lets that band's own guidance carry the message, so raising concern never reads as
+   crying wolf.
 
 This is why band guidance can stay **shared by default** (§7) while individual situations "graduate" to
 their own guidance and their own score thresholds one at a time, with no re-architecture — see the

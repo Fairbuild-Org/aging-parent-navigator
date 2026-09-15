@@ -259,6 +259,34 @@
         { "value": "several", "label": "Several", "weight": 4 },
         { "value": "not-sure", "label": "Not sure", "weight": 1 }
       ]
+    },
+    {
+      "_note": "Pure context per Sharon: important for a falls assessment but must not, by itself, move the score or fire any trigger. Deliberately excluded from every situation's scoringQuestions that uses it (weights are all 0) and not referenced by any emergency trigger.",
+      "id": "lives-alone",
+      "area": "social",
+      "prompt": "Does your parent live alone?",
+      "type": "single",
+      "options": [
+        { "value": "yes", "label": "Yes", "weight": 0 },
+        { "value": "no", "label": "No — someone else is usually home", "weight": 0 },
+        { "value": "not-sure", "label": "Not sure", "weight": 0 }
+      ]
+    },
+    {
+      "_note": "Captures the DISCOVERY circumstances of a fall (how it was found), distinct from fall-severity which captures physical/medical symptoms. Per Sharon: should raise concern (see found-on-floor-concern trigger, targets take-action-soon, NOT get-immediate-help) without being able to independently force an emergency — only an actual fall-severity red flag does that.",
+      "id": "found-on-floor",
+      "area": "physical",
+      "prompt": "Was your parent found on the floor after a fall?",
+      "help": "This is about how the fall was discovered — the questions above already cover how they're doing physically.",
+      "type": "multi",
+      "options": [
+        { "value": "no", "label": "No — they didn't end up on the floor, or got up right away", "weight": 0 },
+        { "value": "found-quick-recovery", "label": "Yes, but they were found quickly and were okay", "weight": 1 },
+        { "value": "not-sure", "label": "Not sure", "weight": 1 },
+        { "value": "found-could-not-call", "label": "Yes, and they could not call or reach anyone for help", "weight": 3 },
+        { "value": "found-could-not-get-up", "label": "Yes, and they could not get up without help", "weight": 3 },
+        { "value": "found-extended-time", "label": "Yes, and they may have been on the floor for a while (not sure how long)", "weight": 4 }
+      ]
     }
   ]
 }

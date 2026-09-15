@@ -47,6 +47,11 @@ function bandForScore(bands: Band[], total: number): Band {
   return bands.find((b) => total >= b.min && total <= b.max) ?? bands[bands.length - 1];
 }
 
+/** `bands` is ordered least → most severe; index doubles as a severity rank. */
+function severityRank(bands: Band[], band: Band): number {
+  return bands.findIndex((b) => b.id === band.id);
+}
+
 function conditionMet(cond: Condition, answers: Answers): boolean {
   if (cond.questionId) {
     const values = asArray(answers[cond.questionId]);
@@ -68,6 +73,16 @@ function conditionMet(cond: Condition, answers: Answers): boolean {
  * never suppress a trigger. Questions in `questions` but not in
  * `scoringQuestions` (e.g. a caregiver-wellbeing check-in) are answered and
  * available to triggers, but never move the score.
+ *
+ * A trigger's target band is not necessarily the emergency tier — e.g. "found
+ * on the floor, couldn't call for help" should raise concern to Take Action
+ * Soon without asserting a medical emergency on its own. So: (a) when several
+ * triggers fire at once, the MOST SEVERE resulting band wins — a lower-severity
+ * trigger can never downgrade a higher one just by being evaluated later, and
+ * (b) only a trigger whose target band is the emergency tier surfaces the
+ * urgent "please read this first" messaging; a trigger escalating to a
+ * non-emergency band changes the band silently and lets that band's normal
+ * guidance carry the message.
  */
 export function evaluate(pack: ContentPack, situationId: string, answers: Answers): GuidanceResult {
   const situation = pack.situations.find((s) => s.id === situationId);
@@ -102,11 +117,17 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
   for (const trigger of pack.emergencyTriggers.triggers) {
     const whenOk = conditionMet(trigger.when, answers);
     const andOk = trigger.and ? conditionMet(trigger.and, answers) : true;
-    if (whenOk && andOk) {
+    if (!whenOk || !andOk) continue;
+
+    const forced = bands.find((b) => b.id === trigger.band);
+    if (!forced) continue;
+
+    if (severityRank(bands, forced) > severityRank(bands, band)) {
+      band = forced;
+    }
+    if (forced.tier === "emergency") {
       emergency = true;
       emergencyMessages.push(trigger.message);
-      const forced = bands.find((b) => b.id === trigger.band);
-      if (forced) band = forced;
     }
   }
 
