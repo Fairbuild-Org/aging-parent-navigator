@@ -4,7 +4,7 @@
   "status": "placeholder",
   "title": "I'm overwhelmed as a caregiver and need help from my family",
   "shortLabel": "Caregiver support",
-  "intro": "If you're feeling overwhelmed, please hear this: you matter too, and needing help does not mean you're failing.",
+  "intro": "Caregiving can become overwhelming before families realize how much one person is carrying. We'll help you identify where support is needed and how to ask family members for specific help.",
   "reassurance": "The best caregivers ask for help — it's how they keep going.",
   "emphasizeAreas": ["caregiver", "social", "mood"],
   "questions": ["caregiver-overwhelm", "caregiver-support", "social-contact", "mood-withdrawal", "daily-tasks"],

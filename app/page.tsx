@@ -11,7 +11,15 @@ const STEPS = [
   {
     n: "2",
     t: "Your Personalized Family Guidance Summary",
-    d: "What deserves attention, questions to ask the healthcare team, resources that could help, and what to do next.",
+    d: "A clear, practical summary built around your answers. It may include:",
+    bullets: [
+      "What deserves attention now",
+      "What can likely be monitored",
+      "Questions to ask the healthcare team",
+      "Home-safety concerns to consider",
+      "Conversations the family may need to have",
+      "The next 2–3 practical steps",
+    ],
   },
   {
     n: "3",
@@ -45,19 +53,13 @@ export default async function Home() {
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-foreground/80">
             You&apos;re not alone — we&apos;re here to help.
           </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-9 flex justify-center">
             <Link
               href="#situations"
-              className="rounded-full bg-brand-600 px-7 py-3.5 text-lg font-medium text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-700"
+              className="rounded-full bg-brand-600 px-9 py-4 text-lg font-semibold text-white shadow-md shadow-brand-600/20 transition-colors hover:bg-brand-700"
             >
               Start the Free Concern Check
             </Link>
-            <a
-              href="#consult"
-              className="rounded-full border border-brand-300 bg-white px-7 py-3.5 text-lg font-medium text-brand-800 transition-colors hover:bg-brand-50"
-            >
-              Schedule a Consultation
-            </a>
           </div>
           <p className="mt-4 text-sm text-foreground/55">Free · About 5 minutes · No account needed</p>
         </div>
@@ -134,19 +136,42 @@ export default async function Home() {
           <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-brand-900 sm:text-4xl">
             How it works
           </h2>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {STEPS.map((c) => (
-              <div
-                key={c.n}
-                className="rounded-2xl border border-sand-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-md"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-calm-100 font-serif text-lg font-semibold text-calm-700">
-                  {c.n}
-                </span>
-                <h3 className="mt-4 font-serif text-lg font-semibold text-brand-900">{c.t}</h3>
-                <p className="mt-2 text-foreground/75">{c.d}</p>
-              </div>
-            ))}
+          <div className="grid items-start gap-6 sm:grid-cols-3">
+            {STEPS.map((c) => {
+              const featured = Boolean(c.bullets);
+              return (
+                <div
+                  key={c.n}
+                  className={`rounded-2xl p-7 shadow-sm transition-shadow hover:shadow-md ${
+                    featured
+                      ? "border-2 border-brand-300 bg-brand-50 sm:-my-2 sm:py-9"
+                      : "border border-sand-200 bg-white"
+                  }`}
+                >
+                  <span
+                    className={`grid h-11 w-11 place-items-center rounded-full font-serif text-lg font-semibold ${
+                      featured ? "bg-brand-600 text-white" : "bg-calm-100 text-calm-700"
+                    }`}
+                  >
+                    {c.n}
+                  </span>
+                  <h3 className="mt-4 font-serif text-lg font-semibold text-brand-900">{c.t}</h3>
+                  <p className="mt-2 text-foreground/75">{c.d}</p>
+                  {c.bullets && (
+                    <ul className="mt-3 space-y-1.5">
+                      {c.bullets.map((b) => (
+                        <li key={b} className="flex gap-2 text-sm text-brand-900/80">
+                          <span aria-hidden className="mt-0.5 text-brand-500">
+                            ✓
+                          </span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
