@@ -1,5 +1,5 @@
 {
-  "_note": "DRAFT — Revision 3, 2026-09-06: added lives-alone (pure context, never scored, no trigger) and found-on-floor (scored + its own take-action-soon-level trigger, distinct from the fall-severity/get-immediate-help trigger) per Sharon's request to distinguish 'lives alone' from 'was found on the floor.' Score bands widened for the resulting 6-question max of 24. Pending her final sign-off before status moves to 'approved' — emergency triggers specifically still need a separate dedicated review pass per her instruction.",
+  "_note": "DRAFT — Revision 4, 2026-09-24: reordered questions light-to-heavy per Sharon's brief on the post-click experience (ease in with simple observations, save the red-flag checklist and found-on-floor for once trust is built, close with the caring caregiver check-in). No scoring/trigger logic changed — order does not affect the sum or which triggers can fire. Revision 3 content (lives-alone, found-on-floor, situation-specific score bands) unchanged. Pending Sharon's final sign-off — emergency triggers specifically still need a separate dedicated review pass per her instruction.",
   "id": "keeps-falling",
   "status": "draft",
   "title": "My parent keeps falling or seems physically weaker",
@@ -9,21 +9,21 @@
   "emphasizeAreas": ["physical", "home-safety", "caregiver"],
   "questions": [
     "falls-count-12mo",
-    "fall-severity",
-    "found-on-floor",
     "mobility-change-falls",
     "balance-fear-of-falling",
     "fall-home-hazards",
     "lives-alone",
+    "fall-severity",
+    "found-on-floor",
     "caregiver-overwhelm"
   ],
   "scoringQuestions": [
     "falls-count-12mo",
-    "fall-severity",
-    "found-on-floor",
     "mobility-change-falls",
     "balance-fear-of-falling",
-    "fall-home-hazards"
+    "fall-home-hazards",
+    "fall-severity",
+    "found-on-floor"
   ],
   "scoreBands": [
     { "bandId": "keep-watching", "min": 0, "max": 3 },

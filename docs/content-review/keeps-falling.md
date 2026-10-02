@@ -1,16 +1,53 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-09-06 per your feedback) · Purpose:
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-02 per your feedback) · Purpose:
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
-> **Revision 3.** Adds the "lives alone" / "found on the floor" distinction from your last message —
-> see §2 and §4. Everything from Revision 2 (rewritten framing, falls-focused questions,
-> caregiver-overwhelm asked-but-not-scored, situation-specific score bands, falls-specific guidance
-> for all four bands) still stands. All of it is live in the app and verified — both by running the
-> actual scoring function directly against test scenarios, and by driving the live UI in a browser.
-> **Status is still `draft`, not `approved`** — and per your instruction, the emergency-trigger
-> portion stays in draft pending your dedicated review even once the rest of the pathway is signed off.
+> **§0 (the opening experience and question order) is SETTLED, per your 2026-10-02 message** — the
+> one wording change you asked for is applied: the fall-severity option now reads "Passed out, blacked
+> out, or lost consciousness, even briefly." Nothing else in §0 changed. Revisions 1–3 (framing,
+> falls-focused questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance)
+> remain unchanged and verified working. **Status is still `draft` overall** — the emergency-trigger
+> list (§4) is the next focus: you asked to review it line by line, separately from the rest of the
+> pathway's sign-off.
+
+---
+
+## 0. The opening experience — first pass, per your brief
+
+This section is new. Your brief asked for a short reassuring transition, plain language, easy
+questions first, a simple non-alarming progress indicator, and a clear sense that this isn't a test.
+Applied here, and in the shared screen components so every future pathway gets the same treatment
+automatically:
+
+- **Intro screen rewritten.** Below the situation's own reassurance line, a new block states plainly:
+  about 5 minutes, no rush, you don't need all the answers, you can go back and change anything, your
+  answers stay private, and "this isn't a test." Screenshot: `09-new-intro.png`.
+- **Question order changed** from Falls → *Fall severity (red-flag checklist)* → Found on floor →
+  Mobility → Balance → Hazards → Lives alone → Caregiver, to: **Falls → Mobility → Balance → Home
+  hazards → Lives alone → Fall severity → Found on floor → Caregiver.** The two heaviest questions
+  (the red-flag checklist and found-on-floor) now come after five light, observational questions
+  instead of appearing second. Nothing about scoring or triggers changed, only the order things are
+  asked in — order doesn't affect the sum or which triggers can fire. Screenshot: `10-question-1-new-
+  order.png` confirms Q1 is still the easy "have they fallen" question.
+- **Progress indicator simplified.** Dropped the percentage number (e.g. "25%"), kept only "Question X
+  of Y" and the visual bar. A percentage ticking up can read like a countdown or a test score; a plain
+  step count feels calmer.
+- **Softened the help text on the two heaviest questions.** Fall severity now adds "Take your time,
+  there's no need to get this perfectly right." Found-on-floor now adds "Answer as best you can, even
+  if you're not entirely sure."
+- **One suggestion I did NOT implement, flagging for your reaction:** the fall-severity option "Lost
+  consciousness, even briefly" reads a little clinical. A softer everyday phrasing could be "Passed
+  out or blacked out, even briefly." I didn't change it myself since it's part of the emergency-trigger
+  content you specifically want a dedicated review pass on — just flagging it as a concrete example of
+  the "everyday language" pass, for you to accept, reject, or reword.
+- **Already true, confirmed rather than changed:** the heavier questions don't get any alarming visual
+  treatment (no red, no warning icons) — they look exactly like every other question. The actual
+  urgency only shows up afterward, in the result, which is where it belongs.
+
+Verified live in the browser: new intro renders correctly, Question 1 of 8 is still the falls-count
+question, no percentage text appears anywhere near the progress bar, zero console errors.
 
 ---
 
@@ -23,7 +60,12 @@
 
 ---
 
-## 2. Questions — now 8, in this order
+## 2. Questions — content and rationale for each
+
+> **Note on numbering:** the Q1–Q8 labels below describe *content*, not the live display order — the
+> actual on-screen order was changed in Revision 4 (§0) to ease in with lighter questions first. See
+> §0 for the current order: Falls → Mobility → Balance → Home hazards → Lives alone → Fall severity →
+> Found on floor → Caregiver.
 
 Your 5 falls-focused areas, plus **2 new questions from this round** (found-on-floor, lives-alone),
 plus caregiver-overwhelm (asked but excluded from scoring — see §3).

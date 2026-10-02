@@ -204,12 +204,12 @@
       "id": "fall-severity",
       "area": "physical",
       "prompt": "Did any fall cause an injury, involve hitting their head, or leave them unable to get up without help?",
-      "help": "Select everything that applies to any fall in the past 12 months.",
+      "help": "Select everything that applies to any fall in the past 12 months. Take your time, there's no need to get this perfectly right.",
       "type": "multi",
       "options": [
         { "value": "none", "label": "No — they were not hurt and got up on their own", "weight": 0 },
         { "value": "unable-to-get-up", "label": "Couldn't get up without help", "weight": 4 },
-        { "value": "loss-of-consciousness", "label": "Lost consciousness, even briefly", "weight": 4 },
+        { "value": "loss-of-consciousness", "label": "Passed out, blacked out, or lost consciousness, even briefly", "weight": 4 },
         { "value": "head-injury", "label": "Hit their head", "weight": 3 },
         { "value": "new-confusion", "label": "Seemed more confused than usual afterward", "weight": 4 },
         { "value": "suspected-fracture", "label": "Possible broken bone", "weight": 4 },
@@ -277,7 +277,7 @@
       "id": "found-on-floor",
       "area": "physical",
       "prompt": "Was your parent found on the floor after a fall?",
-      "help": "This is about how the fall was discovered — the questions above already cover how they're doing physically.",
+      "help": "This is about how the fall was discovered. Answer as best you can, even if you're not entirely sure.",
       "type": "multi",
       "options": [
         { "value": "no", "label": "No — they didn't end up on the floor, or got up right away", "weight": 0 },

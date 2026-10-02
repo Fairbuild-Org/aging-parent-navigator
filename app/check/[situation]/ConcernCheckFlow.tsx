@@ -68,9 +68,19 @@ export function ConcernCheckFlow({
         <h1 className="mt-4 font-serif text-3xl font-semibold text-brand-900">{situation.title}</h1>
         <p className="mt-4 text-lg text-foreground/75">{situation.intro}</p>
         <p className="mt-4 rounded-xl bg-calm-50 p-4 text-calm-800">{situation.reassurance}</p>
-        <p className="mt-6 text-sm text-foreground/60">
-          A few gentle questions · about 5 minutes · your answers stay private.
-        </p>
+
+        <div className="mt-6 space-y-2 rounded-xl border border-sand-200 bg-sand-50 p-5 text-foreground/75">
+          <p>
+            This will take about <strong className="text-foreground/90">5 minutes</strong>. There&apos;s
+            no rush, and you don&apos;t need to have all the answers, just what you&apos;ve noticed.
+          </p>
+          <p>
+            You can go back and change anything as you go, and your answers stay private. This
+            isn&apos;t a test. It&apos;s simply a way to help you see the fuller picture, one question
+            at a time.
+          </p>
+        </div>
+
         <button
           onClick={() => setPhase("questions")}
           className="mt-6 rounded-full bg-brand-600 px-6 py-3 font-medium text-white transition-colors hover:bg-brand-700"
@@ -85,12 +95,9 @@ export function ConcernCheckFlow({
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
       <div className="mb-8">
-        <div className="mb-2 flex justify-between text-sm text-foreground/60">
-          <span>
-            Question {index + 1} of {total}
-          </span>
-          <span>{progress}%</span>
-        </div>
+        <p className="mb-2 text-sm text-foreground/60">
+          Question {index + 1} of {total}
+        </p>
         <div className="h-2 w-full rounded-full bg-sand-200">
           <div
             className="h-2 rounded-full bg-calm-500 transition-all"
