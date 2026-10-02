@@ -1,16 +1,19 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-02 per your feedback) · Purpose:
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-03 per your feedback) · Purpose:
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
-> **§0 (the opening experience and question order) is SETTLED, per your 2026-10-02 message** — the
-> one wording change you asked for is applied: the fall-severity option now reads "Passed out, blacked
-> out, or lost consciousness, even briefly." Nothing else in §0 changed. Revisions 1–3 (framing,
-> falls-focused questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance)
-> remain unchanged and verified working. **Status is still `draft` overall** — the emergency-trigger
-> list (§4) is the next focus: you asked to review it line by line, separately from the rest of the
-> pathway's sign-off.
+> **§0 (the opening experience and question order) is SETTLED.** Revisions 1–3 (framing, falls-focused
+> questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance) remain unchanged
+> and verified working.
+>
+> **§4 is now the item-by-item worksheet you asked for.** Every red flag is broken out on its own line
+> with a checkbox for your decision, instead of being described in paragraphs. Two specific clinical
+> questions are called out inline for your judgment (whether "hit their head" alone should really be
+> Get Immediate Help, and whether the two severity tiers implied in the current message text should
+> become two formal triggers). Nothing in this section is live or changed yet, it's a worksheet, not
+> an implementation — I'll apply exactly what you decide once you've gone through it.
 
 ---
 
@@ -166,45 +169,102 @@ No other pathway has been touched.
 
 ---
 
-## 4. Red-flag / emergency triggers — rebuilt, still pending your dedicated sign-off
+## 4. Red-flag / emergency triggers — item-by-item worksheet, per your request
 
-The old rule (required **multiple** falls **and** a separate yes/no injury question) is gone. Per your
-direction that one serious fall can be enough, the new trigger fires on **any single selected item**
-from the Q2 checklist except "none" / "not-sure":
+You asked to go through this list very carefully, one item at a time, since this is the layer that
+can tell a family to call 911. Below is every individual red flag currently in the system for this
+pathway, broken out on its own line rather than bundled into paragraphs, with a column for your
+decision. Nothing here is approved yet — this entire section stays in **draft** regardless of the
+rest of the pathway's sign-off, exactly as you asked.
 
-> Couldn't get up without help · Lost consciousness · Hit their head · New confusion afterward ·
-> Suspected fracture · Significant bleeding · Severe/worsening headache · Repeated vomiting · Seizure ·
-> Unusual drowsiness · New weakness/trouble speaking, walking, or seeing
+Three triggers exist in the system. Only two can actually fire on this pathway — see the note on
+`acute-confusion` at the bottom before you spend review time on it.
 
-Every one of these is now something the falls pathway actually asks — this closes the exact gap you
-flagged earlier (the old `acute-confusion` trigger checking a question this pathway never asked).
-Verified live in the browser: selecting "Hit their head" + "Severe or worsening headache" together
-correctly produces the "Get Immediate Help" summary with the falls-specific emergency guidance, not
-the generic shared text.
+### 4a. `fall-severe-symptoms` — fires Get Immediate Help
 
-**New this round — a second trigger, targeting a different band.** Per your last message, found-on-floor
-now has its own trigger, `found-on-floor-concern`, firing when any of *couldn't get up*, *couldn't call
-for help*, or *may have been down for a while* is selected. It targets **Take Action Soon, not Get
-Immediate Help** — it raises the level of concern without asserting a medical emergency, exactly as you
-described. It cannot fire from "lives alone" — that question isn't referenced by any trigger at all.
+Source question: Q "Did any fall cause an injury, involve hitting their head, or leave them unable to
+get up without help?" (multi-select — a family can check more than one). Currently **any single item
+below, alone, fires the trigger** — there's no "two symptoms together" requirement.
 
-If a real Q2 red flag is *also* present, `fall-severe-symptoms` fires too and wins (see the severity
-note in §3) — so "found on the floor" can never suppress or soften a genuine emergency; it can only add
-concern when nothing more severe is present.
+| # | What the family sees | Weight | Currently fires Get Immediate Help? | Your call |
+| --- | --- | --- | --- | --- |
+| 1 | Couldn't get up without help | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 2 | Passed out, blacked out, or lost consciousness, even briefly | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 3 | Hit their head | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 4 | Seemed more confused than usual afterward | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 5 | Possible broken bone | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 6 | Significant bleeding | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 7 | Severe or worsening headache | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 8 | Vomited more than once | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 9 | Had a seizure | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 10 | Unusually drowsy or hard to wake | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 11 | New weakness, or trouble speaking, walking, or seeing | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| — | No — they were not hurt and got up on their own | 0 | No | (does not fire, no action needed) |
+| — | Not sure | 1 | No | (does not fire, no action needed) |
 
-Both triggers, side by side:
+**Current shared message**, shown regardless of which item(s) above were selected:
 
-| Trigger | Fires on | Targets |
-| --- | --- | --- |
-| `fall-severe-symptoms` | Any real symptom from the Q2 checklist | Get Immediate Help |
-| `found-on-floor-concern` | Couldn't get up / couldn't call for help / extended time down (Q3) | Take Action Soon |
+> "One or more of these signs can indicate a serious injury or a medical emergency. If your parent
+> lost consciousness, can't be woken easily, has a severe headache, repeated vomiting, a seizure, or
+> sudden weakness/trouble speaking or seeing, call 911 now. For a possible fracture, inability to get
+> up, or new confusion, seek urgent medical care today."
 
-Verified live in the browser and via direct scoring tests: found-on-floor alone (no Q2 symptoms) lands
-on Take Action Soon with **no** urgent "please read this first" banner; found-on-floor combined with a
-real Q2 symptom still correctly lands on Get Immediate Help, with the banner.
+Two specific things I'd like your judgment on, rather than deciding myself:
 
-**This is still draft, not approved** — per your instruction, these triggers need your dedicated
-clinical review pass before anything ships, independent of the rest of the content review.
+- **Item 3, "Hit their head," alone.** Right now it fires the same Get Immediate Help result as a
+  seizure or loss of consciousness. A head bump with no loss of consciousness, no confusion, no
+  headache, and no vomiting is often not a 911-level event clinically. Should "hit their head" by
+  itself (nothing else selected) produce a softer result, for example Take Action Soon with advice to
+  monitor for 24 to 48 hours, and only escalate to Get Immediate Help when paired with another item
+  like confusion, headache, or vomiting?
+- **The message already splits into two tiers, but the trigger doesn't.** You can see it in the
+  message text above: some items ("call 911 now") read as more urgent than others ("seek urgent care
+  today"). Right now that split only exists in the sentence, not in the system. Would you rather the
+  architecture formally recognize two severity tiers here, true emergency items that say call 911, and
+  urgent-but-not-911 items that say seek care today, each with their own message, instead of one
+  combined trigger and one combined message? I can build that if you want it. It is a small change on
+  top of what already exists, not a rebuild.
+
+### 4b. `found-on-floor-concern` — fires Take Action Soon (not Get Immediate Help)
+
+Source question: Q "Was your parent found on the floor after a fall?" (multi-select).
+
+| # | What the family sees | Weight | Currently fires Take Action Soon? | Your call |
+| --- | --- | --- | --- | --- |
+| 1 | Yes, and they could not call or reach anyone for help | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 2 | Yes, and they could not get up without help | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| 3 | Yes, and they may have been on the floor for a while (not sure how long) | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
+| — | No — they didn't end up on the floor, or got up right away | 0 | No | (does not fire) |
+| — | Yes, but they were found quickly and were okay | 1 | No | (does not fire) |
+| — | Not sure | 1 | No | (does not fire) |
+
+**Current message:**
+
+> "Being found on the floor, especially unable to get up, unable to call for help, or for an unknown
+> length of time, is a meaningful safety signal even without other symptoms. It deserves prompt
+> follow-up with their doctor this week."
+
+This one is deliberately calibrated to never reach 911 on its own, per your instruction, it targets
+Take Action Soon only. If any item from 4a is *also* selected, 4a wins and the result becomes Get
+Immediate Help instead (verified, see §3) — found-on-floor can raise concern but can never soften or
+hide a real emergency.
+
+### 4c. `acute-confusion` — does not apply to this pathway
+
+This trigger exists in the shared trigger file but checks a question (`memory-change`) that
+**`keeps-falling` never asks**. It cannot fire here and has no effect on this pathway one way or the
+other. It belongs to the `memory-changes` and `something-feels-different` pathways, which haven't been
+revised yet, so it's included below only so the list is complete, not because it needs your review
+right now:
+
+> "A sudden, clear change in confusion or alertness can signal an urgent medical issue (such as
+> infection or medication reaction). Contact their doctor promptly, or seek urgent care."
+
+We'll bring this back for review when we get to those pathways.
+
+**This entire section stays in draft** until you've gone through it. Once you have, I'll apply exactly
+the changes you call out, line by line, and bring back an updated version for a final pass before
+anything moves to approved.
 
 ---
 
