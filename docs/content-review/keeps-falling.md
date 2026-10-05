@@ -1,6 +1,6 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-03 per your feedback) · Purpose:
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-05 per your feedback) · Purpose:
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
@@ -8,12 +8,13 @@
 > questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance) remain unchanged
 > and verified working.
 >
-> **§4 is now the item-by-item worksheet you asked for.** Every red flag is broken out on its own line
-> with a checkbox for your decision, instead of being described in paragraphs. Two specific clinical
-> questions are called out inline for your judgment (whether "hit their head" alone should really be
-> Get Immediate Help, and whether the two severity tiers implied in the current message text should
-> become two formal triggers). Nothing in this section is live or changed yet, it's a worksheet, not
-> an implementation — I'll apply exactly what you decide once you've gone through it.
+> **§4 is updated again, reflecting your two-tier decision.** Still nothing built, this is a revised
+> worksheet, not an implementation. It proposes a concrete split into Tier 1 (Get Emergency Help Now /
+> Call 911) and Tier 2 (Get Medical Care Today), maps every original item into one of the two, proposes
+> a new blood-thinner question for the head-injury escalation you asked for, clarifies that new
+> confusion is already covered, and checks whether the found-on-floor logic already does what you
+> described. Several items are explicitly flagged for your yes/no since you said "etc." rather than
+> naming every item. Nothing moves to approved until you've been through all of §4.
 
 ---
 
@@ -169,102 +170,128 @@ No other pathway has been touched.
 
 ---
 
-## 4. Red-flag / emergency triggers — item-by-item worksheet, per your request
+## 4. Red-flag / emergency triggers — revised worksheet, reflecting your last decisions
 
-You asked to go through this list very carefully, one item at a time, since this is the layer that
-can tell a family to call 911. Below is every individual red flag currently in the system for this
-pathway, broken out on its own line rather than bundled into paragraphs, with a column for your
-decision. Nothing here is approved yet — this entire section stays in **draft** regardless of the
-rest of the pathway's sign-off, exactly as you asked.
+**Status check: nothing below is built yet.** Per your closing instruction, this is the worksheet
+updated to reflect what you decided, so you can review the individual items again before anything
+gets implemented. Once you confirm (or mark up further), I'll build exactly this and bring back a
+final version, still in draft, for your sign-off.
 
-Three triggers exist in the system. Only two can actually fire on this pathway — see the note on
-`acute-confusion` at the bottom before you spend review time on it.
+### 4a. The two-tier architecture — one proposal, one open question for you
 
-### 4a. `fall-severe-symptoms` — fires Get Immediate Help
+You asked for two real, separate responses instead of one blended one:
 
-Source question: Q "Did any fall cause an injury, involve hitting their head, or leave them unable to
-get up without help?" (multi-select — a family can check more than one). Currently **any single item
-below, alone, fires the trigger** — there's no "two symptoms together" requirement.
+1. **Get Emergency Help Now / Call 911** — true emergencies.
+2. **Get Medical Care Today** — needs prompt evaluation, not automatically 911.
 
-| # | What the family sees | Weight | Currently fires Get Immediate Help? | Your call |
-| --- | --- | --- | --- | --- |
-| 1 | Couldn't get up without help | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 2 | Passed out, blacked out, or lost consciousness, even briefly | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 3 | Hit their head | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 4 | Seemed more confused than usual afterward | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 5 | Possible broken bone | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 6 | Significant bleeding | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 7 | Severe or worsening headache | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 8 | Vomited more than once | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 9 | Had a seizure | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 10 | Unusually drowsy or hard to wake | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 11 | New weakness, or trouble speaking, walking, or seeing | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| — | No — they were not hurt and got up on their own | 0 | No | (does not fire, no action needed) |
-| — | Not sure | 1 | No | (does not fire, no action needed) |
+Here's how I'd build that without disturbing the four shared bands you locked in earlier (Keep
+Watching / Plan a Conversation / Take Action Soon / Get Immediate Help):
 
-**Current shared message**, shown regardless of which item(s) above were selected:
+**Proposed approach.** Both tiers still land the family on the "Get Immediate Help" band underneath
+(so the surrounding guidance content, common mistakes, conversation starters, healthcare questions,
+stays the serious/urgent version, not the calmer "Take Action Soon" version). What changes is the
+**alert on top of it**: Tier 1 shows a red "Get Emergency Help Now — Call 911" callout, Tier 2 shows a
+visually distinct but less alarming amber "Get Medical Care Today" callout. Different heading,
+different color, different message, same underlying band.
 
-> "One or more of these signs can indicate a serious injury or a medical emergency. If your parent
-> lost consciousness, can't be woken easily, has a severe headache, repeated vomiting, a seizure, or
-> sudden weakness/trouble speaking or seeing, call 911 now. For a possible fracture, inability to get
-> up, or new confusion, seek urgent medical care today."
+**The alternative I didn't pick, flagging in case you prefer it:** route Tier 2 to the existing "Take
+Action Soon" band instead of "Get Immediate Help." The trade-off is that Take Action Soon's current
+guidance content is written around a "this week" timeframe, which would need rewriting to say "today"
+wherever Tier 2 triggers it, and it would show the calmer Take Action Soon framing underneath an
+urgent "today" headline, a slight mismatch. I'd recommend the first approach, but it's your call since
+it affects how urgent the full page feels, not just the headline.
 
-Two specific things I'd like your judgment on, rather than deciding myself:
+### 4b. Tier 1 — Get Emergency Help Now / Call 911
 
-- **Item 3, "Hit their head," alone.** Right now it fires the same Get Immediate Help result as a
-  seizure or loss of consciousness. A head bump with no loss of consciousness, no confusion, no
-  headache, and no vomiting is often not a 911-level event clinically. Should "hit their head" by
-  itself (nothing else selected) produce a softer result, for example Take Action Soon with advice to
-  monitor for 24 to 48 hours, and only escalate to Get Immediate Help when paired with another item
-  like confusion, headache, or vomiting?
-- **The message already splits into two tiers, but the trigger doesn't.** You can see it in the
-  message text above: some items ("call 911 now") read as more urgent than others ("seek urgent care
-  today"). Right now that split only exists in the sentence, not in the system. Would you rather the
-  architecture formally recognize two severity tiers here, true emergency items that say call 911, and
-  urgent-but-not-911 items that say seek care today, each with their own message, instead of one
-  combined trigger and one combined message? I can build that if you want it. It is a small change on
-  top of what already exists, not a rebuild.
+Your message named loss of consciousness, seizure, significant new confusion, repeated vomiting, new
+weakness/numbness, slurred speech, and inability to stay awake explicitly. Mapped to the existing
+checklist items, plus two I've kept here from the original list that weren't in your examples, flagged
+for your explicit yes/no since "etc." could reasonably include or exclude them:
 
-### 4b. `found-on-floor-concern` — fires Take Action Soon (not Get Immediate Help)
+| What the family sees | In your list? | Proposed tier |
+| --- | --- | --- |
+| Passed out, blacked out, or lost consciousness, even briefly | Yes, explicit | Tier 1 |
+| Had a seizure | Yes, explicit | Tier 1 |
+| Seemed more confused than usual afterward | Yes, explicit ("significant new confusion") | Tier 1 |
+| Vomited more than once | Yes, explicit ("repeated vomiting") | Tier 1 |
+| New weakness, or trouble speaking, walking, or seeing | Yes, explicit (weakness/numbness, slurred speech) | Tier 1 |
+| Unusually drowsy or hard to wake | Yes, explicit ("inability to stay awake") | Tier 1 |
+| Severe or worsening headache | **Not in your list — my proposal to keep it Tier 1.** A new or worsening headache after a fall is a classic warning sign for bleeding around the brain, especially in older adults. ☐ Confirm Tier 1 ☐ Move to Tier 2 |
+| Significant bleeding | **Not in your list — my proposal to keep it Tier 1.** Uncontrolled bleeding is generally a 911-level concern on its own. ☐ Confirm Tier 1 ☐ Move to Tier 2 |
 
-Source question: Q "Was your parent found on the floor after a fall?" (multi-select).
+### 4c. Tier 2 — Get Medical Care Today
 
-| # | What the family sees | Weight | Currently fires Take Action Soon? | Your call |
-| --- | --- | --- | --- | --- |
-| 1 | Yes, and they could not call or reach anyone for help | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 2 | Yes, and they could not get up without help | 3 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| 3 | Yes, and they may have been on the floor for a while (not sure how long) | 4 | Yes | ☐ Keep ☐ Change ☐ Remove |
-| — | No — they didn't end up on the floor, or got up right away | 0 | No | (does not fire) |
-| — | Yes, but they were found quickly and were okay | 1 | No | (does not fire) |
-| — | Not sure | 1 | No | (does not fire) |
+The remaining three items from the original list, none of which you named as Tier 1:
 
-**Current message:**
+| What the family sees | Proposed tier | Notes |
+| --- | --- | --- |
+| Couldn't get up without help | Tier 2 | Matches the original message's own "seek urgent care today" grouping |
+| Possible broken bone | Tier 2 | Same |
+| Hit their head — **alone**, nothing else selected | Tier 2 | See §4d — this one has a specific escalation rule |
 
-> "Being found on the floor, especially unable to get up, unable to call for help, or for an unknown
-> length of time, is a meaningful safety signal even without other symptoms. It deserves prompt
-> follow-up with their doctor this week."
+### 4d. "Hit their head" — the compound rule you asked for
 
-This one is deliberately calibrated to never reach 911 on its own, per your instruction, it targets
-Take Action Soon only. If any item from 4a is *also* selected, 4a wins and the result becomes Get
-Immediate Help instead (verified, see §3) — found-on-floor can raise concern but can never soften or
-hide a real emergency.
+Per your instruction: alone, it's Tier 2 (prompt/same-day care, not monitor-at-home and not 911).
+Combined with a blood thinner, or combined with any other concerning symptom, it escalates.
 
-### 4c. `acute-confusion` — does not apply to this pathway
+**The "combined with another symptom" half is already true by design**, nothing new to build. If
+someone selects "Hit their head" *and* any Tier 1 item, the Tier 1 trigger fires on its own and wins
+(the most-severe-result rule already in place, see §3), so head injury plus confusion or headache
+already reaches Tier 1 automatically.
 
-This trigger exists in the shared trigger file but checks a question (`memory-change`) that
-**`keeps-falling` never asks**. It cannot fire here and has no effect on this pathway one way or the
-other. It belongs to the `memory-changes` and `something-feels-different` pathways, which haven't been
-revised yet, so it's included below only so the list is complete, not because it needs your review
-right now:
+**The "combined with a blood thinner" half needs one new question**, since nothing currently asks
+about blood thinners. Proposed, asked as a normal question in the sequence (not a pop-up or branch,
+the system doesn't support conditional branching yet, so this would be asked to everyone, not just
+people who selected head injury):
 
-> "A sudden, clear change in confusion or alertness can signal an urgent medical issue (such as
-> infection or medication reaction). Contact their doctor promptly, or seek urgent care."
+> **Does your parent take a blood thinner (such as warfarin, Eliquis, Xarelto, Plavix, or daily
+> aspirin prescribed by a doctor)?** Yes / No / Not sure.
 
-We'll bring this back for review when we get to those pathways.
+It would not be scored (asked but excluded from the risk score, the same treatment as "lives alone"),
+and used only to decide: head injury + blood thinner = Tier 1, with its own message explaining that
+blood thinners raise the risk of bleeding inside the skull that isn't obvious right away. Head injury
+without a blood thinner and without any other symptom stays Tier 2.
 
-**This entire section stays in draft** until you've gone through it. Once you have, I'll apply exactly
-the changes you call out, line by line, and bring back an updated version for a final pass before
-anything moves to approved.
+☐ Approve this question as worded ☐ Reword ☐ Don't add it, handle blood thinner use a different way
+
+### 4e. New confusion — already in the system, confirming placement
+
+This one doesn't need a new question. "Seemed more confused than usual afterward" has been part of
+the fall-severity checklist since Revision 3, it's option 4 in §4b above, and your message places it
+in Tier 1. The old `acute-confusion` trigger you were reacting to is a *different*, unrelated trigger
+built for other pathways (see §4g), falls has its own confusion coverage already.
+
+One question for you: right now confusion is one single item, present or not. Your message said
+"significant new confusion," which implies there might be a *milder* version that shouldn't be Tier 1.
+Do you want two confusion options (something like "seemed a little confused or 'off'" vs. "seemed
+significantly confused or disoriented"), with only the significant one in Tier 1, or is one item fine?
+
+### 4f. Found on the floor — checking whether this already does what you're asking
+
+You asked that the logic consider whether they could get up, how long they may have been down,
+whether they were injured, and whether they seemed confused or unwell. The first two are already
+asked directly in the found-on-floor question. The second two (injured, confused) are already asked
+in the fall-severity question, and already combine with found-on-floor correctly through the
+most-severe-result rule in §3, if someone was found on the floor *and* had an actual injury or
+confusion, the Tier 1 (or Tier 2) trigger from §4b/4c fires and wins. Found-on-floor by itself,
+with no injury or confusion present, stays at its own level, Take Action Soon, not Get Medical Care
+Today or 911.
+
+So structurally, I believe this is already built. The one place it could be more precise is "how long
+they may have been on the floor," which is currently one vague option ("a while, not sure how long").
+Would you like real time ranges instead (for example, under 30 minutes / 30 minutes to a few hours /
+longer or unknown), or is the current single option sufficient?
+
+### 4g. `acute-confusion` — unrelated trigger, unchanged
+
+This is the dormant trigger from the original worksheet, built for `memory-change`, a question falls
+never asks. It's unrelated to the new confusion coverage in §4e (different question, different
+pathway). No action needed here for falls, it stays as-is for when we get to the memory-changes
+pathway.
+
+**Still nothing implemented.** Once you've gone through 4a through 4f, I'll build exactly what you
+confirm, state assumptions back clearly wherever you left something open, and bring back a final
+version before anything moves out of draft.
 
 ---
 
