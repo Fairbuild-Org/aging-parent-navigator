@@ -153,6 +153,16 @@ export const TriggerSchema = z.object({
   and: ConditionSchema.optional(),
   band: z.string(),
   message: z.string(),
+  /**
+   * Optional alert styling for this trigger. A trigger with BOTH set surfaces
+   * a distinct callout on the results page (e.g. a red "Get Emergency Help
+   * Now — Call 911" vs. an amber "Get Medical Care Today") instead of
+   * silently changing the band. A trigger with neither (e.g. the quieter
+   * found-on-floor-concern trigger) still changes the band but shows no
+   * callout — the destination band's own guidance carries the message.
+   */
+  responseLabel: z.string().optional(),
+  severity: z.enum(["critical", "urgent"]).optional(),
 });
 
 export const EmergencyTriggersSchema = z.object({

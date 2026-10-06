@@ -1,13 +1,19 @@
-import type { Band, ContentPack, Guidance, Situation } from "./content/schema";
+import type { Band, ContentPack, EmergencyTrigger, Guidance, Situation } from "./content/schema";
 
 export type Answers = Record<string, string | string[]>;
+
+export interface Alert {
+  responseLabel: string;
+  severity: "critical" | "urgent";
+  message: string;
+}
 
 export interface GuidanceResult {
   situationId: string;
   situationTitle: string;
   band: { id: string; label: string; tier: string };
-  emergency: boolean;
-  emergencyMessages: string[];
+  /** The single clearest trigger-driven alert to show, if any fired. */
+  alert: Alert | null;
   total: number;
   guidance: Guidance;
   roadmap: Situation["roadmap"];
@@ -20,6 +26,8 @@ interface Condition {
   area?: string;
   minAreaScore?: number;
 }
+
+const SEVERITY_WEIGHT: Record<string, number> = { critical: 2, urgent: 1 };
 
 /** Normalizes a single- or multi-select answer to an array for uniform handling. */
 function asArray(value: string | string[] | undefined): string[] {
@@ -71,18 +79,23 @@ function conditionMet(cond: Condition, answers: Answers): boolean {
  * score below determines the band ONLY when no red-flag trigger fires; (2)
  * emergency triggers can force a band regardless of score, and a low score can
  * never suppress a trigger. Questions in `questions` but not in
- * `scoringQuestions` (e.g. a caregiver-wellbeing check-in) are answered and
- * available to triggers, but never move the score.
+ * `scoringQuestions` (e.g. a caregiver-wellbeing or blood-thinner check-in)
+ * are answered and available to triggers, but never move the score.
  *
- * A trigger's target band is not necessarily the emergency tier — e.g. "found
- * on the floor, couldn't call for help" should raise concern to Take Action
- * Soon without asserting a medical emergency on its own. So: (a) when several
- * triggers fire at once, the MOST SEVERE resulting band wins — a lower-severity
- * trigger can never downgrade a higher one just by being evaluated later, and
- * (b) only a trigger whose target band is the emergency tier surfaces the
- * urgent "please read this first" messaging; a trigger escalating to a
- * non-emergency band changes the band silently and lets that band's normal
- * guidance carry the message.
+ * Within the triggers layer, a target band can host MULTIPLE triggers of
+ * different real-world urgency (e.g. "call 911 now" vs. "get seen today" can
+ * both resolve to the same "Get Immediate Help" band so the surrounding
+ * guidance content stays consistent, while still reading as two distinct
+ * responses). So: (a) the most severe resulting BAND always wins regardless
+ * of trigger order, a lower-severity trigger can never downgrade a higher
+ * one; and (b) among triggers that fired and match that final band, the
+ * single most specific, most severe one is chosen to actually display as the
+ * alert — a trigger with an `and` clause (a narrower, more specific match)
+ * outranks a broader one at the same severity, so a condition-aware message
+ * (e.g. "head injury AND blood thinner") is shown instead of the generic one
+ * it's layered on top of. A trigger with no responseLabel/severity changes
+ * the band silently with no callout — the destination band's own guidance
+ * carries the message instead.
  */
 export function evaluate(pack: ContentPack, situationId: string, answers: Answers): GuidanceResult {
   const situation = pack.situations.find((s) => s.id === situationId);
@@ -111,9 +124,8 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
 
   const bands = effectiveBands(pack, situation);
   let band = bandForScore(bands, total);
-  const emergencyMessages: string[] = [];
-  let emergency = false;
 
+  const fired: Array<{ trigger: EmergencyTrigger; band: Band }> = [];
   for (const trigger of pack.emergencyTriggers.triggers) {
     const whenOk = conditionMet(trigger.when, answers);
     const andOk = trigger.and ? conditionMet(trigger.and, answers) : true;
@@ -122,12 +134,25 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
     const forced = bands.find((b) => b.id === trigger.band);
     if (!forced) continue;
 
+    fired.push({ trigger, band: forced });
     if (severityRank(bands, forced) > severityRank(bands, band)) {
       band = forced;
     }
-    if (forced.tier === "emergency") {
-      emergency = true;
-      emergencyMessages.push(trigger.message);
+  }
+
+  let alert: Alert | null = null;
+  let bestWeight = -1;
+  let bestSpecificity = -1;
+  for (const { trigger, band: triggerBand } of fired) {
+    if (triggerBand.id !== band.id) continue;
+    if (!trigger.responseLabel || !trigger.severity) continue;
+
+    const weight = SEVERITY_WEIGHT[trigger.severity] ?? 0;
+    const specificity = trigger.and ? 1 : 0;
+    if (weight > bestWeight || (weight === bestWeight && specificity > bestSpecificity)) {
+      bestWeight = weight;
+      bestSpecificity = specificity;
+      alert = { responseLabel: trigger.responseLabel, severity: trigger.severity, message: trigger.message };
     }
   }
 
@@ -140,8 +165,7 @@ export function evaluate(pack: ContentPack, situationId: string, answers: Answer
     situationId,
     situationTitle: situation.title,
     band: { id: band.id, label: band.label, tier: band.tier },
-    emergency,
-    emergencyMessages,
+    alert,
     total,
     guidance,
     roadmap: situation.roadmap,

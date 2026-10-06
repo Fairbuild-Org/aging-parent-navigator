@@ -1,19 +1,16 @@
 {
-  "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance) — status stays 'draft' regardless of the rest of a pathway's review state, per Sharon's explicit instruction. A trigger's `band` is NOT always the emergency tier — see found-on-floor-concern below, which escalates to take-action-soon rather than asserting a medical emergency. When multiple triggers fire, lib/scoring.ts resolves to the MOST SEVERE resulting band and only surfaces the urgent 'please read this first' messaging for emergency-tier triggers — a lower-severity trigger can never downgrade or hide a higher one. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect.",
+  "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance) — status stays 'draft' regardless of the rest of a pathway's review state, per Sharon's explicit instruction. Revision 5, 2026-10-06: split the single fall-severe-symptoms trigger into a real two-tier response per Sharon — Tier 1 'Get Emergency Help Now — Call 911' (critical) and Tier 2 'Get Medical Care Today' (urgent). Both tiers target the SAME 'get-immediate-help' band (her explicit decision: don't move Tier 2 to take-action-soon), so the surrounding guidance content stays the serious/urgent version for both; what differs is the responseLabel/severity/message shown on top. lib/scoring.ts resolves which single alert to display when multiple triggers fire: highest severity first (critical beats urgent), then most specific (a trigger with an `and` clause beats one without) as a tiebreak — see fall-tier2-head-injury-blood-thinner, which only wins over the generic fall-tier2-urgent when its extra blood-thinner condition is also met. A trigger with no responseLabel/severity (found-on-floor-concern) still changes the band silently with no callout, unchanged from before. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect.",
   "status": "draft",
-  "version": "0.0.3-draft",
+  "version": "0.0.4-draft",
   "triggers": [
     {
-      "_note": "Replaces the old 'fall-with-injury' trigger (required TWO falls plus a separate binary injury question). Per Sharon: one serious fall can be enough — severity is what matters, not repetition. Fires on ANY selected red flag from the fall-severity checklist except 'none' / 'not-sure'. Pending Sharon's explicit sign-off on both the symptom list and the message wording before this leaves draft status.",
-      "id": "fall-severe-symptoms",
+      "_note": "Tier 1 — Get Emergency Help Now / Call 911. Replaces fall-severe-symptoms. Item list confirmed with Sharon 2026-10-06: her explicit examples (loss of consciousness, seizure, significant new confusion, repeated vomiting, new weakness/numbness, slurred speech, inability to stay awake) plus severe headache and significant bleeding, which she confirmed keeping at Tier 1 after I flagged them as not in her original explicit list. 'Hit their head' and 'possible broken bone' and 'couldn't get up without help' are deliberately NOT here — see fall-tier2-urgent.",
+      "id": "fall-tier1-emergency",
       "when": {
         "questionId": "fall-severity",
         "valueIn": [
-          "unable-to-get-up",
           "loss-of-consciousness",
-          "head-injury",
           "new-confusion",
-          "suspected-fracture",
           "bleeding",
           "severe-headache",
           "vomiting",
@@ -23,17 +20,53 @@
         ]
       },
       "band": "get-immediate-help",
-      "message": "One or more of these signs can indicate a serious injury or a medical emergency. If your parent lost consciousness, can't be woken easily, has a severe headache, repeated vomiting, a seizure, or sudden weakness/trouble speaking or seeing, call 911 now. For a possible fracture, inability to get up, or new confusion, seek urgent medical care today."
+      "severity": "critical",
+      "responseLabel": "Get Emergency Help Now — Call 911",
+      "message": "This points to a possible medical emergency. Call 911 now, or have someone take your parent to the emergency room right away — don't wait to see if it improves."
     },
     {
-      "_note": "New per Sharon, 2026-09-06: being found on the floor should raise concern but NOT automatically mean 911 by itself — only an actual fall-severity red flag (the trigger above) does that. This targets take-action-soon, not get-immediate-help. If a real red flag is ALSO present, fall-severe-symptoms fires too and wins on severity rank — this trigger cannot suppress or downgrade that outcome.",
+      "_note": "Tier 2 — Get Medical Care Today. The generic version: fires on any of these three alone, with no Tier 1 symptom present (if one is, fall-tier1-emergency also fires and wins on severity, see lib/scoring.ts). 'Hit their head' here is deliberately the base case — see fall-tier2-head-injury-blood-thinner for the more specific variant that takes priority when it also applies.",
+      "id": "fall-tier2-urgent",
+      "when": {
+        "questionId": "fall-severity",
+        "valueIn": ["unable-to-get-up", "head-injury", "suspected-fracture"]
+      },
+      "band": "get-immediate-help",
+      "severity": "urgent",
+      "responseLabel": "Get Medical Care Today",
+      "message": "This needs medical attention today. It's not necessarily a 911 emergency, but please don't wait for a routine appointment — call their doctor's office now or go to urgent care today."
+    },
+    {
+      "_note": "Confirmed with Sharon 2026-10-06: head injury + blood thinner, with no OTHER Tier 1 symptom, stays Tier 2 (does NOT escalate to Tier 1) — the blood-thinner context changes the message, not the tier. If a real Tier 1 symptom is also present, fall-tier1-emergency fires independently and wins regardless of this trigger. This trigger only changes which Tier 2 message is shown (it is more specific than fall-tier2-urgent, which also fires whenever this one does, and wins the tiebreak in lib/scoring.ts because it has an `and` clause).",
+      "id": "fall-tier2-head-injury-blood-thinner",
+      "when": { "questionId": "fall-severity", "valueIn": ["head-injury"] },
+      "and": { "questionId": "blood-thinner", "valueIn": ["yes"] },
+      "band": "get-immediate-help",
+      "severity": "urgent",
+      "responseLabel": "Get Medical Care Today",
+      "message": "Because your parent takes a medication that increases bleeding risk, a head injury needs medical evaluation today even without other symptoms — these medications can allow bleeding inside the skull to build up without obvious warning signs at first. Call their doctor or go to urgent care today, and call 911 right away if anything changes: new confusion, a worsening headache, vomiting, or unusual sleepiness."
+    },
+    {
+      "_note": "New per Sharon 2026-10-06: extended or unknown time on the floor should lead to 'appropriate medical guidance... even if no obvious injury is reported' — her words. Deliberately fires on duration alone, with no fall-severity symptom required. Fires on the two longer/unknown duration options only (1 hour+ and duration-unsure) — the shorter buckets (under 30 min, 30-59 min) do not fire this trigger and are left at whatever the plain score or found-on-floor-concern below produces, since Sharon only called out 'extended period' and 'unknown' specifically.",
+      "id": "fall-tier2-floor-duration",
+      "when": {
+        "questionId": "found-on-floor",
+        "valueIn": ["found-floor-hour-plus", "found-floor-duration-unsure"]
+      },
+      "band": "get-immediate-help",
+      "severity": "urgent",
+      "responseLabel": "Get Medical Care Today",
+      "message": "Being on the floor for an extended time, or not knowing how long, is a reason to get checked today even without an obvious injury. Extended time on the floor can lead to dehydration, muscle or kidney strain, or skin injury from pressure, which aren't always obvious right away."
+    },
+    {
+      "_note": "Unchanged in scope from Revision 3, per Sharon's instruction not to touch this one — couldn't get up / couldn't call for help without a specific duration still lands on the quieter take-action-soon band, no callout. Updated only to drop 'found-extended-time' from valueIn, since that value no longer exists as a question option (replaced by the specific duration buckets in concern-check.json, now handled by fall-tier2-floor-duration above).",
       "id": "found-on-floor-concern",
       "when": {
         "questionId": "found-on-floor",
-        "valueIn": ["found-could-not-get-up", "found-could-not-call", "found-extended-time"]
+        "valueIn": ["found-could-not-get-up", "found-could-not-call"]
       },
       "band": "take-action-soon",
-      "message": "Being found on the floor — especially unable to get up, unable to call for help, or for an unknown length of time — is a meaningful safety signal even without other symptoms. It deserves prompt follow-up with their doctor this week."
+      "message": "Being found on the floor — especially unable to get up or unable to call for help — is a meaningful safety signal even without other symptoms. It deserves prompt follow-up with their doctor this week."
     },
     {
       "id": "acute-confusion",

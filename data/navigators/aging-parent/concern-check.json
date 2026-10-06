@@ -200,7 +200,7 @@
       ]
     },
     {
-      "_note": "Multi-select red-flag checklist. Feeds BOTH the numeric score (as the worst selected item's weight, not a sum — see lib/scoring.ts) and the emergency-trigger layer (see fall-severe-symptoms in emergency-triggers.json). Replaces the old binary fall-injury question for this pathway.",
+      "_note": "Multi-select red-flag checklist. Feeds BOTH the numeric score (as the worst selected item's weight, not a sum — see lib/scoring.ts) and the emergency-trigger layer (see emergency-triggers.json). Replaces the old binary fall-injury question for this pathway. Revision 5, 2026-10-06: three option labels (new-confusion, bleeding, severe-headache) reworded to Sharon's exact plain-language wording; weights unchanged. Tier placement for the emergency-trigger layer lives in emergency-triggers.json, not here.",
       "id": "fall-severity",
       "area": "physical",
       "prompt": "Did any fall cause an injury, involve hitting their head, or leave them unable to get up without help?",
@@ -211,15 +211,28 @@
         { "value": "unable-to-get-up", "label": "Couldn't get up without help", "weight": 4 },
         { "value": "loss-of-consciousness", "label": "Passed out, blacked out, or lost consciousness, even briefly", "weight": 4 },
         { "value": "head-injury", "label": "Hit their head", "weight": 3 },
-        { "value": "new-confusion", "label": "Seemed more confused than usual afterward", "weight": 4 },
+        { "value": "new-confusion", "label": "New or suddenly worse confusion, disorientation, unusual behavior, or not acting like themselves", "weight": 4 },
         { "value": "suspected-fracture", "label": "Possible broken bone", "weight": 4 },
-        { "value": "bleeding", "label": "Significant bleeding", "weight": 4 },
-        { "value": "severe-headache", "label": "Severe or worsening headache", "weight": 3 },
+        { "value": "bleeding", "label": "Bleeding that is heavy, won't stop with firm pressure, or is flowing continuously or spurting", "weight": 4 },
+        { "value": "severe-headache", "label": "A new, severe, worsening, or persistent headache after the fall or head injury", "weight": 3 },
         { "value": "vomiting", "label": "Vomited more than once", "weight": 3 },
         { "value": "seizure", "label": "Had a seizure", "weight": 4 },
         { "value": "drowsiness", "label": "Unusually drowsy or hard to wake", "weight": 4 },
         { "value": "neuro-changes", "label": "New weakness, or trouble speaking, walking, or seeing", "weight": 4 },
         { "value": "not-sure", "label": "Not sure", "weight": 1 }
+      ]
+    },
+    {
+      "_note": "New in Revision 5, per Sharon: used only to decide whether a lone head-injury selection (fall-severity) should carry a stronger same-day-care message. Deliberately excludes daily aspirin per her instruction — scoped to prescription blood thinners/antiplatelets only. Unscored (excluded from every situation's scoringQuestions that uses it).",
+      "id": "blood-thinner",
+      "area": "medication",
+      "prompt": "Does your parent take a prescription medicine that increases bleeding risk, such as warfarin (Coumadin), Eliquis, Xarelto, Pradaxa, Plavix, or another prescription blood thinner or antiplatelet medicine?",
+      "help": "This does not include daily aspirin — we're asking about prescription blood thinners specifically.",
+      "type": "single",
+      "options": [
+        { "value": "yes", "label": "Yes", "weight": 0 },
+        { "value": "no", "label": "No", "weight": 0 },
+        { "value": "not-sure", "label": "Not sure", "weight": 0 }
       ]
     },
     {
@@ -274,6 +287,7 @@
     },
     {
       "_note": "Captures the DISCOVERY circumstances of a fall (how it was found), distinct from fall-severity which captures physical/medical symptoms. Per Sharon: should raise concern (see found-on-floor-concern trigger, targets take-action-soon, NOT get-immediate-help) without being able to independently force an emergency — only an actual fall-severity red flag does that.",
+      "_note": "Revision 5, 2026-10-06: replaced the single vague 'a while, not sure how long' option with four specific time ranges, per Sharon. found-floor-hour-plus and found-floor-duration-unsure are distinct value ids from the general 'not-sure' (which means not sure this happened at all, not not sure how long) to avoid any ambiguity in trigger conditions.",
       "id": "found-on-floor",
       "area": "physical",
       "prompt": "Was your parent found on the floor after a fall?",
@@ -285,7 +299,10 @@
         { "value": "not-sure", "label": "Not sure", "weight": 1 },
         { "value": "found-could-not-call", "label": "Yes, and they could not call or reach anyone for help", "weight": 3 },
         { "value": "found-could-not-get-up", "label": "Yes, and they could not get up without help", "weight": 3 },
-        { "value": "found-extended-time", "label": "Yes, and they may have been on the floor for a while (not sure how long)", "weight": 4 }
+        { "value": "found-floor-under-30", "label": "They were on the floor less than 30 minutes", "weight": 1 },
+        { "value": "found-floor-30-to-59", "label": "They were on the floor 30 to 59 minutes", "weight": 2 },
+        { "value": "found-floor-hour-plus", "label": "They were on the floor 1 hour or longer", "weight": 4 },
+        { "value": "found-floor-duration-unsure", "label": "Not sure how long they were on the floor", "weight": 3 }
       ]
     }
   ]

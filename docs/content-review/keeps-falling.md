@@ -1,6 +1,6 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-05 per your feedback) · Purpose:
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-06 per your feedback) · Purpose:
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
@@ -8,13 +8,15 @@
 > questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance) remain unchanged
 > and verified working.
 >
-> **§4 is updated again, reflecting your two-tier decision.** Still nothing built, this is a revised
-> worksheet, not an implementation. It proposes a concrete split into Tier 1 (Get Emergency Help Now /
-> Call 911) and Tier 2 (Get Medical Care Today), maps every original item into one of the two, proposes
-> a new blood-thinner question for the head-injury escalation you asked for, clarifies that new
-> confusion is already covered, and checks whether the found-on-floor logic already does what you
-> described. Several items are explicitly flagged for your yes/no since you said "etc." rather than
-> naming every item. Nothing moves to approved until you've been through all of §4.
+> **§4 is now built, not just proposed.** The two-tier response is live: Tier 1 "Get Emergency Help
+> Now — Call 911" (red) and Tier 2 "Get Medical Care Today" (amber), both landing on the same "Get
+> Immediate Help" structure as you asked, with the three item placements you confirmed, your reworded
+> checklist labels, the new blood-thinner question with your exact wording (and your decision that it
+> changes the message but not the tier), and the granular floor-duration escalation. Verified against
+> 14 scenarios directly through the real scoring function, and live in the browser, both colors render
+> correctly, zero console errors. **One thing I found and fixed along the way, and one thing I'm
+> flagging rather than silently changing** — see the note at the end of §4. This is still draft, your
+> final review pass is the next step before anything moves to approved.
 
 ---
 
@@ -277,10 +279,14 @@ confusion, the Tier 1 (or Tier 2) trigger from §4b/4c fires and wins. Found-on-
 with no injury or confusion present, stays at its own level, Take Action Soon, not Get Medical Care
 Today or 911.
 
-So structurally, I believe this is already built. The one place it could be more precise is "how long
-they may have been on the floor," which is currently one vague option ("a while, not sure how long").
-Would you like real time ranges instead (for example, under 30 minutes / 30 minutes to a few hours /
-longer or unknown), or is the current single option sufficient?
+**Built, per your exact ranges.** The vague single option is now four: less than 30 minutes, 30 to 59
+minutes, 1 hour or longer, not sure. Per your instruction, "1 hour or longer" and "not sure" now have
+their own trigger and land on Get Medical Care Today, with its own message about prolonged floor time
+(dehydration, muscle or kidney strain, pressure-related skin injury), even with no injury reported.
+The two shorter buckets deliberately do not fire this trigger, you only named "extended" and "unknown"
+specifically, so they contribute to the plain score like before. Confirmed directly: selecting only
+"1 hour or longer," nothing else, lands on Get Medical Care Today; selecting only "less than 30
+minutes" does not.
 
 ### 4g. `acute-confusion` — unrelated trigger, unchanged
 
@@ -289,9 +295,34 @@ never asks. It's unrelated to the new confusion coverage in §4e (different ques
 pathway). No action needed here for falls, it stays as-is for when we get to the memory-changes
 pathway.
 
-**Still nothing implemented.** Once you've gone through 4a through 4f, I'll build exactly what you
-confirm, state assumptions back clearly wherever you left something open, and bring back a final
-version before anything moves out of draft.
+### 4h. What was built, and two things worth your attention
+
+Everything in 4a through 4f above is now implemented, not just proposed, and verified two ways: 14
+test scenarios run directly against the real scoring logic (including the tricky ones, head injury
+plus blood thinner with nothing else present correctly stays Tier 2; the same combination plus loss of
+consciousness correctly escalates to Tier 1 regardless of the blood-thinner wording being more
+specific), and a live pass through the actual browser confirming both colors render and the full
+9-question flow completes cleanly.
+
+**One bug I found and fixed before it reached you.** Both tiers land on the same "Get Immediate Help"
+band, which is what you asked for. But the page was still showing a second, separate box right under
+the new alert, the band's own generic heading and summary, hardcoded in red regardless of which tier
+fired. For a Tier 2 result, that meant an amber "Get Medical Care Today" alert was immediately followed
+by a red box repeating "GET IMMEDIATE HELP," which directly contradicts the calmer framing you asked
+for. I caught this by actually looking at the screenshots, not just the logic tests, and fixed it: that
+second box now matches the alert's own color, amber for Tier 2, red for Tier 1, and no longer repeats a
+conflicting label.
+
+**One thing I'm flagging instead of changing myself.** That same second box still shows its original
+headline, "This fall needs immediate attention," underneath either alert, Tier 1 or Tier 2. The color
+is fixed now, but the wording itself was written back when there was only one urgent tier, and reads a
+little strong for the calmer "today, not necessarily emergency" framing of Tier 2. I did not rewrite
+it, that content is yours from an earlier round. Would you like a second, softer headline for when
+Tier 2 fires, or is the existing wording fine as-is now that the color no longer contradicts it?
+
+**Still draft.** This is the completed version for your final review pass, not an approval. Once you
+confirm it, or mark up anything further, including the one open question above, I'll move this pathway
+to approved and we start the same process on the next situation.
 
 ---
 

@@ -35,29 +35,52 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export function FamilyGuidanceSummary({ result }: { result: GuidanceResult }) {
   const g = result.guidance;
-  const style = BAND_STYLES[result.band.id] ?? BAND_STYLES["plan-a-conversation"];
+  // When an alert fired, match the band box's color to the ALERT's severity
+  // rather than the band id — critical and urgent both resolve to the same
+  // "get-immediate-help" band (by design, see lib/scoring.ts), but showing a
+  // hardcoded red band box under an amber "Get Medical Care Today" alert
+  // would contradict the calmer framing that alert is deliberately making.
+  const style = result.alert
+    ? BAND_STYLES[result.alert.severity === "critical" ? "get-immediate-help" : "take-action-soon"]
+    : (BAND_STYLES[result.band.id] ?? BAND_STYLES["plan-a-conversation"]);
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
       <p className="text-sm text-foreground/60">Your Family Guidance Summary</p>
       <h1 className="mt-1 font-serif text-3xl font-semibold text-brand-900">{result.situationTitle}</h1>
 
-      {result.emergency && (
-        <div className="mt-6 rounded-xl bg-rose-50 p-5 ring-1 ring-rose-300">
-          <p className="font-semibold text-rose-800">Please read this first</p>
-          {result.emergencyMessages.map((m, i) => (
-            <p key={i} className="mt-2 text-rose-800/90">
-              {m}
-            </p>
-          ))}
+      {result.alert && (
+        <div
+          className={`mt-6 rounded-xl p-5 ring-1 ${
+            result.alert.severity === "critical"
+              ? "bg-rose-50 ring-rose-300"
+              : "bg-amber-50 ring-amber-300"
+          }`}
+        >
+          <p
+            className={`font-semibold ${
+              result.alert.severity === "critical" ? "text-rose-800" : "text-amber-800"
+            }`}
+          >
+            {result.alert.responseLabel}
+          </p>
+          <p
+            className={`mt-2 ${
+              result.alert.severity === "critical" ? "text-rose-800/90" : "text-amber-800/90"
+            }`}
+          >
+            {result.alert.message}
+          </p>
         </div>
       )}
 
       <div className={`mt-6 rounded-2xl ${style.bg} p-6 ring-1 ${style.ring}`}>
-        <p className={`text-sm font-semibold uppercase tracking-wide ${style.text}`}>
-          {result.band.label}
-        </p>
-        <p className="mt-2 font-serif text-xl text-brand-900">{g.headline}</p>
+        {!result.alert && (
+          <p className={`text-sm font-semibold uppercase tracking-wide ${style.text}`}>
+            {result.band.label}
+          </p>
+        )}
+        <p className={`font-serif text-xl text-brand-900 ${result.alert ? "" : "mt-2"}`}>{g.headline}</p>
         <p className="mt-2 text-foreground/80">{g.whatWeNoticed}</p>
       </div>
 

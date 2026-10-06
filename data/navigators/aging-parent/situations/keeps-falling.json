@@ -1,5 +1,5 @@
 {
-  "_note": "DRAFT — Revision 4, 2026-09-24: reordered questions light-to-heavy per Sharon's brief on the post-click experience (ease in with simple observations, save the red-flag checklist and found-on-floor for once trust is built, close with the caring caregiver check-in). No scoring/trigger logic changed — order does not affect the sum or which triggers can fire. Revision 3 content (lives-alone, found-on-floor, situation-specific score bands) unchanged. Pending Sharon's final sign-off — emergency triggers specifically still need a separate dedicated review pass per her instruction.",
+  "_note": "DRAFT — Revision 5, 2026-10-06: built the two-tier red-flag response (Get Emergency Help Now vs. Get Medical Care Today) per Sharon's decisions — see emergency-triggers.json for the trigger definitions. Added blood-thinner to the question sequence (unscored, like lives-alone) to inform the head-injury escalation message. found-on-floor's duration options were made granular (see concern-check.json); scoreBands unchanged, the new duration option's max weight (4) matches the old one so the pathway's score ceiling is still 24. Still in draft — per Sharon, the emergency-trigger portion gets a dedicated final review pass before this pathway moves to approved.",
   "id": "keeps-falling",
   "status": "draft",
   "title": "My parent keeps falling or seems physically weaker",
@@ -13,6 +13,7 @@
     "balance-fear-of-falling",
     "fall-home-hazards",
     "lives-alone",
+    "blood-thinner",
     "fall-severity",
     "found-on-floor",
     "caregiver-overwhelm"
