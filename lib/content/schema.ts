@@ -126,6 +126,15 @@ export const GuidanceSchema = z.object({
   status: z.string().optional(),
   version: z.string().optional(),
   headline: z.string(),
+  /**
+   * Optional alternate headline shown instead of `headline` when the result
+   * was reached via an "urgent" (not "critical") trigger alert — e.g. a band
+   * shared by both a 911-level and a same-day-care-level response can read
+   * "needs immediate attention" for the former and "needs medical attention
+   * today" for the latter, without needing two separate guidance files.
+   * Falls back to `headline` when not set, or when no alert fired at all.
+   */
+  urgentHeadline: z.string().optional(),
   whatWeNoticed: z.string(),
   whatDeservesAttentionFirst: z.string(),
   helpfulObservationsToMonitor: z.array(z.string()),

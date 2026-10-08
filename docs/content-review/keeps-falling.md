@@ -1,6 +1,6 @@
 # Content Review — Pilot Pathway: "My parent keeps falling or seems physically weaker"
 
-> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-06 per your feedback) · Purpose:
+> Situation id: `keeps-falling` · Status: **`draft`** (revised 2026-10-08 per your feedback) · Purpose:
 > gold-standard pilot pathway — once this is genuinely strong end-to-end, we use it as the template
 > for the other six.
 >
@@ -8,15 +8,15 @@
 > questions, lives-alone/found-on-floor, two-layer scoring, falls-specific guidance) remain unchanged
 > and verified working.
 >
-> **§4 is now built, not just proposed.** The two-tier response is live: Tier 1 "Get Emergency Help
-> Now — Call 911" (red) and Tier 2 "Get Medical Care Today" (amber), both landing on the same "Get
-> Immediate Help" structure as you asked, with the three item placements you confirmed, your reworded
-> checklist labels, the new blood-thinner question with your exact wording (and your decision that it
-> changes the message but not the tier), and the granular floor-duration escalation. Verified against
-> 14 scenarios directly through the real scoring function, and live in the browser, both colors render
-> correctly, zero console errors. **One thing I found and fixed along the way, and one thing I'm
-> flagging rather than silently changing** — see the note at the end of §4. This is still draft, your
-> final review pass is the next step before anything moves to approved.
+> **§4's two-tier response is built and now carries your two final adjustments.** The amber box's
+> headline is now "This fall needs medical attention today." (shown only for the amber/Tier 2 result —
+> the red/Tier 1 box still reads "This fall needs immediate attention," unchanged), and the
+> head-injury-plus-blood-thinner message now reads as you wrote it, stronger on urgency, still Tier 2,
+> still correctly overridden by any real red flag. Both changes verified: the new headline renders
+> exactly as written, the new message shows only when blood thinner applies, and red flags still win
+> over it when present (confirmed directly against the real scoring function). Everything else from
+> the last round, including the found-on-floor time ranges, the one-hour/not-sure amber trigger, and
+> the earlier red-box color fix, is unchanged. **This is the version for your final approval pass.**
 
 ---
 
@@ -313,16 +313,18 @@ for. I caught this by actually looking at the screenshots, not just the logic te
 second box now matches the alert's own color, amber for Tier 2, red for Tier 1, and no longer repeats a
 conflicting label.
 
-**One thing I'm flagging instead of changing myself.** That same second box still shows its original
-headline, "This fall needs immediate attention," underneath either alert, Tier 1 or Tier 2. The color
-is fixed now, but the wording itself was written back when there was only one urgent tier, and reads a
-little strong for the calmer "today, not necessarily emergency" framing of Tier 2. I did not rewrite
-it, that content is yours from an earlier round. Would you like a second, softer headline for when
-Tier 2 fires, or is the existing wording fine as-is now that the color no longer contradicts it?
+**Resolved per your 2026-10-08 message.** That second box now has two headlines instead of one: "This
+fall needs immediate attention" for Tier 1 (unchanged), and your new "This fall needs medical attention
+today." for Tier 2, shown automatically based on which alert fired. No code change was needed to add
+this, the guidance content just gained an optional alternate headline field, the same `guidanceOverrides`
+mechanism already does the rest. Confirmed rendering exactly as written.
 
-**Still draft.** This is the completed version for your final review pass, not an approval. Once you
-confirm it, or mark up anything further, including the one open question above, I'll move this pathway
-to approved and we start the same process on the next situation.
+**Also applied: the strengthened blood-thinner message.** The head-injury-plus-blood-thinner result now
+reads as you wrote it. Confirmed it still stays Tier 2 on its own, and that a real red flag (tested with
+loss of consciousness) still overrides it to Tier 1 regardless.
+
+**Still draft.** This is the completed version for your final approval pass. Once you confirm it, I'll
+move this pathway to approved and we start the same process on the next situation.
 
 ---
 

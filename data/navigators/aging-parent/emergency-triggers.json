@@ -1,7 +1,7 @@
 {
   "_note": "DRAFT — emergency triggers require a SEPARATE, explicit RN review pass before approval (see governance) — status stays 'draft' regardless of the rest of a pathway's review state, per Sharon's explicit instruction. Revision 5, 2026-10-06: split the single fall-severe-symptoms trigger into a real two-tier response per Sharon — Tier 1 'Get Emergency Help Now — Call 911' (critical) and Tier 2 'Get Medical Care Today' (urgent). Both tiers target the SAME 'get-immediate-help' band (her explicit decision: don't move Tier 2 to take-action-soon), so the surrounding guidance content stays the serious/urgent version for both; what differs is the responseLabel/severity/message shown on top. lib/scoring.ts resolves which single alert to display when multiple triggers fire: highest severity first (critical beats urgent), then most specific (a trigger with an `and` clause beats one without) as a tiebreak — see fall-tier2-head-injury-blood-thinner, which only wins over the generic fall-tier2-urgent when its extra blood-thinner condition is also met. A trigger with no responseLabel/severity (found-on-floor-concern) still changes the band silently with no callout, unchanged from before. Every trigger's questionId must actually be asked in the pathway(s) it's meant to protect.",
   "status": "draft",
-  "version": "0.0.4-draft",
+  "version": "0.0.5-draft",
   "triggers": [
     {
       "_note": "Tier 1 — Get Emergency Help Now / Call 911. Replaces fall-severe-symptoms. Item list confirmed with Sharon 2026-10-06: her explicit examples (loss of consciousness, seizure, significant new confusion, repeated vomiting, new weakness/numbness, slurred speech, inability to stay awake) plus severe headache and significant bleeding, which she confirmed keeping at Tier 1 after I flagged them as not in her original explicit list. 'Hit their head' and 'possible broken bone' and 'couldn't get up without help' are deliberately NOT here — see fall-tier2-urgent.",
@@ -44,7 +44,7 @@
       "band": "get-immediate-help",
       "severity": "urgent",
       "responseLabel": "Get Medical Care Today",
-      "message": "Because your parent takes a medication that increases bleeding risk, a head injury needs medical evaluation today even without other symptoms — these medications can allow bleeding inside the skull to build up without obvious warning signs at first. Call their doctor or go to urgent care today, and call 911 right away if anything changes: new confusion, a worsening headache, vomiting, or unusual sleepiness."
+      "message": "Because your parent hit their head and takes a blood thinner, they should be medically evaluated promptly today. Blood thinners can increase the risk of bleeding after a head injury, even when symptoms seem mild at first. If any emergency warning signs develop, call 911."
     },
     {
       "_note": "New per Sharon 2026-10-06: extended or unknown time on the floor should lead to 'appropriate medical guidance... even if no obvious injury is reported' — her words. Deliberately fires on duration alone, with no fall-severity symptom required. Fires on the two longer/unknown duration options only (1 hour+ and duration-unsure) — the shorter buckets (under 30 min, 30-59 min) do not fire this trigger and are left at whatever the plain score or found-on-floor-concern below produces, since Sharon only called out 'extended period' and 'unknown' specifically.",

@@ -1,9 +1,10 @@
 {
-  "_note": "DRAFT falls-specific override for the 'Get Immediate Help' band — pending Sharon's sign-off. Wording should stay consistent with the fall-severe-symptoms trigger message in emergency-triggers.json.",
+  "_note": "DRAFT falls-specific override for the 'Get Immediate Help' band — pending Sharon's final approval. Revision 2026-10-08: added urgentHeadline per Sharon, shown instead of headline when the amber/Tier 2 (Get Medical Care Today) alert fires, so the box reads consistently with the amber framing rather than the red/911-level wording below.",
   "band": "get-immediate-help",
   "status": "draft",
-  "version": "0.0.1-draft",
+  "version": "0.0.2-draft",
   "headline": "This fall needs immediate attention",
+  "urgentHeadline": "This fall needs medical attention today.",
   "whatWeNoticed": "What you've described includes one or more signs that can indicate a serious injury or medical emergency after a fall.",
   "whatDeservesAttentionFirst": "Safety comes first. If your parent lost consciousness, can't be woken easily, has a severe or worsening headache, has vomited repeatedly, had a seizure, or has sudden weakness or trouble speaking or seeing — call 911 now.",
   "helpfulObservationsToMonitor": [

@@ -80,7 +80,9 @@ export function FamilyGuidanceSummary({ result }: { result: GuidanceResult }) {
             {result.band.label}
           </p>
         )}
-        <p className={`font-serif text-xl text-brand-900 ${result.alert ? "" : "mt-2"}`}>{g.headline}</p>
+        <p className={`font-serif text-xl text-brand-900 ${result.alert ? "" : "mt-2"}`}>
+          {result.alert?.severity === "urgent" && g.urgentHeadline ? g.urgentHeadline : g.headline}
+        </p>
         <p className="mt-2 text-foreground/80">{g.whatWeNoticed}</p>
       </div>
 
