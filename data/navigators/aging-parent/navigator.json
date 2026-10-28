@@ -1,12 +1,12 @@
 {
-  "_note": "Pack is mixed-status: keeps-falling is DRAFT (pilot pathway, revised per Sharon's 2026-09-06 input, pending her sign-off); the other 6 situations remain PLACEHOLDER. NOT clinical guidance until each situation's status is individually 'approved' by Sharon Collins, RN. See data/README.md.",
+  "_note": "Pack is mixed-status: keeps-falling is DRAFT (pilot pathway, revised per Sharon's 2026-09-06 input, pending her sign-off); the other 6 situations remain PLACEHOLDER. NOT clinical guidance until each situation's status is individually 'approved' by Sharon Collins, RN. See data/README.md. `publiclyVisible` (added 2026-10-28) is a SEPARATE concern from content `status` — it's the public launch gate, enforced both on the homepage grid and at the /check/[situation] route itself (returns 404 for anything not listed), so an unreviewed pathway can't be reached even by a direct URL guess. Update this list only as Sharon formally approves each pathway for public launch.",
   "id": "aging-parent",
   "name": "Aging Parent Navigator",
   "version": "0.1.0-draft",
   "status": "draft",
   "approvedBy": null,
   "approvedAt": null,
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-10-28",
   "locale": "en-US",
   "disclaimer": "Aging Parent Navigator is educational and is not medical advice, diagnosis, or treatment. It does not replace evaluation by a qualified professional. In an emergency, call 911.",
   "situations": [
@@ -18,6 +18,7 @@
     "caregiver-overwhelmed",
     "something-feels-different"
   ],
+  "publiclyVisible": ["keeps-falling"],
   "concernCheck": "concern-check.json",
   "scoring": "scoring.json",
   "emergencyTriggers": "emergency-triggers.json"

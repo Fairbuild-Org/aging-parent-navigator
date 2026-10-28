@@ -191,6 +191,16 @@ export const NavigatorSchema = z.object({
   locale: z.string(),
   disclaimer: z.string(),
   situations: z.array(z.string()),
+  /**
+   * The public-launch gate, separate from each situation's content `status`.
+   * Only situation ids listed here are reachable by a real visitor — shown on
+   * the homepage grid AND the only ids the /check/[situation] route will
+   * serve (anything else 404s, even by direct URL). Defaults to an empty
+   * list when omitted, so a missing field fails closed (nothing public)
+   * rather than open (everything public) — this gates unreviewed clinical
+   * content, so the safe default matters more than developer convenience.
+   */
+  publiclyVisible: z.array(z.string()).optional(),
   concernCheck: z.string(),
   scoring: z.string(),
   emergencyTriggers: z.string(),

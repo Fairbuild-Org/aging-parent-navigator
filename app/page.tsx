@@ -30,6 +30,10 @@ const STEPS = [
 
 export default async function Home() {
   const pack = await getPack();
+  // Public-launch gate: only situations Sharon has cleared for real visitors
+  // show up here, separate from each situation's own content-review status.
+  const visibleIds = pack.navigator.publiclyVisible ?? [];
+  const visibleSituations = pack.situations.filter((s) => visibleIds.includes(s.id));
 
   return (
     <div>
@@ -76,7 +80,7 @@ export default async function Home() {
           </p>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
-          {pack.situations
+          {visibleSituations
             .filter((s) => s.id !== "something-feels-different")
             .map((s, i) => (
               <Link
@@ -106,7 +110,7 @@ export default async function Home() {
 
         {/* Explicit "not sure" wayfinding — for the overwhelmed visitor who can't self-categorize */}
         {(() => {
-          const notSure = pack.situations.find((s) => s.id === "something-feels-different");
+          const notSure = visibleSituations.find((s) => s.id === "something-feels-different");
           if (!notSure) return null;
           return (
             <Link
