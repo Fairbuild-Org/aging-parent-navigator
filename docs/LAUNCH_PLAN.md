@@ -1,115 +1,152 @@
 # Aging Parent Navigator — Status Report
 
----
-
-## 1. What has been completed
-
-- **The core engine.** Situations, questions, scoring, and guidance all live as structured, versioned
-  content rather than hardcoded into the site — this is what lets a new pathway get built without
-  touching the underlying system each time.
-- **The full family-facing experience**: homepage, the Concern Check flow (a calm opening, one
-  question at a time, a progress indicator, support for select-all-that-apply questions), and the
-  results page. Built and refined through several rounds of Sharon's direct feedback on tone, pacing,
-  and wording.
-- **A two-layer scoring system**: a numeric risk score plus independent red-flag overrides, with a
-  severity-ranked resolution so a lower-priority signal can never downgrade or hide a real emergency.
-  This is reusable engineering, not something that has to be rebuilt for each new pathway.
-- **The Falls & Mobility pathway is content-complete** — real clinical questions, real scoring, and a
-  two-tier emergency response (a red "Call 911" result and a separate amber "get medical care today"
-  result), reached after many rounds of Sharon's direct clinical review.
-- **Live and verified.** The site is deployed and publicly reachable. The Falls pathway was tested
-  directly against the live production site, not just locally: 9 questions, both tiers show the
-  correct label and wording, zero console or page errors.
-
-## 2. What remains before the project is complete and ready to publish
-
-**This depends on which "complete" Sharon means, and it's worth her confirming directly rather than
-us assuming:**
-
-- **Option A — the phased pilot scope**, which is what was discussed and agreed a few messages ago:
-  Falls (done) plus the "Not Sure" pathway, optionally Caregiver Overwhelm, with the other four
-  pathways fully hidden, basic functionality (saved assessments, working email), and privacy/terms in
-  place, before inviting a small group of families.
-- **Option B — the full original seven-pathway site**, all situations reviewed to the same depth as
-  Falls, every integration live, before anyone outside the team sees it.
-
-**Remaining work common to both options:**
-
-- A privacy notice and terms of use (none exist today beyond a one-line disclaimer).
-- The "educational, not medical advice" disclaimer shown explicitly at the start of the Concern Check,
-  not just in the footer.
-- A database so a completed assessment is actually saved, and a working "email my summary" button —
-  neither exists yet; right now nothing persists anywhere.
-- An attorney's review of the privacy notice and terms before real families participate.
-
-**Additional for Option A:** the "Not Sure" pathway fully reviewed (it's still on original placeholder
-content), and the four unused pathways hidden from the homepage. Caregiver Overwhelm only if time
-allows.
-
-**Additional for Option B:** all six remaining pathways fully reviewed to the same depth as Falls, plus
-every integration (analytics, scheduling) built out, not just the minimum.
-
-## 3. Estimate of additional time needed
-
-**Engineering work, independent of which option Sharon picks** — this part I can estimate with
-confidence:
-
-| Item                                                 | Estimate                 |
-| ---------------------------------------------------- | ------------------------ |
-| Hide the four unready pathways                       | ~1 day                   |
-| In-flow disclaimer on the Concern Check              | ~1 day                   |
-| Privacy notice & terms — drafting (not legal review) | ~1–2 days                |
-| Database + saved assessments + working email         | ~4–6 days                |
-| **Subtotal**                                         | **~7–10 developer-days** |
-
-## 4. Realistic completion timeline, including a target publication date
-
-Suggested milestones once the date is set, so there's a visible path rather than one date at the end:
-
-1. Sharon tests and formally approves Falls (no engineering work blocking this — her pace).
-2. Privacy notice, terms, and in-flow disclaimer drafted; attorney engaged for review.
-3. Database and working email live; four unready pathways hidden.
-4. "Not Sure" pathway content review begins, using the same process as Falls.
-5. Legal review clears; "Not Sure" approved; small group of families invited.
-6. _(If Option B)_ remaining five pathways move through the same review process, one at a time.
-
-## 5. What we need from Sharon to finish the remaining work
-
-- **Confirm which option in §2** she means by "complete."
-- **Keep a steady review cadence** on the remaining pathway content — this has consistently been the
-  actual pace-setter for the project, more than engineering time.
-- **Engage an attorney soon** for the privacy notice and terms review, since that timeline isn't
-  something we control.
-- Her own testing pass and formal approval of the live Falls pathway, whenever she's able to.
+> Written to answer Sharon's six numbered questions directly, in order. One field is marked
+> `[DENNIS: fill in]` — total hours — since I have no way to generate that number myself. Everything
+> else, including a concrete proposed publication date, is answered as fully as I can answer it.
 
 ---
 
-## Appendix A — Data & privacy (answers to her earlier four questions)
+## 1. Development history and time invested
 
-**What information will we actually collect and store?** Only what's needed to show a result and,
-if offered, follow up: which situation was selected, the answers given (selected options, not free
-text), and the resulting risk level and any alert that fired. An email address only if the family
-chooses to enter one — nothing is stored if they skip it. Nothing else. The parent is never asked for
-their name anywhere in the current design, by original design, not a new addition for this round.
+**When work began and what happened, by actual date** (from the project's own records, not memory):
 
-**Where will it be stored, and how will it be protected?** A managed Postgres database (Neon),
-encrypted in transit and at rest. Credentials stored only as environment variables, never in the
-codebase. No public-facing way to read stored data back out — the live site can only write a new
-record, nothing lists or exposes existing ones. Honest limitation: this is a standard secure setup, not
-a formal HIPAA business-associate arrangement; our understanding is that HIPAA likely doesn't apply
-here since this is educational rather than Sharon acting as a covered entity, but that's worth her
-attorney confirming directly rather than taking our word for it.
+| Date                    | Milestone                                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-18              | Project first discussed — validation-first concept and lean MVP direction                                                   |
+| 2026-06-19 – 2026-07-23 | Direction-setting phase: situation-first platform concept, architecture, phased roadmap agreed, before any code was written |
+| 2026-07-24              | First commit — architecture and platform direction documented                                                               |
+| 2026-07-24 – 2026-07-28 | App scaffolded, initial pages and content structure built                                                                   |
+| 2026-08-01              | Project structure finalized                                                                                                 |
+| 2026-08-11 – 2026-08-14 | Homepage refined per Sharon's direct feedback (warmth, copy, situation cards)                                               |
+| 2026-08-20 – 2026-09-02 | Falls pathway selected as the pilot; first content-review round                                                             |
+| 2026-09-07 – 2026-09-15 | Two-layer scoring system built; Falls pathway revised through several rounds                                                |
+| 2026-09-24 – 2026-10-08 | Opening-experience redesign; two-tier emergency response (red/amber) built and finalized                                    |
+| 2026-10-21 – 2026-10-28 | Status reporting, phased-launch planning, and today's fix confirming unreviewed pathways are no longer publicly reachable   |
 
-**Will users be able to request deletion of their information?** Yes, handled manually for this phase
-rather than a self-service feature: the privacy notice states that anyone can email to request
-deletion, handled by hand within a stated number of days. A self-service option is reasonable to build
-later if the user base grows beyond a small, known pilot group.
+So: **roughly one month of direction and planning before any code existed**, then **about three months
+of active building**, from the end of July through today.
 
-**How much additional development will this functionality require?** Covered in the ~4–6 day estimate
-in §4 above — database setup, connecting the Concern Check to save a completed assessment, and wiring
-the existing Brevo account to actually send the summary email.
+**Approximate hours, and how they broke down across development, revisions, testing, and time spent
+waiting on feedback:**
 
-## Appendix B — What explicitly waits regardless of which option is chosen
+`[DENNIS: fill in — the date ranges above should make this much faster to estimate than starting from
+scratch, since each block of calendar time is already identified]`
+
+---
+
+## 2. Firm publication timeline
+
+**Target: 2–3 weeks from today — Wednesday, November 11 at the earliest, Wednesday, November 18 at
+the latest.** Two weeks is the fast path, both tracks below moving in parallel without delay. Three
+weeks is the realistic path if either one needs an extra round. Either way, this is tighter than the
+original proposal because the schedule below runs the content review and the legal/engineering track
+genuinely in parallel from day one, not with legal starting only after content finishes.
+
+| Dates                    | Milestone                                                                                    | Active dev, or awaiting feedback?                                               |
+| ------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Oct 28 (today)           | Unreviewed pathways confirmed hidden from public access (done, verified live)                | Active dev                                                                      |
+| Oct 28 – Oct 30          | Privacy notice & terms drafted; in-flow disclaimer added; attorney engaged same day          | Active dev                                                                      |
+| Oct 28 – Nov 3           | Database + saved assessments + working "email my summary" built                              | Active dev                                                                      |
+| Oct 28 – [Sharon's pace] | Sharon tests and formally approves the live Falls pathway                                    | **Awaiting feedback**                                                           |
+| Oct 29 – Nov 7           | "Not Sure" pathway: questions, scoring, and guidance drafted and reviewed in rounds (see §3) | Alternates: active dev while drafting, **awaiting feedback** between each round |
+| Oct 30 – Nov 11          | Attorney review of privacy notice & terms, running alongside content review, not after it    | **Awaiting feedback** (external)                                                |
+| Nov 10 – Nov 14          | Final integration testing across both pathways; "Not Sure" approved                          | Active dev + final sign-off                                                     |
+| **Nov 11–18**            | **Target: invite the first small group of families**                                         | —                                                                               |
+
+**What has to hold for the fast end (Nov 11) rather than the realistic end (Nov 18):**
+
+- "Not Sure" content review stays on a tight, near-daily cadence for about a week and a half, rather
+  than the week-plus gaps between rounds that happened earlier in the project.
+- An attorney is engaged **today or tomorrow** and turns around review within about two weeks,
+  running the same two weeks as content review rather than starting after it.
+- Caregiver Overwhelm stays **outside** this date entirely (see §3) — it never holds up publication
+  either way.
+
+If both move at that pace, November 11 is real. If either needs one more round, November 18 is the
+realistic fallback, not a slip, it's already built into the range. If something pushes past both, I'll
+flag it the moment it's clear rather than let the date pass quietly.
+
+---
+
+## 3. Remaining pathway work
+
+**"Not Sure" (`something-feels-different`)** — currently on its original placeholder content, never
+reviewed. What's left, using the same process Falls went through:
+
+- Confirm or revise its framing and the specific questions it asks (it currently pulls a loose mix
+  touching memory, mood, weight, and falls — worth a real decision on whether that's the right set for
+  a catch-all pathway, not just inherited as-is).
+- Scoring and cut points.
+- A deliberate decision on emergency triggers — this is the only other pathway besides Falls that asks
+  about memory changes, so it's the first place the existing-but-unused confusion trigger could
+  actually become relevant, worth discussing specifically rather than assuming.
+- Guidance content for each result level.
+
+Expect this to move faster than Falls did — the question format, the two-tier trigger pattern, and the
+review process are now established rather than being built for the first time — but it still requires
+real rounds of Sharon's judgment, not just engineering time.
+
+**Caregiver Overwhelm** — realistically, this should be treated as **separate from the publication
+date above, not a dependency of it.** The honest answer to whether it can be included without delay:
+only if its review happens in parallel and finishes early — it should never be allowed to push the
+November date. If it's ready in time, it ships alongside the other two. If not, it ships right after,
+without having held anything up.
+
+---
+
+## 4. Privacy and data handling
+
+Three specific things to clarify, and one real decision worth Sharon's explicit confirmation before
+it's built:
+
+**Will assessments be saved when no email is given?** Recommending **yes, with one addition**: every
+completed assessment, whether or not an email is given, gets saved with a short, random, non-identifying
+reference code shown on screen at the end. This is what makes the next question answerable — without
+it, an anonymous completion has no way to ever be found again, not even by the person who completed it.
+With it, someone can request deletion by quoting that code, with or without having given an email.
+
+**How would records be identified for deletion requests?** By email, for anyone who gave one. By the
+on-screen reference code, for anyone who didn't. Either way, a request is handled manually for this
+pilot — someone emails asking for their information to be removed, and it's deleted by hand within a
+stated number of days. No self-service deletion feature yet; that's reasonable to build later if the
+group using this grows beyond a small, known pilot.
+
+**What's necessary to retain for the pilot?** The situation selected, the specific answers given,
+the resulting risk level and any alert shown, the content version (so a result stays interpretable
+later even as content changes), a timestamp, the reference code, and an email only if offered. Nothing
+else — no name, no identifying detail about the parent, no device or location information collected at
+the application level.
+
+**This is a recommendation, not something already built** — worth Sharon's explicit yes before it's
+implemented, since she's been clear this needs real care.
+
+---
+
+## 5. Launch readiness — what must be true before any family is invited
+
+- [x] **Unreviewed pathways are not publicly reachable.** Done today, verified directly against the
+      live site: all six unapproved pathways return a not-found page, even by direct URL. Only Falls is
+      currently public.
+- [ ] Sharon has tested and formally approved the live Falls pathway.
+- [ ] "Not Sure" content reviewed and approved the same way.
+- [ ] Privacy notice and terms of use published, after attorney review.
+- [ ] The educational/not-medical-advice disclaimer shown explicitly at the start of the Concern Check,
+      not just in the footer.
+- [ ] Assessments are actually saved (per the design in §4), and "email my summary" sends for real.
+- [ ] One more full verification pass across both live pathways, the same way Falls was checked today,
+      before the first invitation goes out.
+
+## 6. Current website accessibility
+
+**Checked directly today, and now fixed and reverified:** until today, all seven pathways, including
+the six still on unreviewed placeholder content, were publicly reachable from the homepage. That's
+closed now. Only Falls & Mobility is visible or reachable, on the homepage or by direct URL — every
+other pathway returns a not-found page, confirmed against the live production site just now, not
+assumed from the code.
+
+---
+
+## Appendix A — What explicitly waits regardless of pace
 
 - Accounts, the full Comprehensive Assessment, and the downloadable Care Plan (original Phase 2).
 - The Trusted Provider Network (original Phase 3).
